@@ -1,0 +1,927 @@
+# Project Rush: Building the Decision Brain Behind a Live Ad Break
+
+Imagine a live cricket final.
+
+The match cuts to an ad break, and thousands of viewers suddenly need advertisements at almost the same time.
+
+One viewer is watching from Mumbai on an Android TV. Another is on a phone in Delhi. One has already seen a particular campaign three times today. Another belongs to a subscription tier the advertiser did not target.
+
+Meanwhile, one campaign may have only a few thousand allocations remaining. Two competing brands may not be allowed to appear in the same break. Some advertisements are 15 seconds long, others 10 or 5, and the platform may have exactly 30 seconds to fill.
+
+Somewhere in the middle of all of this, a system has to answer one deceptively simple question:
+
+> **Which ads should this viewer receive right now?**
+
+That system is what I am trying to build with **Project Rush**.
+
+Rush is my second major systems project after Kronos, a storage engine I built around concepts such as write-ahead logging, SSTables, Bloom filters, compaction, crash recovery, and concurrency.
+
+Kronos pushed me downward into the machine: memory, disk, file formats, synchronization, persistence.
+
+Rush goes in the opposite direction.
+
+It pushes outward into distributed services: APIs, shared state, high concurrency, allocation, databases, caches, retries, failure semantics, optimization, and eventually event-driven architecture.
+
+And unlike Kronos, I do not want Rush to feel like a laboratory.
+
+I want it to feel like a **product**.
+
+The long-term goal is to build a deployable real-time ad allocation backend capable of handling the kinds of problems that appear when a large live-streaming platform needs to make advertising decisions under sudden bursts of traffic.
+
+But before writing a single FastAPI endpoint or touching Redis, I wanted to answer a more important question:
+
+**What exactly am I building?**
+
+That became Module 1.
+
+---
+
+## Rush is the decision brain, not the video system
+
+The easiest way I found to understand Rush was to stop thinking about ads for a moment.
+
+Imagine a very busy restaurant.
+
+The streaming platform is a waiter arriving at the maître d' and saying:
+
+> “I have a table ready. I need 30 seconds worth of ads for this particular viewer.”
+
+Rush does not cook anything.
+
+It does not own the television stream.
+
+It does not decide when the advertisement break should begin.
+
+It does not splice advertisements into the video.
+
+Its job is much narrower:
+
+**look at everything currently available, apply the rules, and return the best valid combination.**
+
+A request could conceptually contain:
+
+```text
+request_id
+viewer_id
+region
+device
+subscription_tier
+content_category
+break_duration
+```
+
+And the result could be something like:
+
+```text
+30-second ad pod
+
+Nike       15s
+Samsung    10s
+Swiggy      5s
+```
+
+The difficult part is not returning three advertisements.
+
+The difficult part is doing it correctly when thousands of requests arrive at almost the same moment.
+
+That leads directly to the first question of the module.
+
+---
+
+## Q1. What exactly is Project Rush?
+
+Project Rush is a **low-latency ad-decisioning backend for high-concurrency streaming workloads**.
+
+A streaming platform tells Rush that an advertising opportunity exists for a particular viewer.
+
+Rush decides which advertisements should fill it.
+
+Its responsibilities will eventually include candidate discovery, eligibility checking, frequency limits, campaign capacity, ranking, pacing, creative selection, pod construction, and retry safety.
+
+Its responsibilities deliberately do **not** include video streaming, transcoding, CDN delivery, ad stitching, or deciding where an ad break occurs.
+
+This boundary matters enormously.
+
+Without one, “building an ad-tech platform” can quietly turn into building five unrelated systems at once.
+
+Rush is specifically the **decisioning core**.
+
+---
+
+## Q2. What actually exists inside an advertising system?
+
+Before thinking about databases or classes, I needed a vocabulary.
+
+The first important distinction is between a **campaign** and a **creative**.
+
+They are not the same thing.
+
+An advertiser might be Nike.
+
+Nike creates a campaign such as:
+
+```text
+Nike Diwali 2026
+
+Capacity: 500,000 allocations
+Regions: Mumbai, Delhi
+Start: Oct 10
+End: Oct 25
+Frequency cap: 3 per viewer per day
+Priority: High
+```
+
+The campaign represents the delivery objective.
+
+It owns things like targeting, capacity, frequency policy, scheduling, pacing, priority, and lifecycle state.
+
+But the campaign itself is not the advertisement the viewer sees.
+
+That is the **creative**.
+
+A single campaign might contain:
+
+```text
+30-second brand film
+15-second cut
+10-second product spot
+5-second bumper
+```
+
+This becomes important later because Rush largely determines eligibility at the campaign level, but the final ad pod contains actual creatives.
+
+Suppose a campaign is completely eligible, but only 10 seconds remain in an ad break.
+
+Its creatives might look like:
+
+```text
+30-second creative   ✗
+15-second creative   ✗
+10-second creative   ✓
+5-second creative    ✓
+```
+
+The campaign is valid.
+
+Some of its creatives are not.
+
+That distinction will eventually matter a lot when the pod optimizer arrives.
+
+The rest of the domain is fairly compact.
+
+A **viewer** is the person, account, or device for whom the decision is being made.
+
+An **ad opportunity** means the streaming system currently has a certain amount of advertising inventory to fill.
+
+An **ad pod** is the ordered collection of creatives Rush finally returns.
+
+Conceptually:
+
+```text
+Advertiser
+    |
+    +-- Campaign
+           |
+           +-- Creative
+           +-- Creative
+           +-- Creative
+
+
+Viewer + Ad Opportunity
+          |
+          v
+         Rush
+          |
+          v
+        Ad Pod
+```
+
+Once I understood that picture, the rest of the system became much easier to reason about.
+
+---
+
+## Q3. When is a campaign actually allowed to participate?
+
+A campaign should not magically become eligible simply because someone created it.
+
+It has a lifecycle.
+
+For V1.1, Rush uses:
+
+```text
+DRAFT
+  ↓
+SCHEDULED
+  ↓
+ACTIVE ↔ PAUSED
+  ↓
+COMPLETED
+```
+
+There is also a terminal `CANCELLED` state.
+
+A **DRAFT** campaign is still being configured.
+
+A **SCHEDULED** campaign is valid, but its start time has not arrived.
+
+An **ACTIVE** campaign may participate in decisions.
+
+A **PAUSED** campaign is temporarily disabled.
+
+A **COMPLETED** campaign has naturally finished, perhaps because its end time arrived or its capacity was exhausted.
+
+A **CANCELLED** campaign has been permanently stopped.
+
+The important rule is:
+
+> **Only ACTIVE campaigns may enter the decision pipeline.**
+
+Even that is not sufficient.
+
+At the instant Rush makes a decision:
+
+```text
+campaign.start_time <= decision_time < campaign.end_time
+```
+
+must also be true.
+
+This revealed an important principle early in the project:
+
+**campaign state and request eligibility are different things.**
+
+A campaign may be ACTIVE globally and still be invalid for a particular viewer.
+
+---
+
+## Q4. What makes an advertisement eligible for one viewer?
+
+This is where Rush begins to look less like a CRUD backend and more like a decision engine.
+
+The core idea is separating **hard constraints** from **soft preferences**.
+
+The pipeline looks roughly like:
+
+```text
+ACTIVE CAMPAIGNS
+        ↓
+HARD CONSTRAINTS
+        ↓
+FEASIBLE CAMPAIGNS
+        ↓
+SOFT RANKING
+        ↓
+POD CONSTRUCTION
+```
+
+Hard constraints are absolute.
+
+A campaign may need to satisfy:
+
+* campaign lifecycle state;
+* delivery window;
+* region;
+* device;
+* subscription tier;
+* content context;
+* frequency limits;
+* remaining capacity;
+* creative duration;
+* competitive-exclusion rules.
+
+If one fails, the campaign is out for that opportunity.
+
+Then come soft preferences.
+
+Priority, pacing, delivery urgency, or business value can help choose between multiple valid campaigns.
+
+But they are never allowed to make an invalid campaign valid.
+
+The metaphor I like here is airport security.
+
+A first-class ticket might affect what happens after you enter the airport.
+
+It does not allow you to ignore security.
+
+Rush follows the same rule:
+
+> **Optimization only happens inside the valid solution space.**
+
+That principle also applies to filling an ad break.
+
+Suppose we have 30 seconds.
+
+```text
+15 + 10 + 5 = valid
+20 + 15     = invalid
+```
+
+It would be nice to fill all 30 seconds.
+
+But filling every second is not a correctness requirement.
+
+If the best legal combination occupies only 25 seconds, Rush can return 25 seconds.
+
+And if nothing qualifies at all, Rush should return no advertisement rather than violate its rules.
+
+For example:
+
+```json
+{
+  "request_id": "req_123",
+  "status": "NO_FILL",
+  "ads": []
+}
+```
+
+That is not an error.
+
+The decision succeeded.
+
+Rush simply found no valid inventory.
+
+---
+
+## Q5. When does an allocation actually count?
+
+This question turned out to be one of the most important design decisions in Module 1.
+
+Suppose a campaign has 500,000 available allocations.
+
+Rush selects one of its advertisements.
+
+Then the viewer closes the app before the advertisement actually plays.
+
+Should that unit of capacity be returned?
+
+In a sophisticated production system, answering this properly introduces an entire second problem:
+
+reservations, impression events, expiration, late events, duplicate events, reconciliation, and safe capacity reclamation.
+
+Trying to solve all of that immediately would make the first version unnecessarily complicated.
+
+So V1.1 makes a deliberate trade-off.
+
+### V1.1 uses committed allocations
+
+Once Rush successfully commits and returns a decision, that campaign capacity is considered consumed.
+
+```text
+Capacity before decision: 500,000
+Rush issues allocation
+Capacity after decision:  499,999
+```
+
+If the viewer leaves later, Rush does not reclaim it.
+
+That means V1.1 knowingly accepts:
+
+> **under-delivery and wasted inventory**
+
+This is intentional.
+
+For the first version, I would rather have a clean guarantee:
+
+```text
+CommittedAllocations(campaign)
+    <=
+ConfiguredCapacity(campaign)
+```
+
+than introduce an incomplete reconciliation system that occasionally allows over-allocation.
+
+The philosophy is simple:
+
+**when uncertain, waste capacity before violating the hard cap.**
+
+### V1.2 changes this model
+
+The next version introduces temporary reservations.
+
+Conceptually:
+
+```text
+AVAILABLE
+    ↓
+RESERVED
+   /       \
+CONFIRMED  EXPIRED
+              ↓
+           RECLAIM
+```
+
+Instead of considering a decision permanently consumed immediately, Rush can reserve capacity first.
+
+Later events confirm whether delivery actually happened.
+
+That is where Kafka enters the architecture.
+
+Kafka is deliberately excluded from V1.1 because I do not want it sitting in the project merely because “distributed systems projects use Kafka.”
+
+In V1.2 it has a clear responsibility: carry asynchronous delivery events and support reconciliation.
+
+That version will have to deal with duplicates, delayed events, consumer restarts, expiration, and safe reclamation.
+
+That is a real reason to use an event stream.
+
+---
+
+## Q6. What does the complete flow actually look like?
+
+Once the pieces are defined, the full journey becomes straightforward.
+
+An advertiser creates a campaign.
+
+The campaign receives its targeting rules, capacity, schedule, frequency policy, priority, and creatives.
+
+It moves through:
+
+```text
+DRAFT → SCHEDULED → ACTIVE
+```
+
+Later, a viewer reaches an ad opportunity.
+
+The streaming platform asks Rush for a decision.
+
+Rush discovers potential campaigns.
+
+It removes everything that violates hard constraints.
+
+It ranks what remains.
+
+It examines the available creatives.
+
+Then it constructs a valid ad pod and returns it.
+
+```text
+Advertiser creates campaign
+        ↓
+Campaign configured
+        ↓
+Creatives registered
+        ↓
+DRAFT → SCHEDULED → ACTIVE
+        ↓
+Viewer reaches ad opportunity
+        ↓
+Streaming platform calls Rush
+        ↓
+Candidate discovery
+        ↓
+Hard filtering
+        ↓
+Soft ranking
+        ↓
+Creative selection
+        ↓
+Pod construction
+        ↓
+Decision returned
+        ↓
+Streaming platform handles playback
+```
+
+Notice what happens at the bottom.
+
+Rush returns the decision.
+
+It does not suddenly become the media system.
+
+This separation lets me go much deeper into the engineering problem I actually want Rush to explore:
+
+**how do we allocate scarce shared resources correctly under synchronized concurrent demand?**
+
+---
+
+## Q7. What must Rush never get wrong?
+
+This was the final question of Module 1.
+
+Before building the implementation, I wanted to define the rules the implementation is never allowed to violate.
+
+These are the system invariants.
+
+The mechanism underneath Rush can change dramatically.
+
+We may begin with an in-memory store, move durable state into PostgreSQL, use Redis for atomic coordination, and later distribute capacity through worker leases.
+
+But the rules should remain stable.
+
+A selected campaign must be ACTIVE.
+
+A campaign cannot be selected outside its delivery window.
+
+Targeting must hold.
+
+Frequency caps cannot be exceeded.
+
+Campaign capacity cannot be overspent.
+
+The pod duration cannot exceed the opportunity duration.
+
+Configured competitors cannot coexist in the same pod.
+
+Every creative must belong to an eligible campaign.
+
+Committed allocations remain consumed in V1.1.
+
+Retries must be idempotent.
+
+That last one deserves special attention.
+
+Imagine the streaming service sends:
+
+```text
+request_id = REQ-123
+```
+
+Rush successfully allocates an advertisement, but the response is lost somewhere on the network.
+
+The caller retries.
+
+Without idempotency, Rush might treat that retry as a completely new request and consume another unit of capacity.
+
+That is incorrect.
+
+Within Rush's configured idempotency window:
+
+```text
+REQ-123
+→ allocate
+→ commit capacity
+→ save decision
+→ return
+
+REQ-123 again
+→ return SAME decision
+→ consume nothing
+```
+
+Even two concurrent requests carrying the same ID must result in capacity being consumed at most once.
+
+And above all of the individual invariants sits one global rule:
+
+> **Hard constraints always dominate soft optimization.**
+
+That sentence is essentially the constitution of Project Rush.
+
+---
+
+# So where does the actual engineering come from?
+
+Module 1 intentionally contains very little implementation.
+
+The point was to establish the product contract before choosing mechanisms.
+
+Now the interesting systems work begins.
+
+The planned V1.1 stack is Python with FastAPI and Pydantic for the service layer, PostgreSQL for durable campaign state, SQLAlchemy and Alembic for persistence and migrations, Redis for hot operational state, and in-memory inverted bitmap indexes for fast candidate discovery.
+
+Testing will use pytest alongside dedicated concurrency and workload generation.
+
+The intention is also to include the less glamorous things real services need: structured logging, health checks, configuration, error handling, migrations, deployment documentation, and eventually Docker Compose.
+
+But the technologies themselves are not the point.
+
+The interesting part is **why they are needed**.
+
+---
+
+# From one Redis counter to hierarchical capacity leases
+
+Imagine a popular campaign with only 5,000 allocations remaining during a major live event.
+
+Every Rush worker wants access to the same capacity.
+
+The most naive design might look like:
+
+```text
+read remaining capacity
+check capacity > 0
+decrement
+```
+
+That immediately breaks under concurrency.
+
+Two workers can observe the same value and both allocate it.
+
+The next design is a centralized atomic allocator.
+
+That fixes correctness.
+
+But now every allocation for a very popular campaign may require coordination against the same shared state.
+
+The counter becomes a hotspot.
+
+Rush V1.1 will therefore eventually introduce **hierarchical capacity leasing**.
+
+Instead of every worker asking the global coordinator for every single allocation, the coordinator might grant one worker:
+
+```text
+100 campaign allocations
+```
+
+That worker can spend those 100 locally.
+
+When it gets low, it requests another lease.
+
+This reduces central coordination dramatically.
+
+But it also creates much harder questions.
+
+What happens if the worker dies after consuming only 37 of those 100?
+
+Can the remaining 63 be reclaimed?
+
+What happens if the worker's lease expires, but the old worker wakes up and continues issuing allocations?
+
+That is why leasing alone is not enough.
+
+Rush also needs **epoch/fencing semantics**.
+
+A stale worker must not be able to create valid new allocations after ownership has been revoked.
+
+And where the coordinator cannot prove how much a failed worker consumed, V1.1 will remain conservative.
+
+Potentially stranded capacity is preferable to violating the campaign's hard limit.
+
+---
+
+# Finding candidates without scanning everything
+
+The first Rush implementation can simply loop through campaigns.
+
+For each one:
+
+```text
+Mumbai?
+Android?
+Sports?
+Premium?
+ACTIVE?
+capacity available?
+```
+
+That is perfectly reasonable when the system contains ten campaigns.
+
+It becomes much less attractive with thousands.
+
+Later in V1.1, Rush will therefore introduce inverted bitmap indexes.
+
+Conceptually:
+
+```text
+Mumbai campaigns
+      AND
+Android campaigns
+      AND
+Sports campaigns
+      AND
+Premium campaigns
+```
+
+The intersection quickly narrows the search space before expensive checks occur.
+
+The goal is not to claim that bitmap operations make the entire problem magically O(1).
+
+They do not.
+
+The advantage is that word-wise bitmap intersections are extremely efficient for this kind of set filtering.
+
+---
+
+# There is a tiny optimization problem hiding inside every ad break
+
+After Rush determines which campaigns are legal, it still has to construct the pod.
+
+For a 30-second opportunity, possibilities might include:
+
+```text
+15 + 15
+15 + 10 + 5
+10 + 10 + 10
+15 + 5 + 5
+```
+
+But not every combination is valid.
+
+Some brands might conflict.
+
+Some campaigns may be ahead of schedule.
+
+Others may be behind.
+
+Some have higher business priority.
+
+Pod construction therefore starts to resemble a small bounded knapsack problem.
+
+The goal is to maximize the value of a valid combination without exceeding the available duration.
+
+V1.1 will likely compare a practical greedy baseline against bounded dynamic programming rather than jumping immediately to heavyweight optimization.
+
+Again, the rule is:
+
+**use the simplest mechanism that solves the actual problem well.**
+
+---
+
+# Pacing: capacity is not the same thing as delivery quality
+
+A campaign may buy 100,000 allocations over ten hours.
+
+A perfectly capacity-safe system could technically deliver all 100,000 in the first hour.
+
+That would still be undesirable.
+
+This is why ad systems use pacing.
+
+Rush V1.1 will begin with a simple proportional controller.
+
+Conceptually:
+
+```text
+expected delivery by now
+        -
+actual delivery
+        =
+delivery error
+```
+
+Campaigns behind schedule can receive more ranking weight.
+
+Campaigns running ahead can receive less.
+
+There is no need to start with a full PID controller or a much more sophisticated allocation algorithm before the simpler model demonstrates a weakness.
+
+---
+
+# And no, V1.1 does not need machine learning
+
+Advertising systems and machine learning naturally intersect.
+
+A production system may predict click-through probability, completion probability, relevance, or conversion probability.
+
+Rush may eventually explore that.
+
+But V1.1 will not.
+
+Adding an artificial CTR model merely so that the README contains the words “machine learning” would weaken the architecture rather than strengthen it.
+
+The systems question is already deep enough:
+
+> **Can we coordinate scarce campaign capacity correctly and quickly under synchronized concurrent demand?**
+
+If ML arrives later, it belongs in the soft-ranking layer.
+
+It may influence which valid campaign we prefer.
+
+It will never be allowed to override hard constraints.
+
+---
+
+# What V1.1 needs to become
+
+I consider **V1.1 the first flagship version of Rush**.
+
+By then I want the system to have campaign and creative management, campaign lifecycle handling, PostgreSQL persistence, decision APIs, concurrency-safe frequency enforcement, centralized atomic allocation, bitmap candidate indexing, hierarchical leases, fencing, pacing, pod optimization, idempotency, concurrency tests, benchmarks, health checks, logging, configuration, and deployment documentation.
+
+The benchmarks are important, but they are not the identity of the project.
+
+Rush is not an experiment comparing three counters.
+
+It is an ad-allocation product whose architectural decisions happen to be measurable.
+
+The measurements should answer things such as:
+
+```text
+Did campaign capacity ever exceed its configured limit?
+
+How does p99 latency behave during a synchronized burst?
+
+How many central coordination operations does leasing remove?
+
+How much capacity becomes stranded during worker failure?
+
+How much does bitmap indexing reduce candidate-search work?
+
+How good are the pods produced by greedy vs bounded optimization?
+
+Do concurrent retries consume capacity twice?
+```
+
+And none of those numbers should exist until they have actually been measured.
+
+---
+
+# Then comes V1.2
+
+V1.2 expands Rush from primarily a synchronous decision system into one that also has an asynchronous event plane.
+
+Kafka will carry delivery-related events.
+
+Consumers will need to be idempotent.
+
+Reservations may become confirmed, expire, or potentially be reclaimed.
+
+Duplicate events will exist.
+
+Late events will exist.
+
+Consumers will restart.
+
+Reconciliation will need to remain durable.
+
+In other words, V1.2 is not “V1.1 plus Kafka.”
+
+It is a different class of problem built on top of the stable synchronous core.
+
+That is exactly why Kafka belongs there and not earlier.
+
+---
+
+# Why spend an entire module before writing code?
+
+It is tempting to start any backend project with:
+
+```text
+main.py
+POST /campaigns
+GET /campaigns/{id}
+```
+
+That feels like progress.
+
+But without Module 1, I would not have had precise answers to questions such as:
+
+Is the campaign the advertisement itself?
+
+Does Rush decide when an ad break happens?
+
+When exactly is capacity consumed?
+
+What happens when nothing qualifies?
+
+Can retries allocate twice?
+
+Can pacing override a frequency cap?
+
+Is returning an empty pod a failure?
+
+What does ACTIVE actually mean?
+
+These sound like documentation questions.
+
+They are not.
+
+They eventually determine database schemas, API contracts, concurrency controls, indexes, tests, and failure semantics.
+
+The metaphor I like most is a railway system.
+
+FastAPI, Redis, PostgreSQL, Kafka, leases, and bitmaps are trains, tracks, stations, and signals.
+
+Module 1 was drawing the map and writing the traffic rules.
+
+Without that, faster trains simply let you crash at higher speed.
+
+---
+
+# Module 1 complete
+
+Rush does not have a distributed allocator yet.
+
+It does not have a Redis hot path.
+
+It does not have Kafka.
+
+It does not even have its first real API.
+
+And that is fine.
+
+At the end of Module 1, the project finally has something more valuable:
+
+**a definition of correctness.**
+
+We know who calls Rush.
+
+We know what Rush owns.
+
+We know what it deliberately does not own.
+
+We know what campaigns and creatives mean.
+
+We know how campaigns move through the system.
+
+We know the difference between hard rules and optimization.
+
+We know what `NO_FILL` means.
+
+We know how V1.1 counts capacity.
+
+We know why V1.2 changes that model.
+
+And we know the invariants the implementation must never violate.
+
+Now we can finally write code.
+
+

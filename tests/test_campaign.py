@@ -43,9 +43,35 @@ def test_create_campaign_with_invalid_capacity():
 
     response = client.post("/campaigns", json=test_input_campaign)
 
-    # Pydantic rejects the request before the route/service logic runs.
+    # model validator rejects the request as capacity<0
     assert response.status_code == 422
     # assert response_body["status"] == "DRAFT"
     # assert response_body["name"] == "Nike"
     # assert response_body["capacity"] == -5
     # assert response_body["status"] == 200
+    
+    
+def test_create_campaign_with_invalid_time_window():
+    # This request should fail because start time should be < end time
+        test_input_campaign = {
+            "name": "Swiggy",
+            "capacity": 50,
+            "start_time": "2026-11-10T18:00:00",
+            "end_time": "2026-10-25T23:00:00",
+        }
+    
+        response = client.post("/campaigns", json=test_input_campaign)
+    
+        # The model validator rejects end_time <= start_time.
+        assert response.status_code == 422
+
+def test_get_nonexistent_campaign():
+    # This request should fail because campaign does not exist
+    test_campaign_id = 6
+
+    #The campaign ID is passed as a path parameter in the URL.
+    response = client.get(f"/campaigns/{test_campaign_id}")
+    
+    # The router translates "campaign not found" into HTTP 404.
+    assert response.status_code == 404
+

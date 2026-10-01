@@ -1,30 +1,47 @@
-# /Users/vish1504/projectRush/app/services/campaign_services.py
-from app.schemas.campaign import CampaignCreate, CampaignResponse, CampaignStatus
+# /Users/vish1504/projectRush/app/services/campaign_service.py
+from sqlalchemy.orm import Session
 
-campaigns: dict[int, CampaignResponse] = {}
+from app.models.campaign import Campaign
+from app.repositories.campaign_repository import CampaignRepository
+from app.schemas.campaign import CampaignCreate, CampaignStatus
 
 
-def create(campaign_input: CampaignCreate) -> CampaignResponse:
-    campaign_id = len(campaigns) + 1
+def create(
+    campaign_input: CampaignCreate,
+    db: Session,
+) -> Campaign:
 
-    # Build the complete campaign Rush will store and return.
-    # The client provides campaign_input; Rush owns id and status.
-    campaign_output = CampaignResponse(
-        id=campaign_id,
+    # Create the repository and give it this request's Session.
+    repository = CampaignRepository(db)
+
+    # Convert API/domain input into the SQLAlchemy ORM model
+    # that will be stored in PostgreSQL.
+    campaign = Campaign(
         name=campaign_input.name,
         capacity=campaign_input.capacity,
         start_time=campaign_input.start_time,
         end_time=campaign_input.end_time,
-        status=CampaignStatus.DRAFT,
+        status=CampaignStatus.DRAFT.value,
     )
 
-    campaigns[campaign_id] = campaign_output
+    # Repository handles persistence.
+    return repository.add(campaign)
 
-    return campaign_output
+
+def get_by_id(
+    campaign_id: int,
+    db: Session,
+) -> Campaign | None:
+
+    repository = CampaignRepository(db)
+
+    return repository.get_by_id(campaign_id)
 
 
-def get_by_id(campaign_id: int) -> CampaignResponse | None:
-    return campaigns.get(campaign_id)
+def get_all(
+    db: Session,
+) -> list[Campaign]:
 
-def get_all() -> list[CampaignResponse] | None:
-    return list(campaigns.values())
+    repository = CampaignRepository(db)
+
+    return repository.get_all()

@@ -1,8 +1,11 @@
 # /Users/vish1504/projectRush/app/api/campaign.py
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
 
+from app.db.database import get_db
 from app.schemas.campaign import CampaignCreate, CampaignResponse
-from app.services.campaign_service import create, get_by_id,get_all
+from app.services.campaign_service import create, get_by_id, get_all
+
 
 router = APIRouter()
 
@@ -12,25 +15,22 @@ router = APIRouter()
     response_model=CampaignResponse,
     status_code=status.HTTP_201_CREATED,
 )
-def create_campaign(campaign_input: CampaignCreate):
-    return create(campaign_input)
+def create_campaign( campaign_input: CampaignCreate, db: Session = Depends(get_db)):
+    return create(campaign_input, db)
 
 
-@router.get(
-    "/campaigns/{campaign_id}",
-    response_model=CampaignResponse,
-)
-def get_campaign(campaign_id: int):
-    campaign = get_by_id(campaign_id)
+@router.get( "/campaigns/{campaign_id}", response_model=CampaignResponse )
+def get_campaign(campaign_id: int, db: Session = Depends(get_db)):
+    campaign = get_by_id(campaign_id, db)
 
     if campaign is None:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,
-            detail="Campaign not found",
+            detail="Campaign not found"
         )
 
     return campaign
 
-@router.get("/campaigns",response_model=list[CampaignResponse])
-def list_campaigns():
-    return get_all()
+@router.get("/campaigns", response_model=list[CampaignResponse])
+def list_all(db: Session = Depends(get_db)):
+    return get_all(db)

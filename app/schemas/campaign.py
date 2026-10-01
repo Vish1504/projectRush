@@ -1,5 +1,5 @@
-# /Users/vish1504/projectRush/app/schema/campaign.py
-from pydantic import BaseModel, Field, model_validator
+# /Users/vish1504/projectRush/app/schemas/campaign.py
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 from datetime import datetime
 from enum import Enum
 
@@ -27,6 +27,8 @@ class CampaignCreate(BaseModel):
 
 
 class CampaignResponse(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
     id: int = Field(gt=0)
     name: str
     capacity: int

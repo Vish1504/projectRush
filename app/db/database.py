@@ -6,7 +6,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 
-DATABASE_URL = "postgresql+psycopg://vish1504@localhost:5432/rush"
+DATABASE_URL = "postgresql+psycopg:///rush"
 
 # Engine is SQLAlchemy's gateway to PostgreSQL
 engine = create_engine(DATABASE_URL)

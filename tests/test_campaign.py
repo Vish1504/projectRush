@@ -1,14 +1,18 @@
 from fastapi.testclient import TestClient
+from sqlalchemy.exc import IntegrityError
 
+from app.models.campaign import Campaign
 from app.main import app
+import pytest
+from datetime import datetime, timezone
 
 
 # TestClient lets us call the FastAPI app directly without running Uvicorn.
 client = TestClient(app)
 
 
-def test_create_campaign():
-    # Simulate the JSON body a real client would send to POST /campaigns.
+def test_create_and_get_campaign():
+    # Create a campaign
     test_input_campaign = {
         "name": "Nike",
         "capacity": 62,
@@ -16,54 +20,116 @@ def test_create_campaign():
         "end_time": "2026-10-25T23:00:00",
     }
 
-    response = client.post("/campaigns", json=test_input_campaign)
+    create_response = client.post(
+        "/campaigns",
+        json=test_input_campaign,
+    )
 
-    # response.json() gives us the JSON response body as a Python dictionary.
-    response_body = response.json()
+    assert create_response.status_code == 201
 
-    # Successful creation should return HTTP 201 Created.
-    assert response.status_code == 201
+    create_response_body = create_response.json()
 
-    # Rush, not the client, assigns the initial campaign status.
-    assert response_body["status"] == "DRAFT"
+    # Use whatever ID PostgreSQL generated
+    campaign_id = create_response_body["id"]
 
-    # Confirm that client-provided fields are returned correctly.
-    assert response_body["name"] == "Nike"
-    assert response_body["capacity"] == 62
+    # Fetch the same campaign using that ID
+    get_response = client.get(
+        f"/campaigns/{campaign_id}"
+    )
 
+    assert get_response.status_code == 200
 
-def test_create_campaign_with_invalid_capacity():
-    # This request should fail because CampaignCreate requires capacity > 0.
-    test_input_campaign = {
-        "name": "Swiggy",
-        "capacity": -5,
+    get_response_body = get_response.json()
+
+    # Confirm we got back the same campaign
+    assert get_response_body["id"] == campaign_id
+    assert get_response_body["name"] == "Nike"
+    assert get_response_body["capacity"] == 62
+    assert get_response_body["status"] == "DRAFT"
+
+def test_get_all_campaigns():
+    # Test starts with an empty campaigns table
+    # because clean_campaigns() in conftest.py runs automatically.
+
+    test_A_input_campaign = {
+        "name": "Nike",
+        "capacity": 62,
         "start_time": "2026-10-10T18:00:00",
         "end_time": "2026-10-25T23:00:00",
     }
 
-    response = client.post("/campaigns", json=test_input_campaign)
+    test_B_input_campaign = {
+        "name": "Swiggy",
+        "capacity": 100,
+        "start_time": "2026-11-10T18:00:00",
+        "end_time": "2026-12-25T23:00:00",
+    }
 
-    # model validator rejects the request as capacity<0
-    assert response.status_code == 422
-    # assert response_body["status"] == "DRAFT"
-    # assert response_body["name"] == "Nike"
-    # assert response_body["capacity"] == -5
-    # assert response_body["status"] == 200
+    # Create both campaigns
+    client.post("/campaigns", json=test_A_input_campaign)
+    client.post("/campaigns", json=test_B_input_campaign)
+
+    # Ask Rush for all campaigns
+    response = client.get("/campaigns")
+
+    # GET /campaigns should succeed
+    assert response.status_code == 200
+
+    # Convert the JSON response into a Python object
+    response_body = response.json()
+
+    # GET /campaigns should return a list
+    assert isinstance(response_body, list)
+
+    # We created exactly two campaigns
+    assert len(response_body) == 2
+
+    # Extract just the campaign names from the response
+    names = [campaign["name"] for campaign in response_body]
+
+    # Confirm both campaigns were returned
+    assert "Nike" in names
+    assert "Swiggy" in names
     
-    
-def test_create_campaign_with_invalid_time_window():
+def test_database_rejects_invalid_capacity(db_session):
+    invalid_campaign = Campaign(
+        name="Invalid Campaign",
+        capacity=-10,
+        start_time="2026-10-10T18:00:00+00:00",
+        end_time="2026-10-10T20:00:00+00:00",
+        status="DRAFT",
+    )
+
+    db_session.add(invalid_campaign)
+
+    with pytest.raises(IntegrityError):
+        db_session.commit()
+    db_session.rollback()
+
+def test_database_rejects_invalid_time_window(db_session):
     # This request should fail because start time should be < end time
-        test_input_campaign = {
-            "name": "Swiggy",
-            "capacity": 50,
-            "start_time": "2026-11-10T18:00:00",
-            "end_time": "2026-10-25T23:00:00",
-        }
+        invalid_time_window_campaign = Campaign(
+        name="Swiggy",
+        capacity=50,
+        start_time=datetime(
+            2026, 11, 10, 18, 0,
+            tzinfo=timezone.utc,
+        ),
+        end_time=datetime(
+            2026, 10, 25, 23, 0,
+            tzinfo=timezone.utc,
+        ),
+        status="DRAFT",
+    )
     
-        response = client.post("/campaigns", json=test_input_campaign)
+        
+        db_session.add(invalid_time_window_campaign)
+        
+        with pytest.raises(IntegrityError):
+            db_session.commit()
+        db_session.rollback()
     
-        # The model validator rejects end_time <= start_time.
-        assert response.status_code == 422
+        
 
 def test_get_nonexistent_campaign():
     # This request should fail because campaign does not exist

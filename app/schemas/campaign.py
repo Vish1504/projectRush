@@ -1,8 +1,6 @@
 # /Users/vish1504/projectRush/app/schemas/campaign.py
 
 # It defines what Rush is willing to accept and return through the API.
-
-
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 from datetime import datetime
 from enum import Enum

@@ -13,6 +13,11 @@ from app.repositories.campaign_repository import CampaignRepository
 
 from sqlalchemy.exc import IntegrityError
 
+from uuid import uuid4
+
+from app.runtime.allocation_store import AllocationStore
+from app.runtime.redis_client import redis_client
+
 
 client = TestClient(app)
 
@@ -411,4 +416,97 @@ def test_deleting_campaign_deletes_targeting_rows(db_session):
 
     assert region is None
     
+
+def test_decision_allocates_eligible_campaign(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "winner_campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
     
+    # Create campaign in PostgreSQL
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+    
+    assert create_response.status_code == 201
+    campaign_id = create_response.json()["id"]
+    
+    # Make campaign eligible by settinng status to ACTIVE
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+    
+    # Initialize its runtime capacity in Redis
+    allocation_store = AllocationStore(redis_client)
+
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+    
+    # Prevent stale Redis state from a previous test run
+    redis_client.delete(capacity_key)
+
+    initialized = allocation_store.initialize_new_campaign_capacity(
+        campaign_id=campaign_id,
+        capacity=campaign.capacity,
+    )
+
+    assert initialized is True
+
+    # Unique values prevent idempotency/frequency state from another run
+    request_id = f"decision-test-{uuid4()}"
+    viewer_id = f"viewer-test-{uuid4()}"
+    
+    # Ask Rush to actually make a decision
+    response = client.post(
+        "/decisions",
+        json={
+            "request_id": request_id,
+            "viewer_id": viewer_id,
+            "region": "Mumbai",
+            "device": "MOBILE",
+            "subscription_tier": "PREMIUM",
+        },
+    )
+    
+    # Rush should allocate this campaign
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["request_id"] == request_id
+    assert body["status"] == "ALLOCATED"
+    assert body["campaign_id"] == campaign_id
+
+    # Allocation should have consumed exactly one unit
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+    
+def test_decision_returns_no_fill_when_no_campaign_is_eligible():
+    request_id = f"no-fill-test-{uuid4()}"
+    viewer_id = f"viewer-test-{uuid4()}"
+
+    response = client.post(
+        "/decisions",
+        json={
+            "request_id": request_id,
+            "viewer_id": viewer_id,
+            "region": "Mumbai",
+            "device": "MOBILE",
+            "subscription_tier": "PREMIUM",
+        },
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["request_id"] == request_id
+    assert body["status"] == "NO_FILL"
+    assert body["campaign_id"] is None

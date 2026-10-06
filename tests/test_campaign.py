@@ -16,6 +16,7 @@ def test_create_and_get_campaign():
     test_input_campaign = {
         "name": "Nike",
         "capacity": 62,
+        "frequency_cap_per_hour": 3,
         "start_time": "2026-10-10T18:00:00",
         "end_time": "2026-10-25T23:00:00",
     }
@@ -54,6 +55,7 @@ def test_get_all_campaigns():
     test_A_input_campaign = {
         "name": "Nike",
         "capacity": 62,
+        "frequency_cap_per_hour": 3,
         "start_time": "2026-10-10T18:00:00",
         "end_time": "2026-10-25T23:00:00",
     }
@@ -61,6 +63,7 @@ def test_get_all_campaigns():
     test_B_input_campaign = {
         "name": "Swiggy",
         "capacity": 100,
+        "frequency_cap_per_hour": 3,
         "start_time": "2026-11-10T18:00:00",
         "end_time": "2026-12-25T23:00:00",
     }
@@ -95,6 +98,7 @@ def test_database_rejects_invalid_capacity(db_session):
     invalid_campaign = Campaign(
         name="Invalid Campaign",
         capacity=-10,
+        frequency_cap_per_hour=3,
         start_time="2026-10-10T18:00:00+00:00",
         end_time="2026-10-10T20:00:00+00:00",
         status="DRAFT",
@@ -111,6 +115,7 @@ def test_database_rejects_invalid_time_window(db_session):
         invalid_time_window_campaign = Campaign(
         name="Swiggy",
         capacity=50,
+        frequency_cap_per_hour=3,
         start_time=datetime(
             2026, 11, 10, 18, 0,
             tzinfo=timezone.utc,

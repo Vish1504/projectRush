@@ -9,22 +9,6 @@ from app.models.campaign import Campaign
 from app.runtime.allocation_store import AllocationStore, AllocationResult
 from app.runtime.redis_client import redis_client
 from redis.exceptions import RedisError
-
-# only to discover campaigns that are eligible in PostgreSQL.
-def find_candidates(
-    decision_request: DecisionRequest,
-    db: Session,
-) -> list[Campaign]:
-    decision_time = datetime.now(timezone.utc)
-    repository = CampaignRepository(db)
-    
-    return repository.find_candidates(
-        region=decision_request.region,
-        device=decision_request.device,
-        subscription_tier=decision_request.subscription_tier,
-        decision_time=decision_time,
-    )
-    
     
 # Here we discover eligible campaigns & then try to safely allocate one.
 def make_decision(
@@ -80,6 +64,22 @@ def make_decision(
     # If Redis throws connection/timeout/etc error
     except RedisError:
         return None
+    
+    
+# only to discover campaigns that are eligible in PostgreSQL.
+# def find_candidates(
+#     decision_request: DecisionRequest,
+#     db: Session,
+# ) -> list[Campaign]:
+#     decision_time = datetime.now(timezone.utc)
+#     repository = CampaignRepository(db)
+    
+#     return repository.find_candidates(
+#         region=decision_request.region,
+#         device=decision_request.device,
+#         subscription_tier=decision_request.subscription_tier,
+#         decision_time=decision_time,
+#     )
             
             
             

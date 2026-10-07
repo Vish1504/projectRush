@@ -765,8 +765,17 @@ def test_successful_decision_key_has_ttl():
 
     capacity_key = store._remaining_capacity_key(campaign_id)
     decision_key = store._decision_key(request_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
 
-    redis_client.delete(capacity_key, decision_key)
+    redis_client.delete(
+        capacity_key,
+        decision_key,
+        frequency_key,
+    )
 
     store.initialize_new_campaign_capacity(
         campaign_id=campaign_id,

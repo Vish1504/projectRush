@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from app.db.database import get_db
 from app.schemas.decision import DecisionRequest,DecisionResponse, DecisionStatusEnum
 from app.schemas.campaign import CampaignResponse
-from app.services.decision_service import find_candidates,make_decision
+from app.services.decision_service import make_decision
 
 
 router = APIRouter(
@@ -37,14 +37,14 @@ def win_decision(
         campaign_id=winner_candidate.id
     )
 
-@router.post(
-    "/candidates",
-    response_model=list[CampaignResponse],
-)
+# @router.post(
+#     "/candidates",
+#     response_model=list[CampaignResponse],
+# )
 
-def get_candidates(
-    request: DecisionRequest,
-    db: Session = Depends(get_db),
-):
-    # By doing this, we're getting ALL the eligible candidates
-    return find_candidates(request, db)
+# def get_candidates(
+#     request: DecisionRequest,
+#     db: Session = Depends(get_db),
+# ):
+#     # By doing this, we're getting ALL the eligible candidates
+#     return find_candidates(request, db)

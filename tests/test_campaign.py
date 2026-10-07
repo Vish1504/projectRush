@@ -237,4 +237,7 @@ def test_reactivating_campaign_does_not_reset_redis_capacity():
 
     # NX must prevent Redis capacity from being reset to 100
     assert allocation_store.get_remaining_capacity(campaign_id) == 99
+    
+    
+
 

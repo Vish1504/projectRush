@@ -52,23 +52,17 @@ def test_matching_campaign_is_returned(db_session):
     campaign.status = "ACTIVE"
     db_session.commit()
 
-    decision_response = client.post(
-        "/decisions/candidates",
-        json={
-            "request_id": "test-request-1",
-            "viewer_id": "test-viewer-1",
-            "region": "Mumbai",
-            "device": "MOBILE",
-            "subscription_tier": "PREMIUM",
-            },
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
     )
 
-    assert decision_response.status_code == 200
-
-    candidates = decision_response.json()
-
     assert len(candidates) == 1
-    assert candidates[0]["id"] == campaign_id
+    assert candidates[0].id == campaign_id
     
 @pytest.mark.parametrize(
     "decision_request",
@@ -124,15 +118,18 @@ def test_targeting_mismatch_is_rejected(
     campaign.status = "ACTIVE"
     db_session.commit()
 
-    response = client.post(
-        "/decisions/candidates",
-        json=decision_request,
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region=decision_request["region"],
+        device=decision_request["device"],
+        subscription_tier=decision_request["subscription_tier"],
+        decision_time=now,
     )
 
-    assert response.status_code == 200
-    assert response.json() == []
+    assert candidates == []
     
-def test_draft_campaign_is_rejected():
+def test_draft_campaign_is_rejected(db_session):
     now = datetime.now(timezone.utc)
 
     campaign_input = {
@@ -146,24 +143,25 @@ def test_draft_campaign_is_rejected():
         "subscription_tiers": ["PREMIUM"],
     }
 
-    response = client.post("/campaigns", json=campaign_input)
-    assert response.status_code == 201
-
-    # We deliberately do NOT change DRAFT -> ACTIVE.
-
-    decision_response = client.post(
-        "/decisions/candidates",
-        json={
-            "request_id": "test-request-1",
-            "viewer_id": "test-viewer-1",
-            "region": "Mumbai",
-            "device": "MOBILE",
-            "subscription_tier": "PREMIUM",
-        },
+    response = client.post(
+        "/campaigns",
+        json=campaign_input,
     )
 
-    assert decision_response.status_code == 200
-    assert decision_response.json() == []
+    assert response.status_code == 201
+
+    # Deliberately leave the campaign as DRAFT.
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
+    )
+
+    assert candidates == []
     
 @pytest.mark.parametrize(
     "start_offset,end_offset",
@@ -199,19 +197,16 @@ def test_campaign_outside_time_window_is_rejected(
     campaign.status = "ACTIVE"
     db_session.commit()
 
-    response = client.post(
-        "/decisions/candidates",
-        json={
-            "request_id": "test-request-1",
-            "viewer_id": "test-viewer-1",
-            "region": "Mumbai",
-            "device": "MOBILE",
-            "subscription_tier": "PREMIUM",
-        },
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
     )
 
-    assert response.status_code == 200
-    assert response.json() == []
+    assert candidates == []
     
 def test_campaign_with_no_targeting_rows_is_unrestricted(db_session):
     now = datetime.now(timezone.utc)
@@ -236,23 +231,17 @@ def test_campaign_with_no_targeting_rows_is_unrestricted(db_session):
     campaign.status = "ACTIVE"
     db_session.commit()
 
-    response = client.post(
-        "/decisions/candidates",
-        json={
-            "request_id": "unrestricted-request-1",
-            "viewer_id": "test-viewer-1",
-            "region": "Bengaluru",
-            "device": "SOME_RANDOM_DEVICE",
-            "subscription_tier": "FREE",
-        },
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Bengaluru",
+        device="SOME_RANDOM_DEVICE",
+        subscription_tier="FREE",
+        decision_time=now,
     )
 
-    assert response.status_code == 200
-
-    candidates = response.json()
-
     assert len(candidates) == 1
-    assert candidates[0]["id"] == campaign_id
+    assert candidates[0].id == campaign_id
     
 
 def test_campaign_at_exact_end_time_is_rejected(db_session):
@@ -338,20 +327,18 @@ def test_only_eligible_campaigns_are_returned(db_session):
 
     db_session.commit()
 
-    response = client.post(
-        "/decisions/candidates",
-        json={
-            "request_id": "eligible-request-1",
-            "viewer_id": "test-viewer-1",
-            "region": "Mumbai",
-            "device": "MOBILE",
-            "subscription_tier": "PREMIUM",
-        },
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
     )
 
     returned_ids = {
-        campaign["id"]
-        for campaign in response.json()
+        campaign.id
+        for campaign in candidates
     }
 
     assert returned_ids == {
@@ -614,3 +601,160 @@ def test_decision_returns_no_fill_when_redis_fails():
     assert body["request_id"] == request_id
     assert body["status"] == "NO_FILL"
     assert body["campaign_id"] is None
+    
+def test_duplicate_decision_request_does_not_consume_twice():
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Duplicate Request Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+
+    # Prevent stale Redis state
+    redis_client.delete(capacity_key)
+
+    activate_response = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert activate_response.status_code == 200
+
+    request_id = f"duplicate-request-{uuid4()}"
+    viewer_id = f"duplicate-viewer-{uuid4()}"
+
+    decision_request = {
+        "request_id": request_id,
+        "viewer_id": viewer_id,
+        "region": "Mumbai",
+        "device": "MOBILE",
+        "subscription_tier": "PREMIUM",
+    }
+
+    # First request performs the real allocation
+    first_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert first_response.status_code == 200
+    assert first_response.json()["status"] == "ALLOCATED"
+    assert first_response.json()["campaign_id"] == campaign_id
+
+    # Same logical request is retried
+    second_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert second_response.status_code == 200
+    assert second_response.json()["status"] == "ALLOCATED"
+    assert second_response.json()["campaign_id"] == campaign_id
+
+    # Capacity must have been consumed only once
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+    
+    
+    
+# candidate A → CAPACITY_EXHAUSTED
+#              ↓ keep going
+# candidate B → ALLOCATED
+#              ↓
+#              winner
+def test_decision_skips_exhausted_candidate_and_allocates_next(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    first_response = client.post(
+        "/campaigns",
+        json={
+            **campaign_input,
+            "name": "Exhausted Campaign",
+        },
+    )
+
+    second_response = client.post(
+        "/campaigns",
+        json={
+            **campaign_input,
+            "name": "Healthy Campaign",
+        },
+    )
+
+    first_id = first_response.json()["id"]
+    second_id = second_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+
+    redis_client.delete(
+        allocation_store._remaining_capacity_key(first_id),
+        allocation_store._remaining_capacity_key(second_id),
+    )
+
+    client.post(f"/campaigns/{first_id}/activate")
+    client.post(f"/campaigns/{second_id}/activate")
+
+    # First candidate has no remaining capacity
+    redis_client.set(
+        allocation_store._remaining_capacity_key(first_id),
+        0,
+    )
+
+    first_campaign = db_session.get(Campaign, first_id)
+    second_campaign = db_session.get(Campaign, second_id)
+
+    request_id = f"fallback-test-{uuid4()}"
+
+    # Force deterministic candidate order:
+    # exhausted campaign first, healthy campaign second.
+    with patch.object(
+        CampaignRepository,
+        "find_candidates",
+        return_value=[first_campaign, second_campaign],
+    ):
+        response = client.post(
+            "/decisions",
+            json={
+                "request_id": request_id,
+                "viewer_id": f"viewer-{uuid4()}",
+                "region": "Mumbai",
+                "device": "MOBILE",
+                "subscription_tier": "PREMIUM",
+            },
+        )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["status"] == "ALLOCATED"
+    assert body["campaign_id"] == second_id
+
+    assert allocation_store.get_remaining_capacity(first_id) == 0
+    assert allocation_store.get_remaining_capacity(second_id) == 99

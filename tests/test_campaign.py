@@ -4,8 +4,10 @@ from sqlalchemy.exc import IntegrityError
 from app.models.campaign import Campaign
 from app.main import app
 import pytest
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
+from app.runtime.allocation_store import AllocationStore
+from app.runtime.redis_client import redis_client
 
 # TestClient lets us call the FastAPI app directly without running Uvicorn.
 client = TestClient(app)
@@ -145,4 +147,94 @@ def test_get_nonexistent_campaign():
     
     # The router translates "campaign not found" into HTTP 404.
     assert response.status_code == 404
+    
+    
+def test_activate_campaign_initializes_redis_capacity():
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Activation Test Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+
+    redis_client.delete(capacity_key)
+
+    activate_response = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert activate_response.status_code == 200
+
+    body = activate_response.json()
+
+    assert body["status"] == "ACTIVE"
+    assert allocation_store.get_remaining_capacity(campaign_id) == 100
+    
+
+def test_reactivating_campaign_does_not_reset_redis_capacity():
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Reactivation Test Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    campaign_id = create_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+
+    redis_client.delete(capacity_key)
+
+    # First activation initializes capacity to 100
+    first_activation = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert first_activation.status_code == 200
+    assert allocation_store.get_remaining_capacity(campaign_id) == 100
+
+    # Simulate one unit already being consumed
+    redis_client.decr(capacity_key)
+
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+
+    # Activate the same campaign again
+    second_activation = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert second_activation.status_code == 200
+
+    # NX must prevent Redis capacity from being reset to 100
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
 

@@ -18,6 +18,9 @@ from uuid import uuid4
 from app.runtime.allocation_store import AllocationStore
 from app.runtime.redis_client import redis_client
 
+from unittest.mock import patch
+from redis.exceptions import RedisError
+
 
 client = TestClient(app)
 
@@ -502,6 +505,107 @@ def test_decision_returns_no_fill_when_no_campaign_is_eligible():
             "subscription_tier": "PREMIUM",
         },
     )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["request_id"] == request_id
+    assert body["status"] == "NO_FILL"
+    assert body["campaign_id"] is None
+    
+    
+def test_no_fill_is_not_sticky_and_can_succeed_on_retry(db_session):
+    now = datetime.now(timezone.utc)
+
+    request_id = f"retry-no-fill-{uuid4()}"
+    viewer_id = f"viewer-retry-{uuid4()}"
+
+    decision_request = {
+        "request_id": request_id,
+        "viewer_id": viewer_id,
+        "region": "Mumbai",
+        "device": "MOBILE",
+        "subscription_tier": "PREMIUM",
+    }
+
+    # First attempt: no campaign exists yet
+    first_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert first_response.status_code == 200
+
+    first_body = first_response.json()
+
+    assert first_body["status"] == "NO_FILL"
+    assert first_body["campaign_id"] is None
+
+    # A valid campaign becomes available afterward
+    campaign_input = {
+        "name": "Retry Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    allocation_store = AllocationStore(redis_client)
+
+    allocation_store.initialize_new_campaign_capacity(
+        campaign_id=campaign_id,
+        capacity=campaign.capacity,
+    )
+
+    # Retry the SAME request_id
+    second_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert second_response.status_code == 200
+
+    second_body = second_response.json()
+
+    assert second_body["request_id"] == request_id
+    assert second_body["status"] == "ALLOCATED"
+    assert second_body["campaign_id"] == campaign_id
+    
+def test_decision_returns_no_fill_when_redis_fails():
+    request_id = f"redis-failure-{uuid4()}"
+    viewer_id = f"viewer-redis-failure-{uuid4()}"
+
+    with patch(
+        "app.services.decision_service.AllocationStore.get_existing_decision",
+        side_effect=RedisError("Redis unavailable"),
+    ):
+        response = client.post(
+            "/decisions",
+            json={
+                "request_id": request_id,
+                "viewer_id": viewer_id,
+                "region": "Mumbai",
+                "device": "MOBILE",
+                "subscription_tier": "PREMIUM",
+            },
+        )
 
     assert response.status_code == 200
 

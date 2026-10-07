@@ -754,3 +754,36 @@ def test_concurrent_allocations_do_not_exceed_frequency_cap():
         decision_key_1,
         decision_key_2,
     )
+    
+def test_successful_decision_key_has_ttl():
+    campaign_id = 99901
+    request_id = "decision-ttl-test"
+    viewer_id = "viewer-ttl-test"
+    decision_time = datetime.now(timezone.utc)
+
+    store = AllocationStore(redis_client)
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(capacity_key, decision_key)
+
+    store.initialize_new_campaign_capacity(
+        campaign_id=campaign_id,
+        capacity=10,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        request_id=request_id,
+        viewer_id=viewer_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.ALLOCATED
+
+    ttl = redis_client.ttl(decision_key)
+
+    assert 0 < ttl <= 300
+

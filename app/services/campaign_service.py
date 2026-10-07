@@ -6,6 +6,8 @@ from sqlalchemy.orm import Session
 from app.models.campaign import Campaign
 from app.repositories.campaign_repository import CampaignRepository
 from app.schemas.campaign import CampaignCreate, CampaignStatus
+from app.runtime.allocation_store import AllocationStore
+from app.runtime.redis_client import redis_client
 
 
 def create(
@@ -66,3 +68,28 @@ def get_all(
     repository = CampaignRepository(db)
 
     return repository.get_all()
+
+
+def activate(campaign_id: int, db: Session) -> Campaign | None:
+    repository = CampaignRepository(db)
+
+    campaign = repository.get_by_id(campaign_id)
+
+    if campaign is None:
+        return None
+
+    allocation_store = AllocationStore(redis_client)
+
+    initialized = allocation_store.initialize_new_campaign_capacity(
+        campaign_id=campaign.id,
+        capacity=campaign.capacity,
+    )
+
+    # If the Redis key already exists, NX makes initialized False.
+    # That is okay — we must NOT reset already-consumed capacity.
+    campaign.status = CampaignStatus.ACTIVE.value
+
+    db.commit()
+    db.refresh(campaign)
+
+    return campaign

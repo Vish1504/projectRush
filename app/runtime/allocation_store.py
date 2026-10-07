@@ -10,7 +10,7 @@ class AllocationResult(str, Enum):
     CAPACITY_EXHAUSTED = "CAPACITY_EXHAUSTED"
     FREQUENCY_CAPPED = "FREQUENCY_CAPPED"
     
-    
+DECISION_TTL_SECONDS = 300
 class AllocationStore:
     def __init__(self, client: Redis):
         self.client = client # This stores the Redis connection so that any future method added to AllocationStore can reuse self.client to communicate with Redis.
@@ -121,7 +121,8 @@ class AllocationStore:
         # KEYS[3] → decision key
         # ARGV[1] → frequency_cap_per_hour
         # ARGV[2] → ttl
-        # ARGV[3] → campaign_id           
+        # ARGV[3] → campaign_id  
+        # ARGV[4] → DECISION_TTL_SECONDS         
         script = """
                 -- Filter #1: Checking if the decision:<request_id> exists?
                     if redis.call('EXISTS', KEYS[3]) == 1 then
@@ -162,7 +163,7 @@ class AllocationStore:
                     redis.call('INCR', KEYS[2])
                     
                     -- Setting the decision key for this campaign request ID
-                    redis.call('SET', KEYS[3], ARGV[3])
+                    redis.call('SET', KEYS[3], ARGV[3], 'EX', ARGV[4])
                     
                     -- If this frequency counter was newly created
                     if not frequency_count_raw then
@@ -181,7 +182,8 @@ class AllocationStore:
                     decision_key,
                     frequency_cap_per_hour,
                     ttl,
-                    campaign_id          
+                    campaign_id,
+                    DECISION_TTL_SECONDS          
                 )
         # the request has already been processed as per the Lua script before this
         if result == 1:

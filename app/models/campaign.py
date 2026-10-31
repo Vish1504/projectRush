@@ -1,7 +1,7 @@
 # /Users/vish1504/projectRush/app/models/campaign.py
 # Rush Campaign ORM model
 
-# This file represents PostgreSQL
+# This defines how Rush stores campaigns in PostgreSQL
 
 from datetime import datetime
 
@@ -70,7 +70,7 @@ class Campaign(Base):
     )
     
 
-# This is one of the normalized targeting tables
+# This is this the targeting table for campaign regions
 class CampaignRegion(Base):
     __tablename__ = "campaign_regions"
 
@@ -85,7 +85,7 @@ class CampaignRegion(Base):
         primary_key=True,
     )
     
-# This is one of the normalized targeting tables
+# This is this the targeting table for campaign devices
 class CampaignDevice(Base):
     __tablename__ = "campaign_devices"
 
@@ -101,7 +101,7 @@ class CampaignDevice(Base):
     )
 
     
-# This is one of the normalized targeting tables
+# This is this the targeting table for campaign subscription
 class CampaignSubscriptionTier(Base):
     __tablename__ = "campaign_subscription_tiers"
 

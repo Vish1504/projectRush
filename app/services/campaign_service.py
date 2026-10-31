@@ -9,7 +9,7 @@ from app.schemas.campaign import CampaignCreate, CampaignStatus
 from app.runtime.allocation_store import AllocationStore
 from app.runtime.redis_client import redis_client
 
-
+# creates campaign in PostgreSQL (but not in redis yet)
 def create(
     campaign_input: CampaignCreate,
     db: Session,
@@ -25,7 +25,7 @@ def create(
         capacity=campaign_input.capacity,
         start_time=campaign_input.start_time,
         end_time=campaign_input.end_time,
-        status=CampaignStatus.DRAFT.value,
+        status=CampaignStatus.DRAFT.value, #Campaign is not live yet
         frequency_cap_per_hour=campaign_input.frequency_cap_per_hour
     )
     
@@ -77,10 +77,13 @@ def activate(campaign_id: int, db: Session) -> Campaign | None:
 
     if campaign is None:
         return None
+    
+    if campaign.status == CampaignStatus.ACTIVE.value:
+        return campaign
 
     allocation_store = AllocationStore(redis_client)
 
-    initialized = allocation_store.initialize_new_campaign_capacity(
+    allocation_store.initialize_new_campaign_capacity(
         campaign_id=campaign.id,
         capacity=campaign.capacity,
     )
@@ -90,6 +93,10 @@ def activate(campaign_id: int, db: Session) -> Campaign | None:
     campaign.status = CampaignStatus.ACTIVE.value
 
     db.commit()
+    
+    # Notify workers that campaign configuration has changed
+    redis_client.incr("rush:index:version")
+    
     db.refresh(campaign)
 
     return campaign

@@ -9,80 +9,137 @@ from app.models.campaign import Campaign
 from app.runtime.allocation_store import AllocationStore, AllocationResult
 from app.runtime.redis_client import redis_client
 from redis.exceptions import RedisError
+import logging
+
+from app.services.inverted_index import InvertedIndex
+
+logger = logging.getLogger(__name__)
     
+def ensure_index_current(index, repository):
+    # 1. Read the current version from Redis
+    redis_version=redis_client.get("rush:index:version")
+    
+    # A missing redis version means we cannot establish freshness
+    if redis_version is None:
+        return False
+    
+    # Convert Redis's stored value into an integer
+    redis_version = int(redis_version)
+    
+    # 2. Compare against the local index version
+    local_version=index._state["version"]
+    
+    if redis_version == local_version:
+        return True
+    
+    # if the redis and local versions differ, rebuild the index from PostgreSQL
+    repository.load_index(index, version=redis_version)
+    # Redis may have changed again while we were rebuilding
+    latest_redis_version = redis_client.get("rush:index:version")
+    if latest_redis_version is None:
+        return False
+        
+    # Proceed only if the rebuilt index matches Redis
+    return index._state["version"] == int(latest_redis_version)
+
 # Here we discover eligible campaigns & then try to safely allocate one.
 def make_decision(
     decision_request: DecisionRequest,
     db: Session,
-) -> Campaign| None:
+    index: InvertedIndex
+) -> Campaign | None:
     try:
         decision_time = datetime.now(timezone.utc)
-        
-        # We will fetch the campaign data from here and discover eligible campaigns 
+
+        # PostgreSQL provides durable campaign eligibility data
         repository = CampaignRepository(db)
-        
-        # allocation_store(Redis) will later add filters for capacity, frequency caps, and 
-        # duplicate-request protection.
+
+        # Redis handles capacity, frequency caps, and idempotency
         allocation_store = AllocationStore(redis_client)
-        
-        # We can first check if this exact request_id has already produced a decision earlier.
+
+        # Check whether this request was already allocated previously
         existing_campaign_id = allocation_store.get_existing_decision(
-                                decision_request.request_id
-                                )
-        # return the earlier winning campaign instead of allocating again.
+            decision_request.request_id
+        )
+
+        # Return the previous decision without allocating again
         if existing_campaign_id is not None:
             return repository.get_by_id(existing_campaign_id)
-        
-        # Now we check PostgreSQL for campaigns that are currently eligible based on lifecycle state, time window 
-        # and targeting.
-        candidates = repository.find_candidates(
-            region=decision_request.region,
-            device=decision_request.device,
-            subscription_tier=decision_request.subscription_tier,
-            decision_time=decision_time,
-        )
-        
-        for candidate_campaign in candidates:
-            # Redis performs the final atomic safety check:
-            result= allocation_store.try_allocate(candidate_campaign.id,decision_request.request_id,decision_request.viewer_id,candidate_campaign.frequency_cap_per_hour,decision_time)
-            
-            # Another Rush worker may have completed this same request after our initial duplicate check but before this allocation attempt.
-            if result == AllocationResult.ALREADY_PROCESSED:
-                # To identify which campaign won the original request.
-                existing_campaign_id = allocation_store.get_existing_decision(decision_request.request_id)
-                # Fetch that earlier winner campaign from PostgreSQL and return the same decision.
-                existing_campaign = repository.get_by_id(existing_campaign_id)
-                return existing_campaign
 
-            # If all checks pass, Redis consumes one unit of capacity and increments the viewer's frequency counter.
-            if result==AllocationResult.ALLOCATED:
-                return candidate_campaign
+        # Maximum two attempts: initial attempt + one retry
+        for attempt in range(2):
 
-        # If every candidate failed, Rush could not allocate an ad.
+            # Ensure the local index is current before candidate discovery
+            index_is_ready = ensure_index_current(index, repository)
+
+            if not index_is_ready:
+                return None  # Fail closed if the index cannot be refreshed
+
+            # Discover targeting matches and capture the SAME snapshot version
+            candidate_ids, snapshot_version = index.find_candidates(
+                decision_request.region,
+                decision_request.device,
+                decision_request.subscription_tier,
+            )
+
+            # PostgreSQL validates campaign status and time window
+            candidates = repository.get_candidates_by_ids(
+                candidate_ids,
+                decision_time,
+            )
+
+            # Track whether Redis rejected an outdated index
+            stale_index = False
+
+            for candidate_campaign in candidates:
+
+                # Redis performs atomic version, capacity, frequency,
+                # and duplicate-request checks
+                result = allocation_store.try_allocate(
+                    candidate_campaign.id,
+                    decision_request.request_id,
+                    decision_request.viewer_id,
+                    candidate_campaign.frequency_cap_per_hour,
+                    decision_time,
+                    snapshot_version,
+                )
+
+                # Another worker may have allocated this same request
+                if result == AllocationResult.ALREADY_PROCESSED:
+                    existing_campaign_id = allocation_store.get_existing_decision(
+                        decision_request.request_id
+                    )
+
+                    return repository.get_by_id(existing_campaign_id)
+
+                # The configuration changed after candidate discovery
+                if result == AllocationResult.STALE_INDEX:
+                    stale_index = True
+                    break  # Abandon remaining candidates from this snapshot
+
+                # Successful allocation
+                if result == AllocationResult.ALLOCATED:
+                    return candidate_campaign
+
+                # Other failures (capacity/frequency) allow trying
+                # the next eligible campaign
+
+            # No version mismatch occurred.
+            # All eligible candidates were attempted without allocation.
+            if not stale_index:
+                return None
+
+            # If stale_index is True, the outer loop repeats:
+            # 1. Refresh index
+            # 2. Rediscover candidates
+            # 3. Attempt allocation again
+
+        # Both attempts exhausted: fail closed
         return None
-    
-    # If Redis throws connection/timeout/etc error
+
     except RedisError:
+        logger.exception("Redis failure during decision allocation")
         return None
-    
-    
-# only to discover campaigns that are eligible in PostgreSQL.
-# def find_candidates(
-#     decision_request: DecisionRequest,
-#     db: Session,
-# ) -> list[Campaign]:
-#     decision_time = datetime.now(timezone.utc)
-#     repository = CampaignRepository(db)
-    
-#     return repository.find_candidates(
-#         region=decision_request.region,
-#         device=decision_request.device,
-#         subscription_tier=decision_request.subscription_tier,
-#         decision_time=decision_time,
-#     )
-            
-            
-            
-            
+
             
         

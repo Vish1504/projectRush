@@ -9,12 +9,12 @@ class AllocationResult(str, Enum):
     CAPACITY_MISSING = "CAPACITY_MISSING"
     CAPACITY_EXHAUSTED = "CAPACITY_EXHAUSTED"
     FREQUENCY_CAPPED = "FREQUENCY_CAPPED"
+    STALE_INDEX = "STALE_INDEX"
     
 DECISION_TTL_SECONDS = 300
 class AllocationStore:
     def __init__(self, client: Redis):
         self.client = client # This stores the Redis connection so that any future method added to AllocationStore can reuse self.client to communicate with Redis.
-        
         
     # to name-format the Redis key that stores a campaign's remaining capacity
     def _remaining_capacity_key(self, campaign_id: int) -> str:
@@ -107,10 +107,18 @@ class AllocationStore:
     # # translate result code back into Python
     
     def try_allocate(self, campaign_id:int, request_id: str, viewer_id:str, 
-                     frequency_cap_per_hour:int, decision_time:datetime )-> AllocationResult:
-        frequency_count_key=self._frequency_key(campaign_id, viewer_id, decision_time)
-        decision_key=self._decision_key(request_id)
+                     frequency_cap_per_hour:int, decision_time:datetime, index_version: int )-> AllocationResult:
+        
+        # Preparing the keys
+        # KEYS[1] → capacity key
         remaining_capacity_key = self._remaining_capacity_key(campaign_id)
+        
+        # KEYS[2] → frequency key
+        frequency_count_key=self._frequency_key(campaign_id, viewer_id, decision_time) 
+        
+        # KEYS[3] → decision key
+        decision_key=self._decision_key(request_id)
+        
         ttl = self._frequency_ttl_seconds(decision_time)
         
         
@@ -119,81 +127,113 @@ class AllocationStore:
         # KEYS[1] → capacity key
         # KEYS[2] → frequency key
         # KEYS[3] → decision key
+        # KEYS[4] = global index version key
         # ARGV[1] → frequency_cap_per_hour
         # ARGV[2] → ttl
         # ARGV[3] → campaign_id  
-        # ARGV[4] → DECISION_TTL_SECONDS         
-        script = """
-                -- Filter #1: Checking if the decision:<request_id> exists?
-                    if redis.call('EXISTS', KEYS[3]) == 1 then
-                        --request already processed
-                        return 1
-                    end
-                    
-                -- This is the campaigns remaining capacity
-                    local capacity_raw = redis.call('GET', KEYS[1])
-                    
-                -- Filter #2: Checking if the campaign’s remaining-capacity key is missing?
-                    if not capacity_raw then
-                        return 2
-                    end
-                    
-                -- Filter #3: Checking if the the remaining capacity already = 0?
-                    local capacity = tonumber(capacity_raw)
-                    if capacity <= 0 then
-                        return 3
-                    end
-                    
-                -- Filter #4: We compare the frequency count to the cap
-                    -- to read the current frequency count  
-                    local frequency_count_raw = redis.call('GET', KEYS[2])
-                    local frequency_count = tonumber(frequency_count_raw or '0')
-                    
-                    -- to read the frequency cap 
-                    local frequency_cap = tonumber(ARGV[1])
+        # ARGV[4] → DECISION_TTL_SECONDS   
 
-                    if frequency_count >= frequency_cap then
-                        return 4
-                    end
-                    
-                    -- Reducing capacity
-                    redis.call('DECR', KEYS[1])
-                    
-                    -- Increment frequency
-                    redis.call('INCR', KEYS[2])
-                    
-                    -- Setting the decision key for this campaign request ID
-                    redis.call('SET', KEYS[3], ARGV[3], 'EX', ARGV[4])
-                    
-                    -- If this frequency counter was newly created
-                    if not frequency_count_raw then
-                        -- Then we add an expiry time (TTL)
-                        redis.call('EXPIRE', KEYS[2], ARGV[2]) 
-                    end
-                    return 0
-                """
+        # ARGV[5] = version used to discover the candidate      
+        
+        script = """
+                        -- Filter #1: Checking if the decision:<request_id> exists?
+                            -- Has this exact request already successfully allocated something?
+                            if redis.call('EXISTS', KEYS[3]) == 1 then
+                                -- Request already processed
+                                return 1
+                            end
+
+                        -- Filter #2: Checking whether the inverted index version is current
+                            -- KEYS[4] contains the global index version stored in Redis
+                            -- ARGV[5] contains the version of the index snapshot used by this worker
+
+                            -- Read the current global version from Redis
+                            local current_version = redis.call('GET', KEYS[4])
+
+                            -- If the global version is missing, we cannot trust the index
+                            if not current_version then
+                                return 5
+                            end
+
+                            -- If the versions do not match, the worker's index is stale
+                            if tonumber(current_version) ~= tonumber(ARGV[5]) then
+                                return 5
+                            end
+
+                        -- This is the campaign's remaining capacity
+                            local capacity_raw = redis.call('GET', KEYS[1])
+
+                        -- Filter #3: Checking if the campaign's remaining-capacity key is missing?
+                            if not capacity_raw then
+                                return 2
+                            end
+
+                        -- Filter #4: Checking if the remaining capacity already = 0?
+                            local capacity = tonumber(capacity_raw)
+                            if capacity <= 0 then
+                                return 3
+                            end
+
+                        -- Filter #5: We compare the frequency count to the cap
+                            -- Read the current frequency count
+                            local frequency_count_raw = redis.call('GET', KEYS[2])
+                            local frequency_count = tonumber(frequency_count_raw or '0')
+
+                            -- Read the configured frequency cap
+                            local frequency_cap = tonumber(ARGV[1])
+
+                            if frequency_count >= frequency_cap then
+                                return 4
+                            end
+
+                        -- All filters passed: allocate the advertisement
+
+                            -- Reducing capacity
+                            redis.call('DECR', KEYS[1])
+
+                            -- Increment frequency
+                            redis.call('INCR', KEYS[2])
+
+                            -- Setting the decision key for this campaign request ID
+                            redis.call('SET', KEYS[3], ARGV[3], 'EX', ARGV[4])
+
+                            -- If this frequency counter was newly created
+                            if not frequency_count_raw then
+                                -- Then we add an expiry time (TTL)
+                                redis.call('EXPIRE', KEYS[2], ARGV[2])
+                            end
+
+                            return 0
+                        """
+
                 
         # Redis’s Python call:
         result = self.client.eval(
-                    script,
-                    3,
-                    remaining_capacity_key,
-                    frequency_count_key,
-                    decision_key,
-                    frequency_cap_per_hour,
-                    ttl,
-                    campaign_id,
-                    DECISION_TTL_SECONDS          
-                )
+            script,
+            4,  # Number of Redis keys
+
+            remaining_capacity_key,       # KEYS[1]
+            frequency_count_key,          # KEYS[2]
+            decision_key,                 # KEYS[3]
+            "rush:index:version",         # KEYS[4]
+
+            frequency_cap_per_hour,       # ARGV[1]
+            ttl,                          # ARGV[2]
+            campaign_id,                  # ARGV[3]
+            DECISION_TTL_SECONDS,         # ARGV[4]
+            index_version,                # ARGV[5]
+        )
         # the request has already been processed as per the Lua script before this
         if result == 1:
             return AllocationResult.ALREADY_PROCESSED   
         if result == 2:
-                return AllocationResult.CAPACITY_MISSING
+            return AllocationResult.CAPACITY_MISSING
         if result == 3:
             return AllocationResult.CAPACITY_EXHAUSTED
         if result == 4:
-                return AllocationResult.FREQUENCY_CAPPED
+            return AllocationResult.FREQUENCY_CAPPED
+        if result == 5:
+            return AllocationResult.STALE_INDEX
         if result==0:
             return AllocationResult.ALLOCATED
     

@@ -1,5 +1,5 @@
 # /Users/vish1504/projectRush/app/api/decision.py 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends , Request
 from sqlalchemy.orm import Session
 
 from app.db.database import get_db
@@ -19,10 +19,14 @@ router = APIRouter(
 )
 def win_decision(
     request: DecisionRequest,
+    http_request: Request,
     db: Session = Depends(get_db),
 ):
-    # Ask the decision service to choose and allocate one campaign
-    winner_candidate= make_decision(request, db)
+    # Retrieve the shared index created during FastAPI startup
+    index = http_request.app.state.inverted_index
+    
+    # Ask the decision service to choose and allocate the winner campaign
+    winner_candidate= make_decision(request, db, index)
     
     if winner_candidate is None:
         return DecisionResponse(
@@ -37,14 +41,3 @@ def win_decision(
         campaign_id=winner_candidate.id
     )
 
-# @router.post(
-#     "/candidates",
-#     response_model=list[CampaignResponse],
-# )
-
-# def get_candidates(
-#     request: DecisionRequest,
-#     db: Session = Depends(get_db),
-# ):
-#     # By doing this, we're getting ALL the eligible candidates
-#     return find_candidates(request, db)

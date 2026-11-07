@@ -3,7 +3,7 @@
 # This file is used for when the application wants to create a campaign
 from sqlalchemy.orm import Session
 
-from app.models.campaign import Campaign
+from app.models.campaign import Campaign,CampaignLease
 from app.repositories.campaign_repository import CampaignRepository
 from app.schemas.campaign import CampaignCreate, CampaignStatus
 from app.runtime.allocation_store import AllocationStore
@@ -80,17 +80,16 @@ def activate(campaign_id: int, db: Session) -> Campaign | None:
     
     if campaign.status == CampaignStatus.ACTIVE.value:
         return campaign
-
-    allocation_store = AllocationStore(redis_client)
-
-    allocation_store.initialize_new_campaign_capacity(
-        campaign_id=campaign.id,
-        capacity=campaign.capacity,
-    )
-
-    # If the Redis key already exists, NX makes initialized False.
-    # That is okay — we must NOT reset already-consumed capacity.
+    
+    
+    
+    
     campaign.status = CampaignStatus.ACTIVE.value
+    
+    # Initialize leasing capacity only on first activation.
+    # By default prior to the first activation, remaining_unleased_capacity=NULL
+    if campaign.remaining_unleased_capacity is None:
+        campaign.remaining_unleased_capacity=campaign.capacity
 
     db.commit()
     

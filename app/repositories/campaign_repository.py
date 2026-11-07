@@ -10,10 +10,20 @@ from app.models.campaign import (
     CampaignRegion,
     CampaignDevice,
     CampaignSubscriptionTier,
+    CampaignLease
 )
 
+from app.schemas.campaign import CampaignStatus
 from app.services.inverted_index import InvertedIndex
 index = InvertedIndex()
+from enum import Enum
+class CampaignLeaseResult(str, Enum):
+    LEASE_GRANTED = "LEASE_GRANTED"
+    NOT_ACTIVE = "NOT_ACTIVE"
+    NO_UNLEASED_CAPACITY = "NO_UNLEASED_CAPACITY"
+    CAMPAIGN_NOT_FOUND = "CAMPAIGN_NOT_FOUND"
+    INVALID_LEASE_STATE="INVALID_LEASE_STATE"
+    # INVALID_REQUESTED_UNITS="INVALID_REQUESTED_UNITS"
 
 
 # ============================================================
@@ -315,6 +325,68 @@ class CampaignRepository:
         result = self.db.scalars(sql_query).all()
         # Return the Campaign objects as a Python list
         return list(result)
+    
+    def acquire_lease(self,
+                      campaign_id,
+                      worker_id,
+                      lease_request_id,
+                      requested_units
+                      ):
+        existing_lease_1=self.db.get(CampaignLease,lease_request_id)
+        if existing_lease_1 is not None:
+            return existing_lease_1
+        
+        campaign_statement = (
+                        select(Campaign)
+                        .where(Campaign.id == campaign_id)
+                        .with_for_update()
+                    )
+                
+        campaign_row=self.db.scalars(campaign_statement).one_or_none()
+        
+        # Repeating the same idempotency check as earlier to ensure race condition hasn't been formed just prior to acquirinng the lock
+        existing_lease_2=self.db.get(CampaignLease,lease_request_id)
+        if existing_lease_2 is not None:
+            return existing_lease_2
+        
+        if campaign_row is None:
+            return CampaignLeaseResult.CAMPAIGN_NOT_FOUND
+
+        if campaign_row.status != CampaignStatus.ACTIVE.value:
+            return CampaignLeaseResult.NOT_ACTIVE
+
+        if campaign_row.remaining_unleased_capacity is None:
+            return CampaignLeaseResult.INVALID_LEASE_STATE
+
+        if campaign_row.remaining_unleased_capacity == 0:
+            return CampaignLeaseResult.NO_UNLEASED_CAPACITY
+        
+        if requested_units <= 0:
+            raise ValueError("requested_units must be greater than 0")
+        
+        current_granted_units = min(
+                requested_units,
+                campaign_row.remaining_unleased_capacity,
+                )
+        campaign_row.remaining_unleased_capacity=campaign_row.remaining_unleased_capacity-current_granted_units
+        
+        new_lease =  CampaignLease(
+            campaign_id=campaign_row.id,
+            worker_id=worker_id,
+            requested_units= requested_units,
+            lease_request_id=lease_request_id,
+            granted_units=current_granted_units
+                            )
+        
+        self.db.add(new_lease)
+        
+        return new_lease
+        
+        
+        
+        
+    
+    
     
    
     

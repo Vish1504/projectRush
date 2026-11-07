@@ -24,9 +24,17 @@ def win_decision(
 ):
     # Retrieve the shared index created during FastAPI startup
     index = http_request.app.state.inverted_index
-    
+
+    # Retrieve this worker's shared local campaign_lease_manager
+    campaign_lease_manager = http_request.app.state.campaign_lease_manager
+
     # Ask the decision service to choose and allocate the winner campaign
-    winner_candidate= make_decision(request, db, index)
+    winner_candidate = make_decision(
+        request,
+        db,
+        index,
+        campaign_lease_manager,
+    )
     
     if winner_candidate is None:
         return DecisionResponse(

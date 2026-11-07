@@ -5,7 +5,7 @@
 
 from datetime import datetime
 
-from sqlalchemy import DateTime, Integer, String,CheckConstraint,ForeignKey
+from sqlalchemy import DateTime, Integer, String,CheckConstraint,ForeignKey, func
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
@@ -31,7 +31,15 @@ class Campaign(Base):
         CheckConstraint(
             "frequency_cap_per_hour > 0",
             name="ck_campaign_frequency_cap_positive",
-            )
+            ),
+        CheckConstraint(
+                    "remaining_unleased_capacity >= 0",
+                    name="ck_remaining_unleased_capacity_not_negative",
+                    ),
+        CheckConstraint(
+                    "remaining_unleased_capacity <= capacity",
+                    name="ck_remaining_unleased_capacity_not_above_capacity",
+                )
     )
 
     id: Mapped[int] = mapped_column(
@@ -47,6 +55,11 @@ class Campaign(Base):
     capacity: Mapped[int] = mapped_column(
         Integer,
         nullable=False,
+    )
+    
+    remaining_unleased_capacity: Mapped[int | None] = mapped_column(
+        Integer,
+        nullable=True,
     )
 
     start_time: Mapped[datetime] = mapped_column(
@@ -70,7 +83,7 @@ class Campaign(Base):
     )
     
 
-# This is this the targeting table for campaign regions
+# This is this the region targeting table for campaign regions
 class CampaignRegion(Base):
     __tablename__ = "campaign_regions"
 
@@ -84,8 +97,69 @@ class CampaignRegion(Base):
         String(255),
         primary_key=True,
     )
+
+class CampaignLease(Base):
+    __tablename__ = "campaign_leases"
     
-# This is this the targeting table for campaign devices
+    __table_args__ = (
+            CheckConstraint(
+                "requested_units > 0",
+                name="ck_requested_units_positive",
+            ),
+            CheckConstraint(
+                "granted_units <= requested_units",
+                name="ck_granted_vs_request_units",
+            ),
+            CheckConstraint(
+                "granted_units > 0",
+                name="ck_granted_units_positive",
+                ),
+    )
+            
+
+    lease_request_id: Mapped[str] = mapped_column(
+        String(36),
+        primary_key=True,
+    )
+    
+    campaign_id: Mapped[int] = mapped_column(
+        Integer,
+        ForeignKey("campaigns.id", ondelete="CASCADE"),
+        nullable=False
+    )
+    
+    worker_id: Mapped[str] = mapped_column(
+        String(255),
+        nullable=False
+    )
+    
+    requested_units: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False
+    )
+    
+    granted_units: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False
+    )
+    
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True),
+        nullable=False,
+        server_default=func.now(),
+    )
+    
+    
+    
+    
+    
+    
+    
+    
+        
+    
+    
+# This is this the device targeting table for campaign devices
 class CampaignDevice(Base):
     __tablename__ = "campaign_devices"
 
@@ -101,7 +175,7 @@ class CampaignDevice(Base):
     )
 
     
-# This is this the targeting table for campaign subscription
+# This is this the subscription_tiers targeting table for campaign subscription
 class CampaignSubscriptionTier(Base):
     __tablename__ = "campaign_subscription_tiers"
 

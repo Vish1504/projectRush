@@ -1,0 +1,2176 @@
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from app.main import app
+from app.db.database import get_db
+from app.db.base import Base
+from app.models.campaign import Campaign
+import pytest
+from sqlalchemy import delete
+
+TEST_DB_URL = "postgresql+psycopg:///test_rush_db"
+
+# Engine is SQLAlchemy's gateway to PostgreSQL (test database)
+test_engine = create_engine(TEST_DB_URL)
+
+Base.metadata.create_all(bind=test_engine)
+# factory that creates Sessions connected to test_rush_db
+TestingSessionLocal = sessionmaker(
+    bind=test_engine,
+    autoflush=False,
+    expire_on_commit=False,
+)
+
+# To create one Session for the request/unit of work
+def get_test_db():
+    # this is an instance of a SQLAlchemy Session 
+    test_db = TestingSessionLocal() 
+
+    try:
+        # Now we give that Session to whoever needs it
+        yield test_db
+    finally:
+        # test_db has to be closed no matter the result
+        test_db.close()
+
+# Overrides to get_test_db instead of get_db
+app.dependency_overrides[get_db] = get_test_db
+
+@pytest.fixture(autouse=True) # run this automatically for every test.
+def clean_campaigns():
+    db = TestingSessionLocal()
+
+    # Remove every Campaign row before the test starts
+    db.execute(delete(Campaign)) # DELETE FROM campaigns;
+    db.commit()
+    db.close()
+
+    yield
+    
+@pytest.fixture
+def db_session():
+    db = TestingSessionLocal()
+
+    try:
+        yield db
+    finally:
+        db.close()from app.runtime.redis_client import redis_client
+from app.runtime.allocation_store import AllocationStore, AllocationResult
+from datetime import datetime, timezone, timedelta
+
+from concurrent.futures import ThreadPoolExecutor
+
+
+
+def test_remaining_capacity_key():
+    store = AllocationStore(redis_client)
+
+    key = store._remaining_capacity_key(42)
+
+    assert key == "campaign:42:remaining_capacity"
+    # redis_client.delete(key)
+    redis_client.delete(key)
+    
+def test_initialize_new_campaign_capacity():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 999999
+    key = store._remaining_capacity_key(campaign_id)
+    redis_client.delete(key)
+    result=store.initialize_new_campaign_capacity(campaign_id,5)
+    value=redis_client.get(key)
+    assert result is True
+    assert value=="5"
+    
+    second_result = store.initialize_new_campaign_capacity( campaign_id,100,)
+    
+    second_value = redis_client.get(key)
+    # assert second_value=="100"
+    assert second_result is False
+    assert second_value == "5"
+    redis_client.delete(key)
+    
+def test_get_remaining_capacity_returns_integer():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 999998
+    key = store._remaining_capacity_key(campaign_id)
+
+    redis_client.delete(key)
+    redis_client.set(key, 7)
+    remaining = store.get_remaining_capacity(campaign_id)
+    assert remaining == 7
+    redis_client.delete(key)
+    
+def test_get_remaining_capacity_returns_none_when_missing():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 999997
+    key = store._remaining_capacity_key(campaign_id)
+
+    redis_client.delete(key)
+
+    remaining = store.get_remaining_capacity(campaign_id)
+
+    assert remaining is None
+
+def test_frequency_key_uses_hour_bucket():
+    store = AllocationStore(redis_client)
+
+    decision_time = datetime(
+        2026, 10, 5, 20, 37, 12,
+        tzinfo=timezone.utc,
+    )
+
+    key = store._frequency_key(
+        campaign_id=42,
+        viewer_id="123",
+        decision_time=decision_time,
+    )
+
+    assert key == "freq::viewer:123::campaign:42::2026-10-05-20"
+    
+from datetime import datetime, timezone
+
+
+def test_get_frequency_count_returns_zero_when_missing():
+    store = AllocationStore(redis_client)
+
+    decision_time = datetime(
+        2026, 10, 5, 20, 37,
+        tzinfo=timezone.utc,
+    )
+
+    key = store._frequency_key(
+        campaign_id=42,
+        viewer_id="viewer-123",
+        decision_time=decision_time,
+    )
+
+    redis_client.delete(key)
+
+    count = store.get_frequency_count(
+        campaign_id=42,
+        viewer_id="viewer-123",
+        decision_time=decision_time,
+    )
+
+    assert count == 0
+
+
+def test_get_frequency_count_returns_existing_count():
+    store = AllocationStore(redis_client)
+
+    decision_time = datetime(
+        2026, 10, 5, 20, 37,
+        tzinfo=timezone.utc,
+    )
+
+    key = store._frequency_key(
+        campaign_id=42,
+        viewer_id="viewer-123",
+        decision_time=decision_time,
+    )
+
+    redis_client.delete(key)
+    redis_client.set(key, 2)
+
+    count = store.get_frequency_count(
+        campaign_id=42,
+        viewer_id="viewer-123",
+        decision_time=decision_time,
+    )
+
+    assert count == 2
+
+    redis_client.delete(key)
+    
+
+
+def test_frequency_ttl_seconds():
+    store = AllocationStore(redis_client)
+
+    decision_time = datetime(
+        2026, 10, 5, 20, 37, 12,
+        tzinfo=timezone.utc,
+    )
+
+    ttl = store._frequency_ttl_seconds(decision_time)
+
+    assert ttl == 1368
+    
+def test_successful_allocation():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100001
+    viewer_id = "viewer-success"
+    request_id = "request-success"
+
+    decision_time = datetime(
+        2026, 10, 5, 21, 30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    # Start this test from a completely clean Redis state.
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    # Campaign begins with 5 units available.
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        5,
+    )
+    
+# idempotency test: a retry of the same logical request must not double-charge Rush's capacity or frequency counters.
+def test_successful_allocation():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100001
+    viewer_id = "viewer-success"
+    request_id = "request-success"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    # Start with clean Redis state.
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    # Campaign starts with 5 remaining allocations.
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        5,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    # The allocation should succeed.
+    assert result == AllocationResult.ALLOCATED
+
+    # One unit of capacity should have been consumed.
+    assert redis_client.get(capacity_key) == "4"
+
+    # Viewer should now have seen this campaign once this hour.
+    assert redis_client.get(frequency_key) == "1"
+
+    # The request should remember which campaign was allocated.
+    assert redis_client.get(decision_key) == str(campaign_id)
+
+    # Cleanup.
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+    
+def test_duplicate_request_does_not_allocate_twice():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100002
+    viewer_id = "viewer-duplicate"
+    request_id = "request-duplicate"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        5,
+    )
+
+    first_result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    second_result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert first_result == AllocationResult.ALLOCATED
+    assert second_result == AllocationResult.ALREADY_PROCESSED
+
+    # Only the first request should consume state.
+    assert redis_client.get(capacity_key) == "4"
+    assert redis_client.get(frequency_key) == "1"
+    assert redis_client.get(decision_key) == str(campaign_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    
+def test_missing_capacity_fails_closed():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100003
+    viewer_id = "viewer-missing-capacity"
+    request_id = "request-missing-capacity"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.CAPACITY_MISSING
+
+    assert redis_client.get(capacity_key) is None
+    assert redis_client.get(frequency_key) is None
+    assert redis_client.get(decision_key) is None    
+    
+def test_exhausted_capacity_rejects_allocation():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100004
+    viewer_id = "viewer-exhausted"
+    request_id = "request-exhausted"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    # Campaign has no capacity left.
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        0,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.CAPACITY_EXHAUSTED
+
+    # Capacity stays at 0.
+    assert redis_client.get(capacity_key) == "0"
+
+    # No frequency usage or decision should be recorded.
+    assert redis_client.get(frequency_key) is None
+    assert redis_client.get(decision_key) is None
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+    
+    
+# atomicity property: failing the frequency check doesn't accidentally consume capacity.
+def test_frequency_cap_rejects_allocation():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100005
+    viewer_id = "viewer-frequency-capped"
+    request_id = "request-frequency-capped"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        5,
+    )
+
+    # Viewer has already hit the hourly cap.
+    redis_client.set(
+        frequency_key,
+        3,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.FREQUENCY_CAPPED
+
+    # Rejected allocation must not consume campaign capacity.
+    assert redis_client.get(capacity_key) == "5"
+
+    # Frequency remains unchanged.
+    assert redis_client.get(frequency_key) == "3"
+
+    # The request was not successfully allocated.
+    assert redis_client.get(decision_key) is None
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+    
+    
+def test_frequency_key_gets_ttl_on_first_allocation():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100006
+    viewer_id = "viewer-ttl"
+    request_id = "request-ttl"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        5,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.ALLOCATED
+
+    ttl = redis_client.ttl(frequency_key)
+
+    assert ttl > 0
+    assert ttl <= store._frequency_ttl_seconds(decision_time)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+def test_existing_frequency_key_does_not_reset_ttl():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100007
+    viewer_id = "viewer-existing-ttl"
+    request_id = "request-existing-ttl"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+    decision_key = store._decision_key(request_id)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        5,
+    )
+
+    # Viewer has already received this campaign once.
+    # Give the existing frequency bucket a short TTL.
+    redis_client.set(
+        frequency_key,
+        1,
+        ex=60,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        viewer_id=viewer_id,
+        request_id=request_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.ALLOCATED
+
+    # Frequency should increase normally.
+    assert redis_client.get(frequency_key) == "2"
+
+    # Existing TTL should remain roughly 60 seconds,
+    # rather than being reset to the full hourly TTL.
+    ttl = redis_client.ttl(frequency_key)
+
+    assert ttl > 0
+    assert ttl <= 60
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key,
+    )
+    
+    
+def test_concurrent_allocations_do_not_overallocate():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100008
+    viewer_id = "viewer-concurrency"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+
+    request_1 = "request-concurrent-1"
+    request_2 = "request-concurrent-2"
+
+    decision_key_1 = store._decision_key(request_1)
+    decision_key_2 = store._decision_key(request_2)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key_1,
+        decision_key_2,
+    )
+
+    # Only ONE allocation is available.
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        1,
+    )
+
+    def allocate(request_id: str):
+        return store.try_allocate(
+            campaign_id=campaign_id,
+            viewer_id=viewer_id,
+            request_id=request_id,
+            frequency_cap_per_hour=10,
+            decision_time=decision_time,
+        )
+
+    # Fire both allocation attempts concurrently.
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        results = list(
+            executor.map(
+                allocate,
+                [request_1, request_2],
+            )
+        )
+
+    # Exactly one request must win.
+    assert results.count(AllocationResult.ALLOCATED) == 1
+    assert results.count(AllocationResult.CAPACITY_EXHAUSTED) == 1
+
+    # Capacity must stop at zero — never negative.
+    assert redis_client.get(capacity_key) == "0"
+
+    # Only the winning allocation should increment frequency.
+    assert redis_client.get(frequency_key) == "1"
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key_1,
+        decision_key_2,
+    )
+    
+    
+def test_concurrent_allocations_do_not_exceed_frequency_cap():
+    store = AllocationStore(redis_client)
+
+    campaign_id = 100009
+    viewer_id = "viewer-frequency-concurrency"
+
+    decision_time = datetime(
+        2026,
+        10,
+        5,
+        21,
+        30,
+        tzinfo=timezone.utc,
+    )
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+
+    request_1 = "request-frequency-concurrent-1"
+    request_2 = "request-frequency-concurrent-2"
+
+    decision_key_1 = store._decision_key(request_1)
+    decision_key_2 = store._decision_key(request_2)
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key_1,
+        decision_key_2,
+    )
+
+    store.initialize_new_campaign_capacity(
+        campaign_id,
+        10,
+    )
+
+    def allocate(request_id: str):
+        return store.try_allocate(
+            campaign_id=campaign_id,
+            viewer_id=viewer_id,
+            request_id=request_id,
+            frequency_cap_per_hour=1,
+            decision_time=decision_time,
+        )
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        results = list(
+            executor.map(
+                allocate,
+                [request_1, request_2],
+            )
+        )
+
+    assert results.count(AllocationResult.ALLOCATED) == 1
+    assert results.count(AllocationResult.FREQUENCY_CAPPED) == 1
+
+    # Only one request consumed capacity.
+    assert redis_client.get(capacity_key) == "9"
+
+    # Frequency cap of 1 was never exceeded.
+    assert redis_client.get(frequency_key) == "1"
+
+    redis_client.delete(
+        capacity_key,
+        frequency_key,
+        decision_key_1,
+        decision_key_2,
+    )
+    
+def test_successful_decision_key_has_ttl():
+    campaign_id = 99901
+    request_id = "decision-ttl-test"
+    viewer_id = "viewer-ttl-test"
+    decision_time = datetime.now(timezone.utc)
+
+    store = AllocationStore(redis_client)
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    decision_key = store._decision_key(request_id)
+    frequency_key = store._frequency_key(
+        campaign_id,
+        viewer_id,
+        decision_time,
+    )
+
+    redis_client.delete(
+        capacity_key,
+        decision_key,
+        frequency_key,
+    )
+
+    store.initialize_new_campaign_capacity(
+        campaign_id=campaign_id,
+        capacity=10,
+    )
+
+    result = store.try_allocate(
+        campaign_id=campaign_id,
+        request_id=request_id,
+        viewer_id=viewer_id,
+        frequency_cap_per_hour=3,
+        decision_time=decision_time,
+    )
+
+    assert result == AllocationResult.ALLOCATED
+
+    ttl = redis_client.ttl(decision_key)
+
+    assert 0 < ttl <= 300
+
+
+from datetime import datetime, timezone
+from uuid import uuid4
+
+from redis import Redis
+
+from app.runtime.allocation_store import AllocationStore, AllocationResult
+
+
+def test_allocation_version_fence():
+    # Use our local Redis instance
+    client = Redis(host="localhost", port=6379, decode_responses=True)
+    store = AllocationStore(client)
+
+    # Use unique identifiers to avoid existing test data
+    test_id = uuid4().hex
+    campaign_id = 999999
+    request_id = f"version-fence-test-{test_id}"
+    viewer_id = f"version-fence-viewer-{test_id}"
+
+    decision_time = datetime.now(timezone.utc)
+
+    capacity_key = store._remaining_capacity_key(campaign_id)
+    frequency_key = store._frequency_key(
+        campaign_id, viewer_id, decision_time
+    )
+    decision_key = store._decision_key(request_id)
+    version_key = "rush:index:version"
+
+    # Save the existing global version; don't change it
+    current_version = client.get(version_key)
+    assert current_version is not None, "Global index version is missing"
+
+    current_version = int(current_version)
+
+    try:
+        # Prepare a campaign with 100 units remaining
+        client.set(capacity_key, 100)
+
+        # Viewer has already seen this campaign once
+        client.set(frequency_key, 1, ex=3600)
+
+        # Make sure this request has not been processed
+        client.delete(decision_key)
+
+        # Simulate a worker using an outdated index version
+        stale_version = current_version - 1
+
+        result = store.try_allocate(
+            campaign_id=campaign_id,
+            request_id=request_id,
+            viewer_id=viewer_id,
+            frequency_cap_per_hour=3,
+            decision_time=decision_time,
+            index_version=stale_version,
+        )
+
+        # Redis must reject the outdated snapshot
+        assert result == AllocationResult.STALE_INDEX
+
+        # No capacity should have been consumed
+        assert store.get_remaining_capacity(campaign_id) == 100
+
+        # Frequency count must remain unchanged
+        assert store.get_frequency_count(
+            campaign_id, viewer_id, decision_time
+        ) == 1
+
+        # No idempotency key should have been created
+        assert client.get(decision_key) is None
+
+        print("Lua version fence test passed!")
+
+    finally:
+        # Remove only the test's dedicated keys
+        client.delete(capacity_key, frequency_key, decision_key)
+
+
+if __name__ == "__main__":
+    test_allocation_version_fence()
+from fastapi.testclient import TestClient
+from sqlalchemy.exc import IntegrityError
+
+from app.models.campaign import Campaign
+from app.main import app
+import pytest
+from datetime import datetime, timezone, timedelta
+
+from app.runtime.allocation_store import AllocationStore
+from app.runtime.redis_client import redis_client
+
+# TestClient lets us call the FastAPI app directly without running Uvicorn.
+client = TestClient(app)
+
+
+def test_create_and_get_campaign():
+    # Create a campaign
+    test_input_campaign = {
+        "name": "Nike",
+        "capacity": 62,
+        "frequency_cap_per_hour": 3,
+        "start_time": "2026-10-10T18:00:00",
+        "end_time": "2026-10-25T23:00:00",
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=test_input_campaign,
+    )
+
+    assert create_response.status_code == 201
+
+    create_response_body = create_response.json()
+
+    # Use whatever ID PostgreSQL generated
+    campaign_id = create_response_body["id"]
+
+    # Fetch the same campaign using that ID
+    get_response = client.get(
+        f"/campaigns/{campaign_id}"
+    )
+
+    assert get_response.status_code == 200
+
+    get_response_body = get_response.json()
+
+    # Confirm we got back the same campaign
+    assert get_response_body["id"] == campaign_id
+    assert get_response_body["name"] == "Nike"
+    assert get_response_body["capacity"] == 62
+    assert get_response_body["status"] == "DRAFT"
+
+def test_get_all_campaigns():
+    # Test starts with an empty campaigns table
+    # because clean_campaigns() in conftest.py runs automatically.
+
+    test_A_input_campaign = {
+        "name": "Nike",
+        "capacity": 62,
+        "frequency_cap_per_hour": 3,
+        "start_time": "2026-10-10T18:00:00",
+        "end_time": "2026-10-25T23:00:00",
+    }
+
+    test_B_input_campaign = {
+        "name": "Swiggy",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": "2026-11-10T18:00:00",
+        "end_time": "2026-12-25T23:00:00",
+    }
+
+    # Create both campaigns
+    client.post("/campaigns", json=test_A_input_campaign)
+    client.post("/campaigns", json=test_B_input_campaign)
+
+    # Ask Rush for all campaigns
+    response = client.get("/campaigns")
+
+    # GET /campaigns should succeed
+    assert response.status_code == 200
+
+    # Convert the JSON response into a Python object
+    response_body = response.json()
+
+    # GET /campaigns should return a list
+    assert isinstance(response_body, list)
+
+    # We created exactly two campaigns
+    assert len(response_body) == 2
+
+    # Extract just the campaign names from the response
+    names = [campaign["name"] for campaign in response_body]
+
+    # Confirm both campaigns were returned
+    assert "Nike" in names
+    assert "Swiggy" in names
+    
+def test_database_rejects_invalid_capacity(db_session):
+    invalid_campaign = Campaign(
+        name="Invalid Campaign",
+        capacity=-10,
+        frequency_cap_per_hour=3,
+        start_time="2026-10-10T18:00:00+00:00",
+        end_time="2026-10-10T20:00:00+00:00",
+        status="DRAFT",
+    )
+
+    db_session.add(invalid_campaign)
+
+    with pytest.raises(IntegrityError):
+        db_session.commit()
+    db_session.rollback()
+
+def test_database_rejects_invalid_time_window(db_session):
+    # This request should fail because start time should be < end time
+        invalid_time_window_campaign = Campaign(
+        name="Swiggy",
+        capacity=50,
+        frequency_cap_per_hour=3,
+        start_time=datetime(
+            2026, 11, 10, 18, 0,
+            tzinfo=timezone.utc,
+        ),
+        end_time=datetime(
+            2026, 10, 25, 23, 0,
+            tzinfo=timezone.utc,
+        ),
+        status="DRAFT",
+    )
+    
+        
+        db_session.add(invalid_time_window_campaign)
+        
+        with pytest.raises(IntegrityError):
+            db_session.commit()
+        db_session.rollback()
+    
+        
+
+def test_get_nonexistent_campaign():
+    # This request should fail because campaign does not exist
+    test_campaign_id = 6
+
+    #The campaign ID is passed as a path parameter in the URL.
+    response = client.get(f"/campaigns/{test_campaign_id}")
+    
+    # The router translates "campaign not found" into HTTP 404.
+    assert response.status_code == 404
+    
+    
+def test_activate_campaign_initializes_redis_capacity():
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Activation Test Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+
+    redis_client.delete(capacity_key)
+
+    activate_response = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert activate_response.status_code == 200
+
+    body = activate_response.json()
+
+    assert body["status"] == "ACTIVE"
+    assert allocation_store.get_remaining_capacity(campaign_id) == 100
+    
+
+def test_reactivating_campaign_does_not_reset_redis_capacity():
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Reactivation Test Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    campaign_id = create_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+
+    redis_client.delete(capacity_key)
+
+    # First activation initializes capacity to 100
+    first_activation = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert first_activation.status_code == 200
+    assert allocation_store.get_remaining_capacity(campaign_id) == 100
+
+    # Simulate one unit already being consumed
+    redis_client.decr(capacity_key)
+
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+
+    # Activate the same campaign again
+    second_activation = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert second_activation.status_code == 200
+
+    # NX must prevent Redis capacity from being reset to 100
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+    
+    
+
+
+# /Users/vish1504/projectRush/tests/test_decision.py
+from datetime import datetime, timezone, timedelta
+
+from fastapi.testclient import TestClient
+
+from app.main import app
+from app.models.campaign import Campaign, CampaignRegion
+import pytest
+
+from sqlalchemy import select
+
+from app.repositories.campaign_repository import CampaignRepository
+
+from sqlalchemy.exc import IntegrityError
+
+from uuid import uuid4
+
+from app.runtime.allocation_store import AllocationStore
+from app.runtime.redis_client import redis_client
+
+from unittest.mock import patch
+from redis.exceptions import RedisError
+
+
+client = TestClient(app)
+
+
+def test_matching_campaign_is_returned(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Nike Cricket Final",
+        "capacity": 100000,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
+    )
+
+    assert len(candidates) == 1
+    assert candidates[0].id == campaign_id
+    
+@pytest.mark.parametrize(
+    "decision_request",
+    [
+        {
+            "request_id": "mismatch-request-1",
+            "viewer_id": "test-viewer-1",
+            "region": "Delhi",
+            "device": "MOBILE",
+            "subscription_tier": "PREMIUM",
+        },
+        {
+            "request_id": "mismatch-request-2",
+            "viewer_id": "test-viewer-1",
+            "region": "Mumbai",
+            "device": "ANDROID_TV",
+            "subscription_tier": "PREMIUM",
+        },
+        {
+            "request_id": "mismatch-request-3",
+            "viewer_id": "test-viewer-1",
+            "region": "Mumbai",
+            "device": "MOBILE",
+            "subscription_tier": "FREE",
+        },
+    ],
+)
+def test_targeting_mismatch_is_rejected(
+    db_session,
+    decision_request,
+):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Nike Cricket Final",
+        "capacity": 100000,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region=decision_request["region"],
+        device=decision_request["device"],
+        subscription_tier=decision_request["subscription_tier"],
+        decision_time=now,
+    )
+
+    assert candidates == []
+    
+def test_draft_campaign_is_rejected(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Draft Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert response.status_code == 201
+
+    # Deliberately leave the campaign as DRAFT.
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
+    )
+
+    assert candidates == []
+    
+@pytest.mark.parametrize(
+    "start_offset,end_offset",
+    [
+        (1, 2),     # starts in the future
+        (-2, -1),   # already expired
+    ],
+)
+def test_campaign_outside_time_window_is_rejected(
+    db_session,
+    start_offset,
+    end_offset,
+):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Time Test Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now + timedelta(hours=start_offset)).isoformat(),
+        "end_time": (now + timedelta(hours=end_offset)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post("/campaigns", json=campaign_input)
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
+    )
+
+    assert candidates == []
+    
+def test_campaign_with_no_targeting_rows_is_unrestricted(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Global Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": [],
+        "devices": [],
+        "subscription_tiers": [],
+    }
+
+    create_response = client.post("/campaigns", json=campaign_input)
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Bengaluru",
+        device="SOME_RANDOM_DEVICE",
+        subscription_tier="FREE",
+        decision_time=now,
+    )
+
+    assert len(candidates) == 1
+    assert candidates[0].id == campaign_id
+    
+
+def test_campaign_at_exact_end_time_is_rejected(db_session):
+    start_time = datetime(2026, 10, 10, 18, 0, tzinfo=timezone.utc)
+    end_time = datetime(2026, 10, 10, 20, 0, tzinfo=timezone.utc)
+
+    campaign_input = {
+        "name": "Boundary Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": start_time.isoformat(),
+        "end_time": end_time.isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post("/campaigns", json=campaign_input)
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=end_time,
+    )
+
+    assert candidates == []
+    
+def test_only_eligible_campaigns_are_returned(db_session):
+    now = datetime.now(timezone.utc)
+
+    matching_campaign = {
+        "name": "Matching Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    wrong_region_campaign = {
+        "name": "Delhi Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Delhi"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    unrestricted_campaign = {
+        "name": "Global Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": [],
+        "devices": [],
+        "subscription_tiers": [],
+    }
+
+    responses = [
+        client.post("/campaigns", json=matching_campaign),
+        client.post("/campaigns", json=wrong_region_campaign),
+        client.post("/campaigns", json=unrestricted_campaign),
+    ]
+
+    campaign_ids = [response.json()["id"] for response in responses]
+
+    for campaign_id in campaign_ids:
+        campaign = db_session.get(Campaign, campaign_id)
+        campaign.status = "ACTIVE"
+
+    db_session.commit()
+
+    repository = CampaignRepository(db_session)
+
+    candidates = repository.find_candidates(
+        region="Mumbai",
+        device="MOBILE",
+        subscription_tier="PREMIUM",
+        decision_time=now,
+    )
+
+    returned_ids = {
+        campaign.id
+        for campaign in candidates
+    }
+
+    assert returned_ids == {
+        campaign_ids[0],
+        campaign_ids[2],
+    }
+    
+    
+def test_duplicate_targeting_rolls_back_campaign(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Duplicate Target Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai", "Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    with pytest.raises(IntegrityError):
+        client.post(
+            "/campaigns",
+            json=campaign_input,
+        )
+
+    campaign = db_session.scalar(
+        select(Campaign).where(
+            Campaign.name == "Duplicate Target Campaign"
+        )
+    )
+
+    assert campaign is None
+    
+    
+def test_deleting_campaign_deletes_targeting_rows(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Delete Me",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post("/campaigns", json=campaign_input)
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+
+    db_session.delete(campaign)
+    db_session.commit()
+
+    region = db_session.scalar(
+        select(CampaignRegion).where(
+            CampaignRegion.campaign_id == campaign_id
+        )
+    )
+
+    assert region is None
+    
+
+def test_decision_allocates_eligible_campaign(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "winner_campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+    
+    # Create campaign in PostgreSQL
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+    
+    assert create_response.status_code == 201
+    campaign_id = create_response.json()["id"]
+    
+    # Make campaign eligible by settinng status to ACTIVE
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+    
+    # Initialize its runtime capacity in Redis
+    allocation_store = AllocationStore(redis_client)
+
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+    
+    # Prevent stale Redis state from a previous test run
+    redis_client.delete(capacity_key)
+
+    initialized = allocation_store.initialize_new_campaign_capacity(
+        campaign_id=campaign_id,
+        capacity=campaign.capacity,
+    )
+
+    assert initialized is True
+
+    # Unique values prevent idempotency/frequency state from another run
+    request_id = f"decision-test-{uuid4()}"
+    viewer_id = f"viewer-test-{uuid4()}"
+    
+    # Ask Rush to actually make a decision
+    response = client.post(
+        "/decisions",
+        json={
+            "request_id": request_id,
+            "viewer_id": viewer_id,
+            "region": "Mumbai",
+            "device": "MOBILE",
+            "subscription_tier": "PREMIUM",
+        },
+    )
+    
+    # Rush should allocate this campaign
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["request_id"] == request_id
+    assert body["status"] == "ALLOCATED"
+    assert body["campaign_id"] == campaign_id
+
+    # Allocation should have consumed exactly one unit
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+    
+def test_decision_returns_no_fill_when_no_campaign_is_eligible():
+    request_id = f"no-fill-test-{uuid4()}"
+    viewer_id = f"viewer-test-{uuid4()}"
+
+    response = client.post(
+        "/decisions",
+        json={
+            "request_id": request_id,
+            "viewer_id": viewer_id,
+            "region": "Mumbai",
+            "device": "MOBILE",
+            "subscription_tier": "PREMIUM",
+        },
+    )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["request_id"] == request_id
+    assert body["status"] == "NO_FILL"
+    assert body["campaign_id"] is None
+    
+    
+def test_no_fill_is_not_sticky_and_can_succeed_on_retry(db_session):
+    now = datetime.now(timezone.utc)
+
+    request_id = f"retry-no-fill-{uuid4()}"
+    viewer_id = f"viewer-retry-{uuid4()}"
+
+    decision_request = {
+        "request_id": request_id,
+        "viewer_id": viewer_id,
+        "region": "Mumbai",
+        "device": "MOBILE",
+        "subscription_tier": "PREMIUM",
+    }
+
+    # First attempt: no campaign exists yet
+    first_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert first_response.status_code == 200
+
+    first_body = first_response.json()
+
+    assert first_body["status"] == "NO_FILL"
+    assert first_body["campaign_id"] is None
+
+    # A valid campaign becomes available afterward
+    campaign_input = {
+        "name": "Retry Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    campaign = db_session.get(Campaign, campaign_id)
+    campaign.status = "ACTIVE"
+    db_session.commit()
+
+    allocation_store = AllocationStore(redis_client)
+
+    allocation_store.initialize_new_campaign_capacity(
+        campaign_id=campaign_id,
+        capacity=campaign.capacity,
+    )
+
+    # Retry the SAME request_id
+    second_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert second_response.status_code == 200
+
+    second_body = second_response.json()
+
+    assert second_body["request_id"] == request_id
+    assert second_body["status"] == "ALLOCATED"
+    assert second_body["campaign_id"] == campaign_id
+    
+def test_decision_returns_no_fill_when_redis_fails():
+    request_id = f"redis-failure-{uuid4()}"
+    viewer_id = f"viewer-redis-failure-{uuid4()}"
+
+    with patch(
+        "app.services.decision_service.AllocationStore.get_existing_decision",
+        side_effect=RedisError("Redis unavailable"),
+    ):
+        response = client.post(
+            "/decisions",
+            json={
+                "request_id": request_id,
+                "viewer_id": viewer_id,
+                "region": "Mumbai",
+                "device": "MOBILE",
+                "subscription_tier": "PREMIUM",
+            },
+        )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["request_id"] == request_id
+    assert body["status"] == "NO_FILL"
+    assert body["campaign_id"] is None
+    
+def test_duplicate_decision_request_does_not_consume_twice():
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "name": "Duplicate Request Campaign",
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    create_response = client.post(
+        "/campaigns",
+        json=campaign_input,
+    )
+
+    assert create_response.status_code == 201
+
+    campaign_id = create_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+    capacity_key = allocation_store._remaining_capacity_key(campaign_id)
+
+    # Prevent stale Redis state
+    redis_client.delete(capacity_key)
+
+    activate_response = client.post(
+        f"/campaigns/{campaign_id}/activate"
+    )
+
+    assert activate_response.status_code == 200
+
+    request_id = f"duplicate-request-{uuid4()}"
+    viewer_id = f"duplicate-viewer-{uuid4()}"
+
+    decision_request = {
+        "request_id": request_id,
+        "viewer_id": viewer_id,
+        "region": "Mumbai",
+        "device": "MOBILE",
+        "subscription_tier": "PREMIUM",
+    }
+
+    # First request performs the real allocation
+    first_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert first_response.status_code == 200
+    assert first_response.json()["status"] == "ALLOCATED"
+    assert first_response.json()["campaign_id"] == campaign_id
+
+    # Same logical request is retried
+    second_response = client.post(
+        "/decisions",
+        json=decision_request,
+    )
+
+    assert second_response.status_code == 200
+    assert second_response.json()["status"] == "ALLOCATED"
+    assert second_response.json()["campaign_id"] == campaign_id
+
+    # Capacity must have been consumed only once
+    assert allocation_store.get_remaining_capacity(campaign_id) == 99
+    
+    
+    
+# candidate A → CAPACITY_EXHAUSTED
+#              ↓ keep going
+# candidate B → ALLOCATED
+#              ↓
+#              winner
+def test_decision_skips_exhausted_candidate_and_allocates_next(db_session):
+    now = datetime.now(timezone.utc)
+
+    campaign_input = {
+        "capacity": 100,
+        "frequency_cap_per_hour": 3,
+        "start_time": (now - timedelta(hours=1)).isoformat(),
+        "end_time": (now + timedelta(hours=1)).isoformat(),
+        "regions": ["Mumbai"],
+        "devices": ["MOBILE"],
+        "subscription_tiers": ["PREMIUM"],
+    }
+
+    first_response = client.post(
+        "/campaigns",
+        json={
+            **campaign_input,
+            "name": "Exhausted Campaign",
+        },
+    )
+
+    second_response = client.post(
+        "/campaigns",
+        json={
+            **campaign_input,
+            "name": "Healthy Campaign",
+        },
+    )
+
+    first_id = first_response.json()["id"]
+    second_id = second_response.json()["id"]
+
+    allocation_store = AllocationStore(redis_client)
+
+    redis_client.delete(
+        allocation_store._remaining_capacity_key(first_id),
+        allocation_store._remaining_capacity_key(second_id),
+    )
+
+    client.post(f"/campaigns/{first_id}/activate")
+    client.post(f"/campaigns/{second_id}/activate")
+
+    # First candidate has no remaining capacity
+    redis_client.set(
+        allocation_store._remaining_capacity_key(first_id),
+        0,
+    )
+
+    first_campaign = db_session.get(Campaign, first_id)
+    second_campaign = db_session.get(Campaign, second_id)
+
+    request_id = f"fallback-test-{uuid4()}"
+
+    # Force deterministic candidate order:
+    # exhausted campaign first, healthy campaign second.
+    with patch.object(
+        CampaignRepository,
+        "find_candidates",
+        return_value=[first_campaign, second_campaign],
+    ):
+        response = client.post(
+            "/decisions",
+            json={
+                "request_id": request_id,
+                "viewer_id": f"viewer-{uuid4()}",
+                "region": "Mumbai",
+                "device": "MOBILE",
+                "subscription_tier": "PREMIUM",
+            },
+        )
+
+    assert response.status_code == 200
+
+    body = response.json()
+
+    assert body["status"] == "ALLOCATED"
+    assert body["campaign_id"] == second_id
+
+    assert allocation_store.get_remaining_capacity(first_id) == 0
+    assert allocation_store.get_remaining_capacity(second_id) == 99
+from unittest.mock import MagicMock, patch
+
+from app.runtime.allocation_store import AllocationResult
+from app.services.decision_service import make_decision
+
+
+def test_stale_index_triggers_retry():
+    # Simulate a campaign being discovered after a refresh.
+    campaign_12 = MagicMock()
+    campaign_12.id = 12
+    campaign_12.frequency_cap_per_hour = 3
+
+    campaign_15 = MagicMock()
+    campaign_15.id = 15
+    campaign_15.frequency_cap_per_hour = 3
+
+    # No actual database or index needed.
+    db = MagicMock()
+    index = MagicMock()
+    repository = MagicMock()
+    allocation_store = MagicMock()
+
+    # First discovery uses version 2.
+    # Second discovery uses version 3 with different candidates.
+    index.find_candidates.side_effect = [
+        ({12}, 2),
+        ({15}, 3),
+    ]
+
+    repository.get_candidates_by_ids.side_effect = [
+        [campaign_12],
+        [campaign_15],
+    ]
+
+    # First allocation is rejected as stale.
+    # Second allocation succeeds.
+    allocation_store.try_allocate.side_effect = [
+        AllocationResult.STALE_INDEX,
+        AllocationResult.ALLOCATED,
+    ]
+
+    allocation_store.get_existing_decision.return_value = None
+
+    with (
+        patch(
+            "app.services.decision_service.CampaignRepository",
+            return_value=repository,
+        ),
+        patch(
+            "app.services.decision_service.AllocationStore",
+            return_value=allocation_store,
+        ),
+        patch(
+            "app.services.decision_service.ensure_index_current",
+            return_value=True,
+        ) as refresh_mock,
+    ):
+        request = MagicMock()
+        request.request_id = "retry-test-001"
+        request.viewer_id = "viewer-001"
+        request.region = "Mumbai"
+        request.device = "Mobile"
+        request.subscription_tier = "Premium"
+
+        result = make_decision(request, db, index)
+
+    assert result is campaign_15
+
+    # Freshness was checked on both attempts.
+    assert refresh_mock.call_count == 2
+
+    # Candidate discovery happened twice.
+    assert index.find_candidates.call_count == 2
+
+    # PostgreSQL candidate retrieval happened twice.
+    assert repository.get_candidates_by_ids.call_count == 2
+
+    # Allocation was attempted twice.
+    assert allocation_store.try_allocate.call_count == 2
+
+    # Verify we did not retry with the original campaign.
+    assert allocation_store.try_allocate.call_args_list[0].args[0] == 12
+    assert allocation_store.try_allocate.call_args_list[0].args[5] == 2
+
+    assert allocation_store.try_allocate.call_args_list[1].args[0] == 15
+    assert allocation_store.try_allocate.call_args_list[1].args[5] == 3
+
+    print("Stale index refresh-and-retry test passed!")
+
+
+def test_retry_is_bounded():
+    db = MagicMock()
+    index = MagicMock()
+    repository = MagicMock()
+    allocation_store = MagicMock()
+
+    campaign = MagicMock()
+    campaign.id = 12
+    campaign.frequency_cap_per_hour = 3
+
+    index.find_candidates.side_effect = [
+        ({12}, 2),
+        ({12}, 3),
+    ]
+
+    repository.get_candidates_by_ids.return_value = [campaign]
+
+    # Even the second attempt encounters a stale version.
+    allocation_store.try_allocate.return_value = AllocationResult.STALE_INDEX
+    allocation_store.get_existing_decision.return_value = None
+
+    with (
+        patch(
+            "app.services.decision_service.CampaignRepository",
+            return_value=repository,
+        ),
+        patch(
+            "app.services.decision_service.AllocationStore",
+            return_value=allocation_store,
+        ),
+        patch(
+            "app.services.decision_service.ensure_index_current",
+            return_value=True,
+        ),
+    ):
+        request = MagicMock()
+        request.request_id = "retry-test-002"
+        request.viewer_id = "viewer-002"
+        request.region = "Mumbai"
+        request.device = "Mobile"
+        request.subscription_tier = "Premium"
+
+        result = make_decision(request, db, index)
+
+    # Fail closed rather than retry indefinitely.
+    assert result is None
+
+    assert index.find_candidates.call_count == 2
+    assert allocation_store.try_allocate.call_count == 2
+
+    print("Bounded retry test passed!")
+
+
+if __name__ == "__main__":
+    test_stale_index_triggers_retry()
+    test_retry_is_bounded()
+    print("All decision retry tests passed!")
+from app.db.database import SessionLocal
+from app.repositories.campaign_repository import CampaignRepository
+from app.services.inverted_index import InvertedIndex
+from app.models.campaign import Campaign
+from datetime import datetime, timedelta, timezone
+
+def test_load_index():
+    db = SessionLocal()
+    try:
+        repository = CampaignRepository(db)
+        index = InvertedIndex()
+        now = datetime.now(timezone.utc)
+        start_time = now - timedelta(hours=1)
+        end_time = now + timedelta(hours=1)
+        # Next: load campaign data from PostgreSQL
+        campaign=Campaign(
+            # id will be automatically generated by postgreSQL when repository.add() calls flush()
+            name="Haldirams Dussherra Campaign",
+            capacity=1000,
+            status="ACTIVE",
+            frequency_cap_per_hour=3,
+            start_time=start_time,
+            end_time=end_time
+        )
+        repository.add(campaign)
+        # To add targeting values to the session
+        repository.add_targeting(
+            campaign,
+            regions=["Mumbai"],
+            devices=["Mobile"],
+            subscription_tiers=["Premium"]
+        )
+        
+        # To send the pending INSERTs to Postgres
+        db.flush()
+        # To add all the active campaigns to the in-memory index
+        repository.load_index(index)
+        
+        list_of_IDs=index.find_candidates("Mumbai", "Mobile", "Premium")
+        assert campaign.id in list_of_IDs, "Campaign ID is NOT part of the index"
+        
+        # Mismatch test
+        non_matching_ids = index.find_candidates("Delhi", "Mobile", "Premium")
+        assert campaign.id not in non_matching_ids, "Campaign incorrectly matched Delhi"
+        
+        # Retrieve Campaign objects using the indexed IDs
+        campaign_objects = repository.get_candidates_by_ids(
+            list_of_IDs,
+            now #datetime
+        )
+        
+        # Extract IDs from the returned Campaign objects
+        returned_ids = []
+        print("Campaign objects:", campaign_objects)
+
+        for campaign_obj in campaign_objects:
+            # Append the campaign object's ID to returned_ids
+            returned_ids.append(campaign_obj.id)
+
+        # Assert that our test campaign's ID is present
+        assert campaign.id in returned_ids
+        
+        # Test a decision made before the campaign starts
+        before_start = start_time - timedelta(minutes=1)
+
+        early_candidates = repository.get_candidates_by_ids(
+                list_of_IDs,
+                before_start
+            )
+
+        assert campaign.id not in {c.id for c in early_candidates}
+
+        # Test a decision made after the campaign expires
+        after_end = end_time + timedelta(minutes=1)
+
+        expired_candidates = repository.get_candidates_by_ids(
+                list_of_IDs,
+                after_end
+            )
+
+        assert campaign.id not in {c.id for c in expired_candidates}
+
+
+
+    finally:
+        db.rollback()
+        db.close()
+        
+        
+if __name__ == "__main__":
+    test_load_index()
+    print("PostgreSQL index integration test passed!")
+    

@@ -1,817 +1,434 @@
 # Project Rush
 
-> **Working title** — the project may be renamed before its first stable release.
+A real-time ad allocation backend for live streaming.
 
-**Project Rush** is a real-time constrained ad allocation system designed for high-concurrency live-event workloads.
+Rush takes a viewer, a set of eligible campaigns, and an ad-break duration, and tries to build the best valid ad pod it can.
 
-During a major live-streaming event, an ad break can cause thousands of viewers to request advertisements within the same narrow time window. Rush makes allocation decisions while enforcing targeting rules, viewer frequency limits, campaign capacity, and request idempotency without forcing every request through a single globally contended capacity counter.
+The interesting part is not really *choosing an ad*.
+
+It is doing that while multiple workers are competing for the same campaigns, viewers have frequency caps, campaign capacity is finite, ads have different durations, competing brands cannot appear together, state can become stale, and Redis can fail at exactly the wrong time.
+
+The main rule behind the project is:
+
+> **Optimization can speculate. Commitment cannot.**
 
 ---
 
-## Overview
+## Why I built this
 
-Rush models the backend decisioning layer behind live-stream advertising.
+The idea came from looking at different parts of how large streaming and advertising systems work.
 
-A request may look like:
+Google Ad Manager got me interested in things like targeting, frequency caps, video ad pods and PPID.
 
-```text
-Viewer:           user_4812
-Region:           Mumbai
-Device:           Android TV
-Subscription:     Premium
-Available break:  30 seconds
+JioHotstar made me think about the scale of the problem. A live cricket match can push a huge number of viewers into an ad break at almost the same time, and the system still has to make a useful decision quickly.
+
+Netflix got me thinking more about the viewer side of advertising: personalization, controlling ad load and making sure the same person is not repeatedly shown the same campaign.
+
+I also came across Google's **SHALE** paper on guaranteed ad allocation. Rush does not implement SHALE, but it made me think about another problem: even if a campaign is eligible, you probably do not want to burn through its entire budget too early or let it fall far behind schedule.
+
+That eventually led to Rush.
+
+The question became:
+
+> Given a viewer, a 30-second break and a large pool of campaigns, how do I build a valid ad pod quickly without races or failures creating extra campaign capacity?
+
+---
+
+## How it works
+
+At a high level:
+```
+Viewer request
+      |
+      v
+Find candidate campaigns
+      |
+      v
+Check targeting + lifecycle
+      |
+      v
+Calculate pacing
+      |
+      v
+Build the best fitting pod
+      |
+      v
+Reserve campaign capacity locally
+      |
+      v
+Atomically commit in Redis
+      |
+      v
+Return commercial / House / partial pod
 ```
 
-The system determines which campaigns are eligible and safely allocates one while respecting:
+The system uses three different kinds of state.
+```
+PostgreSQL -> durable campaign state and capacity
 
-- targeting eligibility;
-- remaining campaign capacity;
-- per-viewer frequency caps;
-- campaign state;
-- request idempotency;
-- stale worker state;
-- concurrent allocation pressure.
+Redis      -> frequency caps, idempotency,
+              pacing and atomic commitment
 
-Rush is not an advertising dashboard, campaign-management frontend, or video-delivery platform.
-
-It focuses specifically on the **real-time allocation problem**.
-
----
-
-## The Problem
-
-Consider a popular campaign nearing exhaustion:
-
-```text
-Remaining campaign capacity: 50 impressions
-Concurrent eligible requests: 20,000
+Worker RAM -> candidate index, local leases
+              and pod optimization
 ```
 
-A naive implementation might perform:
+I tried to keep each layer responsible for the kind of state it is actually good at handling instead of forcing everything into one database.
 
-```text
-read remaining capacity
-        ↓
-check capacity > 0
-        ↓
-serve campaign
-        ↓
-decrement capacity
+---
+
+## Candidate discovery
+
+Every request should not scan every campaign.
+
+Each worker therefore keeps an in-memory inverted index.
+
+Something like:
+```
+Mumbai   -> {1, 4, 8}
+MOBILE   -> {1, 3, 8}
+PREMIUM  -> {1, 6, 8}
 ```
 
-Under concurrency, many workers can observe the same available capacity before any of them update it.
+For a Mumbai + MOBILE + PREMIUM viewer, Rush intersects those sets and works with the much smaller result.
 
-This can cause the system to issue more allocations than the campaign actually owns.
+The index is fast, but it can become stale.
 
-A centralized atomic counter solves the correctness problem, but introduces another one: every allocation for a popular campaign must coordinate through the same shared state.
-
-Rush instead separates:
-
-- **global capacity authority**;
-- **worker-local capacity ownership**;
-- **request-time allocation enforcement**.
-
-Campaign capacity is issued to workers through bounded durable leases. Workers then spend already-authorized capacity locally while Redis independently enforces request-level constraints.
+So Redis also stores the current index version. A worker can read from a slightly old snapshot, but it cannot commit a decision if Redis says that snapshot is no longer current.
 
 ---
 
-# Current Architecture
+## Campaign capacity
 
-```text
-                         Decision Request
-                                |
-                                v
-                    +-------------------------+
-                    |     FastAPI Worker      |
-                    +------------+------------+
-                                 |
-                 +---------------+---------------+
-                 |                               |
-                 v                               v
-       +--------------------+          +----------------------+
-       | Versioned In-Memory|          |     PostgreSQL       |
-       |  Inverted Index    |          |                      |
-       +---------+----------+          | Campaign config      |
-                 |                     | Targeting data       |
-                 |                     | Durable lease state  |
-                 |                     +----------+-----------+
-                 |                                |
-                 |                      bounded capacity lease
-                 |                                |
-                 |                                v
-                 |                     +----------------------+
-                 |                     | Worker-Local Capacity|
-                 |                     |        Pool          |
-                 |                     +----------+-----------+
-                 |                                |
-                 +---------------+----------------+
-                                 |
-                                 v
-                       Candidate Evaluation
-                                 |
-                                 v
-                    +-------------------------+
-                    |       Redis Lua         |
-                    |                         |
-                    | Request idempotency     |
-                    | Viewer frequency cap    |
-                    | Index-version fence     |
-                    +------------+------------+
-                                 |
-                                 v
-                         Allocation Result
-```
+Campaign capacity is durable in PostgreSQL.
 
----
-
-## PostgreSQL
-
-PostgreSQL stores the durable business state for Rush, including:
-
-- campaign configuration;
-- targeting relationships;
-- configured campaign capacity;
-- remaining globally unleased capacity;
-- durable campaign lease records.
-
-PostgreSQL acts as the **global authority for campaign capacity**.
-
-It determines how much capacity may enter circulation across all workers.
-
----
-
-## Durable Campaign Capacity Leasing
-
-Instead of decrementing one globally shared capacity key for every allocation, workers acquire campaign capacity in bounded chunks.
+I did not want every ad decision to require a PostgreSQL transaction, so workers lease capacity in chunks.
 
 For example:
+```
+Campaign has 10,000 units
 
-```text
-Campaign capacity:              1000
+Worker A leases 100
+Worker B leases 100
+Worker C leases 100
 
-Worker A lease:                  100
-Worker B lease:                  100
-Worker C lease:                  100
-
-PostgreSQL remaining unleased:   700
+PostgreSQL now has 9,700 unleased units left.
 ```
 
-The 300 leased units are already considered globally issued.
+Those workers can spend their leased units locally until they need a refill.
 
-Each worker can then consume its own capacity locally without coordinating with PostgreSQL on every request.
+This keeps the hot path cheap while still making PostgreSQL the source of truth for how much commercial authority actually exists.
 
-When a worker's local pool reaches zero, it requests another durable lease.
-
-### Lease Guarantees
-
-Lease issuance is:
-
-- transactional;
-- protected by PostgreSQL row locking;
-- bounded by remaining unleased capacity;
-- idempotent through a unique `lease_request_id`;
-- capable of issuing partial final leases.
-
-For example:
-
-```text
-Requested lease:          100
-Remaining global capacity: 37
-
-Granted lease:             37
-Remaining unleased:         0
-```
-
-A retried lease request with the same `lease_request_id` returns the original lease rather than deducting capacity again.
+Lease requests are idempotent as well, so a lost response cannot accidentally issue the same worker another block of capacity.
 
 ---
 
-## Worker-Local Capacity Pools
+## Frequency caps
 
-Each worker maintains an in-memory capacity pool for every campaign it is currently serving.
+A viewer might be allowed to see a campaign only three times per hour.
 
-A typical path becomes:
-
-```text
-request
-   ↓
-reserve one local campaign unit
-   ↓
-remaining local units > 0?
-   |
-   +-- yes → continue immediately
-   |
-   +-- no  → acquire durable PostgreSQL lease
+A normal:
+```
+GET count
+then
+INCR count
 ```
 
-This moves campaign-capacity coordination away from the per-request critical path.
+is not safe under concurrency.
+
+Two requests can both read the same value and both decide that one slot is still available.
+
+Rush checks and updates frequency state atomically in Redis Lua.
+
+The same commit also handles request idempotency and index-version validation.
 
 ---
 
-## Single-Flight Lease Refill
+## Pacing
 
-If many requests arrive simultaneously when a worker's local campaign pool is empty, Rush prevents every request from independently requesting a new lease.
+Two campaigns can both be valid but have very different delivery progress.
 
-Without coordination:
-
-```text
-50 concurrent requests
-        ↓
-50 PostgreSQL lease requests
+Rush uses a simple pacing score:
+```
+expected delivery
+-
+actual delivery
 ```
 
-Rush instead uses a per-campaign synchronization mechanism:
+If a campaign is halfway through its lifetime but has delivered only 30% of its capacity, it gets a positive score.
 
-```text
-50 concurrent requests
-        ↓
-1 refill owner
-        ↓
-PostgreSQL lease acquisition
-        ↓
-local pool replenished
-        ↓
-waiting requests continue
-```
+If it is already at 70%, it gets a negative one.
 
-Only one request performs the refill while the remaining requests wait and re-check the local pool.
+This is intentionally simple.
+
+I looked at SHALE while thinking about this, but V1.1 does not try to implement a full guaranteed-delivery optimizer.
+
+Pacing only helps choose between valid campaigns. It can never make an invalid campaign eligible.
 
 ---
 
-## Redis Allocation Guard
+## Building the ad pod
 
-Redis handles shared request-time state that must remain globally consistent across workers.
-
-A Lua script atomically enforces:
-
-- request idempotency;
-- viewer frequency caps;
-- candidate-index version fencing.
-
-Campaign capacity is intentionally **not** maintained as a Redis per-request counter.
-
-The responsibilities are separated as follows:
-
-```text
-PostgreSQL
-    → global campaign capacity authority
-    → durable lease issuance
-
-Worker memory
-    → already-issued campaign capacity
-    → local fast-path reservation
-
-Redis
-    → request idempotency
-    → frequency enforcement
-    → index-version validation
+Say the break is 30 seconds.
 ```
+A = 20s
+B = 15s
+C = 15s
+```
+
+Picking the first good-looking campaign gives:
+```
+A = 20 / 30 seconds
+```
+
+But:
+```
+B + C = 30 / 30 seconds
+```
+
+is better.
+
+So Rush uses a bounded dynamic-programming style search rather than a simple greedy selection.
+
+The objective is deliberately small:
+```
+1. Fill as much of the break as possible.
+2. If two pods fill the same amount, prefer better pacing.
+```
+
+Campaigns can also belong to competitive groups.
+
+Nike and Adidas, for example, can both belong to `SPORTSWEAR`, which prevents them from appearing in the same pod.
 
 ---
 
-## Request Idempotency
+## Proposal vs commit
 
-A decision request is identified by a unique `request_id`.
+This is probably the most important part of Rush.
 
-Once a request has successfully produced an allocation, Redis records the selected campaign.
+The optimizer might decide:
+```
+Nike + Samsung + Spotify
+```
 
-If the same request is retried, Rush returns the previously selected campaign instead of creating another allocation.
+But that is only a proposal.
 
-This prevents retries from double-counting:
+By the time the decision is committed:
 
-- frequency;
-- campaign consumption;
-- allocation decisions.
+- another request may have hit the viewer's frequency cap,
+- the worker's index may be stale,
+- local campaign capacity may be gone.
+
+So Rush first reserves local capacity and then sends the pod to Redis for the final authoritative check.
+
+The Redis Lua script atomically handles:
+```
+request idempotency
+index version
+frequency caps
+frequency increments
+pacing increments
+final pod storage
+```
+
+A campaign can still be rejected at that point without necessarily killing the rest of the pod.
 
 ---
 
-## Viewer Frequency Caps
+## Failure behaviour
 
-Rush maintains time-bounded viewer/campaign exposure counters in Redis.
+This ended up being one of the parts I enjoyed most.
 
-For example:
-
-```text
-viewer_4812
-campaign_42
-maximum impressions per hour: 3
+Suppose Rush reserves one unit of Nike locally and then Redis explicitly says:
 ```
-
-Redis atomically verifies the current exposure count before recording another allocation.
-
-The counter uses a TTL so old exposure history automatically stops affecting future frequency windows.
-
----
-
-## Versioned Candidate Index
-
-Scanning every active campaign on every decision request would become increasingly expensive as campaign volume grows.
-
-Rush therefore maintains a **versioned in-memory inverted index** on each worker.
-
-Campaign targeting remains relational in PostgreSQL, while the worker index provides a fast request-path representation for dimensions such as:
-
-- region;
-- device;
-- subscription tier.
-
-Candidate discovery uses unions within a targeting dimension and intersections across dimensions.
-
-Each published index snapshot carries a version.
-
-Redis stores the currently valid global index version.
-
-Before an allocation mutates shared state, the Lua guard verifies:
-
-```text
-worker index version == published index version
-```
-
-If the worker is stale:
-
-```text
-allocation rejected
-      ↓
-shared state unchanged
-      ↓
-worker refreshes index
-      ↓
-bounded retry
-```
-
-This prevents a worker using an outdated targeting snapshot from committing a new allocation.
-
----
-
-# Allocation Flow
-
-A simplified decision path is:
-
-```text
-1. Receive decision request
-
-2. Check for an existing decision for the request_id
-
-3. Verify worker index freshness
-
-4. Discover candidate campaign IDs using the in-memory index
-
-5. Load eligible campaign records from PostgreSQL
-
-6. For each candidate:
-      |
-      +-- reserve one unit from worker-local capacity
-      |
-      +-- local pool empty?
-              |
-              +-- acquire durable PostgreSQL lease
-      |
-      +-- execute Redis Lua allocation guard
-              |
-              +-- idempotency
-              +-- frequency cap
-              +-- index-version fence
-
-7. Return the winning campaign or NO_FILL
-```
-
----
-
-# Failure Semantics
-
-Rush follows one central rule:
-
-> **Uncertainty may waste capacity, but uncertainty must never create capacity.**
-
-Once a worker reserves one unit from its local pool, three outcomes are possible.
-
-## Successful Allocation
-
-```text
-local unit reserved
-        ↓
-Redis returns ALLOCATED
-        ↓
-unit remains consumed
-```
-
----
-
-## Definitive Rejection
-
-Examples include:
-
-```text
 FREQUENCY_CAPPED
-STALE_INDEX
-ALREADY_PROCESSED
 ```
 
-Redis has definitively established that the reservation did not create a new allocation.
+Easy.
 
-The worker can therefore safely refund the unit:
+Redis proved Nike was not allocated, so the local unit can be refunded.
 
-```text
-local unit reserved
-        ↓
-Redis definitively rejects
-        ↓
-refund local unit
+Now consider this:
 ```
+Rush sends Redis commit
+Redis commits it
+network dies
+Rush receives an error
+```
+
+Now Rush does not know whether the allocation happened.
+
+Refunding Nike would be dangerous because Redis may already have committed it.
+
+So V1.1 does something deliberately conservative:
+
+> **If I cannot prove that commercial capacity is safe to reuse, I do not reuse it.**
+
+That unit is burned and Rush falls back to House inventory.
+
+It can cause under-delivery.
+
+It cannot create extra campaign capacity.
+
+The same idea applies to worker crashes. If a worker dies while still holding unused leased capacity, V1.1 leaves that capacity stranded instead of trying to reclaim it without proper fencing.
+
+I would rather lose some delivery than accidentally spend the same authority twice.
 
 ---
 
-## Ambiguous Failure
-
-Suppose the request reaches Redis but the connection fails before the worker receives the result.
-
-The worker cannot know whether Redis:
-
-```text
-A. never executed the allocation
-
-or
-
-B. executed the allocation but the response was lost
+## Example response
+```
+{
+  "request_id": "req-123",
+  "status": "ALLOCATED",
+  "slots": [
+    {
+      "campaign_id": 42,
+      "duration_seconds": 15,
+      "source": "COMMERCIAL"
+    },
+    {
+      "campaign_id": null,
+      "duration_seconds": 15,
+      "source": "HOUSE"
+    }
+  ],
+  "filled_duration_seconds": 30,
+  "unfilled_duration_seconds": 0
+}
 ```
 
-Refunding the local unit in case B could allow that capacity to be used twice.
-
-Rush therefore does **not** refund capacity after an ambiguous allocation outcome.
-
-```text
-local unit reserved
-        ↓
-Redis result becomes ambiguous
-        ↓
-do not refund
-        ↓
-burn the unit
-```
-
-This may cause under-delivery.
-
-It cannot create additional campaign capacity.
-
-Rush deliberately prefers **safe under-delivery over potential overspend**.
+Rush also supports partial fill when there is no safe way to fill the entire break.
 
 ---
 
-# Capacity Fragmentation
+## What V1.1 currently has
+```
+Campaign lifecycle + targeting
+In-memory inverted index
+Index-version fencing
 
-Hierarchical leasing deliberately introduces a trade-off.
+Hourly viewer frequency caps
+Request idempotency
 
-Suppose:
+Durable hierarchical capacity leasing
+Worker-local reservations
+Single-flight lease refills
 
-```text
-PostgreSQL remaining unleased: 0
+Campaign pacing
 
-Worker A remaining locally:   17
-Worker B remaining locally:    9
-Worker C remaining locally:    0
+Duration-aware pod optimization
+Competitive exclusion
+
+Atomic Redis pod commitment
+House fallback
+Partial fill
+
+Conservative handling of ambiguous failures
 ```
 
-Worker C cannot acquire another lease even though A and B collectively hold 26 unused units.
-
-This means a worker may temporarily return `NO_FILL` while usable capacity exists elsewhere.
-
-Rush accepts this fragmentation in exchange for removing global campaign-capacity coordination from every decision request.
-
----
-
-# Lease Size Trade-Off
-
-Lease size controls the balance between coordination overhead and capacity fragmentation.
-
-### Larger leases
-
-Provide:
-
-- fewer PostgreSQL refill transactions;
-- lower coordination overhead;
-- more requests served entirely from worker memory.
-
-But increase:
-
-- capacity stranded after worker failure;
-- fragmentation between workers;
-- potential under-delivery.
-
-### Smaller leases
-
-Provide:
-
-- better global capacity utilization;
-- less capacity stranded per worker.
-
-But require:
-
-- more PostgreSQL coordination;
-- more frequent lease refills;
-- higher contention under heavy demand.
-
-Rush therefore treats lease size as a configurable operational parameter rather than assuming one universally correct value.
-
----
-
-# Correctness Invariants
-
-Rush is built around explicit correctness guarantees.
-
-```text
-A campaign must never issue more capacity than PostgreSQL
-has durably authorized under the documented failure model.
-
-A durable lease request must not deduct campaign capacity twice.
-
-A worker must never consume more local capacity than it has
-been issued.
-
-A viewer must not exceed a configured campaign frequency cap.
-
-A duplicate request must not create another valid allocation.
-
-An allocation using a stale candidate-index version must not
-mutate shared allocation state.
-
-A definitive rejection may return locally reserved capacity.
-
-An ambiguous allocation outcome must never create reusable
-campaign capacity.
-
-Every returned campaign must satisfy applicable targeting,
-campaign-state, and delivery-window constraints.
+The regression suite currently has:
+```
+75 tests
+75 passing
 ```
 
 ---
 
-# Testing
-
-The current automated test suite contains:
-
-```text
-55 passing tests
+## Stack
 ```
-
-The suite covers:
-
-- campaign persistence;
-- database constraints;
-- relational targeting;
-- candidate eligibility;
-- frequency-counter behavior;
-- request idempotency;
-- Redis Lua atomicity;
-- concurrent frequency enforcement;
-- stale-index rejection;
-- bounded index refresh/retry;
-- durable lease issuance;
-- partial final leases;
-- lease-request idempotency;
-- local worker capacity pools;
-- capacity refunds;
-- bounded lease retries;
-- no-more-refill behavior;
-- single-flight concurrent refill;
-- ambiguous Redis failure handling.
-
-The test suite verifies the documented invariants under the currently implemented failure model.
-
----
-
-# Technology Stack
-
-| Area | Technology |
-|---|---|
-| Language | Python 3.12 |
-| API | FastAPI |
-| Validation | Pydantic |
-| Database | PostgreSQL |
-| Database layer | SQLAlchemy |
-| Migrations | Alembic |
-| Shared operational state | Redis |
-| Atomic request-time logic | Redis Lua |
-| Worker-local synchronization | Python threading primitives |
-| Testing | pytest |
-
----
-
-# Engineering Principles
-
-## Correctness Before Throughput
-
-Campaign capacity and viewer frequency constraints must remain valid under concurrent load.
-
-Increasing throughput is useful only if Rush continues to preserve its documented invariants.
-
----
-
-## Keep the Critical Path Small
-
-Only work required to produce an allocation should block the request.
-
-Analytics, reporting, reconciliation, and downstream processing should remain outside the synchronous decision path whenever possible.
-
----
-
-## Reduce Global Coordination
-
-Globally shared state can preserve correctness but becomes expensive when thousands of synchronized requests compete for the same resource.
-
-Rush uses bounded local authority where the same invariant can be preserved without requiring global coordination for every request.
-
----
-
-## Technologies Must Justify Their Existence
-
-PostgreSQL, Redis, Lua, indexing structures, and synchronization mechanisms are introduced only when they solve concrete architectural problems.
-
----
-
-## Failure Behaviour Is Part of the Design
-
-Worker crashes, stale state, retries, duplicate requests, timeouts, and ambiguous outcomes have explicit semantics.
-
-Failure handling is treated as part of the architecture rather than something added after the happy path.
-
----
-
-## Prefer Under-Delivery to Overspend
-
-When allocation ownership cannot be established confidently, Rush behaves conservatively.
-
-Unused capacity may occasionally be stranded.
-
-Capacity must never be recreated simply because the system is uncertain.
-
----
-
-## Performance Claims Must Be Reproducible
-
-Throughput and latency numbers will only be published alongside:
-
-- workload definition;
-- campaign count;
-- concurrency;
-- machine/environment;
-- benchmark methodology.
-
-No unmeasured scalability claims are presented as facts.
-
----
-
-# Future Work
-
-The core real-time allocation architecture is implemented.
-
-The next stage focuses on extending failure recovery, allocation quality, and production readiness.
-
-## Lease Fencing and Safe Reclamation
-
-Worker failures currently strand unused leased capacity rather than risking unsafe reuse.
-
-Future work will introduce:
-
-- lease ownership generations;
-- fencing tokens;
-- worker-failure detection;
-- safe reclamation of unused capacity;
-- stale-worker rejection.
-
-This will allow capacity to return to circulation without allowing an old worker to continue spending reclaimed authority.
-
----
-
-## Ad-Pod Construction
-
-The decision engine will evolve from selecting individual campaigns to constructing complete duration-constrained ad pods.
-
-Planned constraints include:
-
-- available break duration;
-- creative duration;
-- competitive exclusion;
-- campaign priority;
-- frequency caps;
-- campaign capacity.
-
-A simple greedy strategy will be compared against a bounded optimization approach where appropriate.
-
----
-
-## Campaign Pacing
-
-Campaign ranking will incorporate expected-versus-actual delivery.
-
-The goal is to prevent campaigns from:
-
-- exhausting too early;
-- severely under-delivering;
-- receiving disproportionate traffic during spikes.
-
----
-
-## Production Hardening
-
-The final V1 hardening phase will include:
-
-- high-concurrency load testing;
-- latency measurement;
-- throughput benchmarks;
-- worker crash testing;
-- Redis failure injection;
-- PostgreSQL failure testing;
-- observability;
-- structured logging;
-- operational metrics;
-- deployment documentation;
-- reproducible benchmark workloads.
-
----
-
-# V2
-
-V2 will extend Rush from a synchronous real-time allocation engine into a broader event-driven delivery system.
-
-Planned additions include:
-
-- Kafka event streams;
-- impression events;
-- completion events;
-- click events;
-- idempotent consumers;
-- durable allocation evidence;
-- reservation-versus-confirmed-impression accounting;
-- reconciliation;
-- Redis state reconstruction;
-- crash recovery;
-- duplicate and delayed event handling;
-- extended failure testing;
-- additional observability and deployment tooling.
-
-A major V2 goal is to ensure transient operational state can be reconstructed from durable committed evidence after infrastructure failure.
-
----
-
-# Roadmap
-
-```text
-Current system
- |
- +-- Campaign lifecycle
- +-- PostgreSQL persistence
- +-- Relational targeting
- +-- Real-time decision API
- +-- Viewer frequency enforcement
- +-- Request idempotency
- +-- Redis Lua allocation guard
- +-- Versioned in-memory candidate indexing
- +-- Stale-index fencing and retry
- +-- Durable hierarchical capacity leasing
- +-- Worker-local capacity pools
- +-- Idempotent lease acquisition
- +-- Partial final leases
- +-- Single-flight refill
- +-- Conservative failure semantics
- |
- v
-Future V1 work
- |
- +-- Lease fencing
- +-- Safe capacity reclamation
- +-- Worker-failure recovery
- +-- Ad-pod construction
- +-- Competitive exclusion
- +-- Campaign pacing
- +-- Bounded optimization
- +-- Load testing
- +-- Production hardening
- |
- v
-V2
- |
- +-- Kafka event streams
- +-- Durable delivery evidence
- +-- Impression / completion / click processing
- +-- Idempotent event consumers
- +-- Redis reconstruction
- +-- Reconciliation
- +-- Crash recovery
- +-- Extended failure testing
+Python
+FastAPI
+PostgreSQL
+SQLAlchemy
+Alembic
+Redis
+Redis Lua
+Pytest
 ```
 
 ---
 
-# Repository Status
+## What is intentionally not in V1.1
 
-The core Rush allocation engine is implemented and tested.
+I stopped V1.1 before turning this into an endless ad-tech simulator.
 
-The repository currently contains the request-time decision path, PostgreSQL-backed campaign management, relational targeting, versioned candidate discovery, Redis-backed frequency enforcement and request idempotency, stale-index fencing, and durable hierarchical campaign capacity leasing with worker-local capacity pools.
+Things I intentionally left for later include:
+```
+safe crashed-worker lease reclamation
+worker epochs / fencing
+durable allocation ledger
+Redis reconstruction after total state loss
+advanced pacing
+creative-level selection
+auctions / revenue optimization
+CTR prediction
+```
 
-Further work is focused on safe lease reclamation, ad-pod optimization, campaign pacing, production hardening, and reproducible benchmarking.
+The biggest planned V1.2 change is a durable PostgreSQL allocation ledger so Redis can be reconstructed from committed evidence instead of being the only place some allocation state exists.
 
 ---
 
-# License
+## Benchmarking
 
-A license will be selected before the first stable public release.
+Formal load testing is still pending.
+
+I plan to measure:
+```
+throughput
+p50 latency
+p95 latency
+p99 latency
+candidate-set scaling
+concurrent request behaviour
+```
+
+I am leaving the numbers blank until I actually measure them.
+
+---
+
+## Inspiration
+
+A few things that influenced the way I thought about Rush:
+
+- **Google Ad Manager** — video ad pods, targeting and frequency caps
+- **Google PPID** — publisher-controlled viewer identity
+- **JioHotstar engineering** — advertising during large live-streaming events
+- **Netflix advertising engineering** — personalization, frequency and ad-load thinking
+- **SHALE: An Efficient Algorithm for Allocation of Guaranteed Display Advertising** — campaign delivery and pacing
+
+Rush is not intended to reproduce the private architecture of any of these systems.
+
+They were useful because they exposed different pieces of the same problem.
+
+---
+
+## The part I actually care about
+
+Rush started as:
+
+> “How do I choose ads for a live stream?”
+
+By the end, the more interesting question became:
+
+> **What does each component actually know, and what authority should it be allowed to exercise based on that knowledge?**
+
+That question ended up shaping almost everything in the project:
+```
+leasing
+fencing
+idempotency
+frequency caps
+pacing
+pod construction
+atomic commitment
+failure recovery
+```
+
+---
+
+### Rush V1.1
+
+**Feature complete**\
+**75 / 75 tests passing**\
+**Benchmarking pending**

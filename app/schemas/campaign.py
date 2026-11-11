@@ -25,7 +25,14 @@ class CampaignCreate(BaseModel):
     subscription_tiers: list[str] = Field(default_factory=list)
     # How many times per hour can a viewer see this campaign?
     frequency_cap_per_hour: int =Field(gt=0)
-
+    
+    duration_seconds: int = Field(gt=0)
+    # Incase of "Sports", this helps us avoid using Nike & Adidas in the same ad pod
+    competitive_group: str | None = Field(
+        default=None,
+        min_length=1,
+        max_length=100,
+    )
     # end_time > start_time
     @model_validator(mode="after")
     def validate_time_window(self):
@@ -46,3 +53,5 @@ class CampaignResponse(BaseModel):
     status: CampaignStatus
     # How many times per hour can a viewer see this campaign?
     frequency_cap_per_hour: int =Field(gt=0)
+    duration_seconds: int = Field(gt=0)
+    competitive_group: str | None = None

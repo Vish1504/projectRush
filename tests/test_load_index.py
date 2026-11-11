@@ -21,6 +21,7 @@ def test_load_index(db_session):
         frequency_cap_per_hour=3,
         start_time=start_time,
         end_time=end_time,
+        duration_seconds=15
     )
 
     repository.add(campaign)

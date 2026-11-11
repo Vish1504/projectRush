@@ -39,7 +39,12 @@ class Campaign(Base):
         CheckConstraint(
                     "remaining_unleased_capacity <= capacity",
                     name="ck_remaining_unleased_capacity_not_above_capacity",
+                ),
+        CheckConstraint(
+                    "duration_seconds > 0",
+                    name="ck_campaign_duration_positive",
                 )
+                
     )
 
     id: Mapped[int] = mapped_column(
@@ -80,6 +85,15 @@ class Campaign(Base):
     frequency_cap_per_hour: Mapped[int]= mapped_column(
         Integer,
         nullable=False,
+    )
+    duration_seconds: Mapped[int] = mapped_column(
+        Integer,
+        nullable=False,
+    )
+    
+    competitive_group: Mapped[str | None] = mapped_column(
+        String(100),
+        nullable=True,
     )
     
 

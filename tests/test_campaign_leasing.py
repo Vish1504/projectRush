@@ -33,6 +33,7 @@ def _active_campaign(
         frequency_cap_per_hour=3,
         start_time=now - timedelta(hours=1),
         end_time=now + timedelta(hours=1),
+        duration_seconds=15
     )
 
     db_session.add(campaign)

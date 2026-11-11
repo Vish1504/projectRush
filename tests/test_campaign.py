@@ -17,6 +17,8 @@ def test_create_and_get_campaign():
         "frequency_cap_per_hour": 3,
         "start_time": "2026-10-10T18:00:00",
         "end_time": "2026-10-25T23:00:00",
+        "duration_seconds": 15,
+        
     }
 
     create_response = client.post(
@@ -48,6 +50,7 @@ def test_get_all_campaigns():
         "frequency_cap_per_hour": 3,
         "start_time": "2026-10-10T18:00:00",
         "end_time": "2026-10-25T23:00:00",
+        "duration_seconds": 15,
     }
 
     test_b = {
@@ -56,6 +59,7 @@ def test_get_all_campaigns():
         "frequency_cap_per_hour": 3,
         "start_time": "2026-11-10T18:00:00",
         "end_time": "2026-12-25T23:00:00",
+        "duration_seconds": 15,
     }
 
     client.post("/campaigns", json=test_a)
@@ -82,6 +86,7 @@ def test_database_rejects_invalid_capacity(db_session):
         start_time="2026-10-10T18:00:00+00:00",
         end_time="2026-10-10T20:00:00+00:00",
         status="DRAFT",
+        duration_seconds=15
     )
 
     db_session.add(invalid_campaign)
@@ -106,6 +111,7 @@ def test_database_rejects_invalid_time_window(db_session):
             tzinfo=timezone.utc,
         ),
         status="DRAFT",
+        duration_seconds=15
     )
 
     db_session.add(invalid_campaign)
@@ -133,6 +139,7 @@ def test_activate_campaign_initializes_postgres_unleased_capacity(db_session):
         "regions": ["Mumbai"],
         "devices": ["MOBILE"],
         "subscription_tiers": ["PREMIUM"],
+        "duration_seconds": 15,
     }
 
     create_response = client.post(
@@ -172,6 +179,7 @@ def test_reactivating_campaign_does_not_reset_unleased_capacity(db_session):
         "regions": ["Mumbai"],
         "devices": ["MOBILE"],
         "subscription_tiers": ["PREMIUM"],
+        "duration_seconds": 15,
     }
 
     create_response = client.post(

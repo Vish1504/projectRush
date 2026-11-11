@@ -25,8 +25,10 @@ def create(
         capacity=campaign_input.capacity,
         start_time=campaign_input.start_time,
         end_time=campaign_input.end_time,
-        status=CampaignStatus.DRAFT.value, #Campaign is not live yet
-        frequency_cap_per_hour=campaign_input.frequency_cap_per_hour
+        status=CampaignStatus.DRAFT.value,
+        frequency_cap_per_hour=campaign_input.frequency_cap_per_hour,
+        duration_seconds=campaign_input.duration_seconds,
+        competitive_group=campaign_input.competitive_group,
     )
     
     

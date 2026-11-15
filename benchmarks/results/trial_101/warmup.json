@@ -1,0 +1,5622 @@
+[
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "36d954a7-4408-4371-9125-3fc5065d2ef4",
+      "viewer_id": "warmup_viewer_9",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "36d954a7-4408-4371-9125-3fc5065d2ef4",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.990957308,
+    "completed_at": 160163.507081002,
+    "latency_ms": 8516.123693989357
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e5f44ae5-0740-4568-b9a1-4de2da17b8cd",
+      "viewer_id": "warmup_viewer_11",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e5f44ae5-0740-4568-b9a1-4de2da17b8cd",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.998738656,
+    "completed_at": 160163.511789627,
+    "latency_ms": 8513.050970999757
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a2244b14-a45b-49b2-b197-7bf3078073e4",
+      "viewer_id": "warmup_viewer_10",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "a2244b14-a45b-49b2-b197-7bf3078073e4",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.995166412,
+    "completed_at": 160163.522644788,
+    "latency_ms": 8527.478375995997
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "22348082-c1a5-43e6-b671-b9f05d1c676b",
+      "viewer_id": "warmup_viewer_89",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "22348082-c1a5-43e6-b671-b9f05d1c676b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.303804292,
+    "completed_at": 160163.527385651,
+    "latency_ms": 8223.581358994124
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4848891c-a9c4-4f74-9380-476b3a2ca0e8",
+      "viewer_id": "warmup_viewer_100",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4848891c-a9c4-4f74-9380-476b3a2ca0e8",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.33390574,
+    "completed_at": 160163.530127627,
+    "latency_ms": 8196.221886988496
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "276b0977-be60-4571-abfd-1c67427b3619",
+      "viewer_id": "warmup_viewer_98",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "276b0977-be60-4571-abfd-1c67427b3619",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.328993063,
+    "completed_at": 160163.532803993,
+    "latency_ms": 8203.81092999014
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f1683dfb-932a-4e37-b5d9-dea08d9d1127",
+      "viewer_id": "warmup_viewer_13",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f1683dfb-932a-4e37-b5d9-dea08d9d1127",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.004812315,
+    "completed_at": 160163.540045402,
+    "latency_ms": 8535.233087022789
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8defeecf-43bf-4508-add7-4f4acf4728c6",
+      "viewer_id": "warmup_viewer_92",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8defeecf-43bf-4508-add7-4f4acf4728c6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.310514755,
+    "completed_at": 160163.541312017,
+    "latency_ms": 8230.797262018314
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4d904058-841d-4992-8e9d-fc1ad8748a11",
+      "viewer_id": "warmup_viewer_149",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4d904058-841d-4992-8e9d-fc1ad8748a11",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.563419071,
+    "completed_at": 160163.546355826,
+    "latency_ms": 7982.936754997354
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "af0d2e7d-1f78-47cb-ada4-83272af9a438",
+      "viewer_id": "warmup_viewer_101",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "af0d2e7d-1f78-47cb-ada4-83272af9a438",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.338167894,
+    "completed_at": 160163.547742552,
+    "latency_ms": 8209.574658016209
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c983cb0d-f24e-443a-8998-c5f0fc4d7ecc",
+      "viewer_id": "warmup_viewer_94",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c983cb0d-f24e-443a-8998-c5f0fc4d7ecc",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.31867729,
+    "completed_at": 160163.552023544,
+    "latency_ms": 8233.346254011849
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "49c10129-cf24-426c-8c7a-e51a88b16301",
+      "viewer_id": "warmup_viewer_102",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "49c10129-cf24-426c-8c7a-e51a88b16301",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.340647957,
+    "completed_at": 160163.554214128,
+    "latency_ms": 8213.566171005368
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "943810d2-2e0d-4eba-b0f6-6ed7d4e74885",
+      "viewer_id": "warmup_viewer_12",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "943810d2-2e0d-4eba-b0f6-6ed7d4e74885",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.002496247,
+    "completed_at": 160163.556336661,
+    "latency_ms": 8553.840413980652
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "30456fdc-7cdc-4afc-984e-b42687d264fe",
+      "viewer_id": "warmup_viewer_137",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "30456fdc-7cdc-4afc-984e-b42687d264fe",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.524321059,
+    "completed_at": 160163.562015048,
+    "latency_ms": 8037.693988997489
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "75d3157a-a58a-4460-915a-8e429c3e2c1a",
+      "viewer_id": "warmup_viewer_95",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "75d3157a-a58a-4460-915a-8e429c3e2c1a",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.322370915,
+    "completed_at": 160163.56390698,
+    "latency_ms": 8241.536065004766
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "85619e2f-8e29-4903-ae8b-69d08ada2537",
+      "viewer_id": "warmup_viewer_150",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "85619e2f-8e29-4903-ae8b-69d08ada2537",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.565027757,
+    "completed_at": 160163.565206084,
+    "latency_ms": 8000.178326998139
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e46fa435-24d7-4ac4-a977-1fc4a0726d57",
+      "viewer_id": "warmup_viewer_141",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e46fa435-24d7-4ac4-a977-1fc4a0726d57",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.533415886,
+    "completed_at": 160163.566627411,
+    "latency_ms": 8033.211525005754
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "87062c79-b245-427e-bc02-96f6a71464da",
+      "viewer_id": "warmup_viewer_134",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "87062c79-b245-427e-bc02-96f6a71464da",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.518566131,
+    "completed_at": 160163.567873157,
+    "latency_ms": 8049.307025998132
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "60b039a6-362e-42ab-a44a-578813c8bd7f",
+      "viewer_id": "warmup_viewer_139",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "60b039a6-362e-42ab-a44a-578813c8bd7f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.53024863,
+    "completed_at": 160163.569484827,
+    "latency_ms": 8039.236196986167
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "2a7c8019-082d-4280-ade4-e60696634b52",
+      "viewer_id": "warmup_viewer_96",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "2a7c8019-082d-4280-ade4-e60696634b52",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.324104587,
+    "completed_at": 160163.570763196,
+    "latency_ms": 8246.658609015867
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "b101c834-8323-4053-96cf-3a06627e633a",
+      "viewer_id": "warmup_viewer_148",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "b101c834-8323-4053-96cf-3a06627e633a",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.561474522,
+    "completed_at": 160163.572817353,
+    "latency_ms": 8011.34283101419
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1b127762-3a19-4993-a2ca-87d3c30c295d",
+      "viewer_id": "warmup_viewer_97",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "1b127762-3a19-4993-a2ca-87d3c30c295d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.325802958,
+    "completed_at": 160163.587218647,
+    "latency_ms": 8261.415689019486
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "89d858a5-e824-4591-9642-86cdbffe4ae9",
+      "viewer_id": "warmup_viewer_140",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "89d858a5-e824-4591-9642-86cdbffe4ae9",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.531842392,
+    "completed_at": 160163.588501039,
+    "latency_ms": 8056.658646994038
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "af4e274e-0bb6-4316-b84c-5cc410ed87be",
+      "viewer_id": "warmup_viewer_147",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "af4e274e-0bb6-4316-b84c-5cc410ed87be",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.559876237,
+    "completed_at": 160163.589706943,
+    "latency_ms": 8029.83070598566
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "3fd287f8-54bb-4f83-b16f-50a98f272dd2",
+      "viewer_id": "warmup_viewer_99",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "3fd287f8-54bb-4f83-b16f-50a98f272dd2",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.332260576,
+    "completed_at": 160163.591524393,
+    "latency_ms": 8259.2638170172
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9b4fd76c-936d-4220-8889-2aa574b110bc",
+      "viewer_id": "warmup_viewer_93",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9b4fd76c-936d-4220-8889-2aa574b110bc",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.314631372,
+    "completed_at": 160163.643521368,
+    "latency_ms": 8328.889996017097
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "89582eb4-b91c-409a-8522-30fe70f85f5e",
+      "viewer_id": "warmup_viewer_29",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "89582eb4-b91c-409a-8522-30fe70f85f5e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.044443053,
+    "completed_at": 160163.799654909,
+    "latency_ms": 8755.211856012465
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "872ccef4-f894-442f-82fd-8d2fa8c73f78",
+      "viewer_id": "warmup_viewer_41",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "872ccef4-f894-442f-82fd-8d2fa8c73f78",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.088443943,
+    "completed_at": 160163.804494236,
+    "latency_ms": 8716.050293005537
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "41adf1c2-42e2-4ba9-8d12-c19b24415804",
+      "viewer_id": "warmup_viewer_32",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "41adf1c2-42e2-4ba9-8d12-c19b24415804",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.051268756,
+    "completed_at": 160163.80711724,
+    "latency_ms": 8755.848483997397
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ca26486f-6ccf-4936-b172-471c07492f0c",
+      "viewer_id": "warmup_viewer_48",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ca26486f-6ccf-4936-b172-471c07492f0c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.106096039,
+    "completed_at": 160163.813029478,
+    "latency_ms": 8706.933439010754
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f35fcdd2-c5ae-4aa7-b72b-d7a178f49a4e",
+      "viewer_id": "warmup_viewer_35",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f35fcdd2-c5ae-4aa7-b72b-d7a178f49a4e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.057534688,
+    "completed_at": 160163.817706667,
+    "latency_ms": 8760.171978996368
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "083b9f04-e540-40c9-aa83-2de444d16a1b",
+      "viewer_id": "warmup_viewer_36",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "083b9f04-e540-40c9-aa83-2de444d16a1b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.061650774,
+    "completed_at": 160163.818918905,
+    "latency_ms": 8757.268130982993
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a63e46ef-94cd-4374-8c1c-48c6988d56c0",
+      "viewer_id": "warmup_viewer_45",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "a63e46ef-94cd-4374-8c1c-48c6988d56c0",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.099400324,
+    "completed_at": 160163.820357976,
+    "latency_ms": 8720.957651996287
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9000ffa6-a462-42e4-9095-e3b45df1b99d",
+      "viewer_id": "warmup_viewer_27",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9000ffa6-a462-42e4-9095-e3b45df1b99d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.03839366,
+    "completed_at": 160163.829582137,
+    "latency_ms": 8791.188476985553
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f3464c31-560a-45f9-afa8-8a8824a19124",
+      "viewer_id": "warmup_viewer_31",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f3464c31-560a-45f9-afa8-8a8824a19124",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.049615672,
+    "completed_at": 160163.830793474,
+    "latency_ms": 8781.177801982267
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6ba91dd1-3c64-4b1b-b617-2f185fe22fc4",
+      "viewer_id": "warmup_viewer_37",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "6ba91dd1-3c64-4b1b-b617-2f185fe22fc4",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.066068826,
+    "completed_at": 160163.832073307,
+    "latency_ms": 8766.00448100362
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ccb21222-553d-4123-9cea-59e25680ed73",
+      "viewer_id": "warmup_viewer_38",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ccb21222-553d-4123-9cea-59e25680ed73",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.067988113,
+    "completed_at": 160163.833309953,
+    "latency_ms": 8765.321840008255
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "263096f2-d223-4c80-94ca-b4352b8df389",
+      "viewer_id": "warmup_viewer_47",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "263096f2-d223-4c80-94ca-b4352b8df389",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.103657837,
+    "completed_at": 160163.83673076,
+    "latency_ms": 8733.0729230016
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9c22b600-c1b5-4281-b07b-7f69d0904400",
+      "viewer_id": "warmup_viewer_4",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9c22b600-c1b5-4281-b07b-7f69d0904400",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.97962466,
+    "completed_at": 160163.838884596,
+    "latency_ms": 8859.259936027229
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "71c68951-abe3-4d18-83fd-a1c5a85022fa",
+      "viewer_id": "warmup_viewer_28",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "71c68951-abe3-4d18-83fd-a1c5a85022fa",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.04190194,
+    "completed_at": 160163.840507383,
+    "latency_ms": 8798.605442978442
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "fd0b45b2-b0a2-4bca-a8fc-844a534cd8c8",
+      "viewer_id": "warmup_viewer_30",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "fd0b45b2-b0a2-4bca-a8fc-844a534cd8c8",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.046090571,
+    "completed_at": 160163.843565885,
+    "latency_ms": 8797.475314000621
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8fef0dd2-7500-4db5-a57d-7c44284e3b0c",
+      "viewer_id": "warmup_viewer_34",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8fef0dd2-7500-4db5-a57d-7c44284e3b0c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.054437892,
+    "completed_at": 160163.84616418,
+    "latency_ms": 8791.72628800734
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8361e9e6-7693-4510-80ec-81d1879aa167",
+      "viewer_id": "warmup_viewer_40",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8361e9e6-7693-4510-80ec-81d1879aa167",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.084541842,
+    "completed_at": 160163.848177284,
+    "latency_ms": 8763.635442010127
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ec32473d-d65c-4b0c-a4fd-5c9ca2019a41",
+      "viewer_id": "warmup_viewer_42",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ec32473d-d65c-4b0c-a4fd-5c9ca2019a41",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.090287787,
+    "completed_at": 160163.849933378,
+    "latency_ms": 8759.645590995206
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e8fdf4ba-7c01-4ba1-9786-940aa234f647",
+      "viewer_id": "warmup_viewer_44",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e8fdf4ba-7c01-4ba1-9786-940aa234f647",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.096603509,
+    "completed_at": 160163.852053991,
+    "latency_ms": 8755.450481985463
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7bae0623-3a32-4c15-8478-41e33a2f9a59",
+      "viewer_id": "warmup_viewer_2",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "7bae0623-3a32-4c15-8478-41e33a2f9a59",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.975469274,
+    "completed_at": 160163.855711135,
+    "latency_ms": 8880.241860984825
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c3a9e295-d4a2-4221-a629-5f634184bce4",
+      "viewer_id": "warmup_viewer_33",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c3a9e295-d4a2-4221-a629-5f634184bce4",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.052854235,
+    "completed_at": 160163.8580645,
+    "latency_ms": 8805.210265010828
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4b4462f4-e9e5-426d-9278-262528f1e3e2",
+      "viewer_id": "warmup_viewer_46",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4b4462f4-e9e5-426d-9278-262528f1e3e2",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.101055684,
+    "completed_at": 160163.993472935,
+    "latency_ms": 8892.41725098691
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "191a65ae-6804-4112-8493-6924936c844c",
+      "viewer_id": "warmup_viewer_43",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "191a65ae-6804-4112-8493-6924936c844c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.092513258,
+    "completed_at": 160163.994699437,
+    "latency_ms": 8902.186179009732
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "499720f0-623c-491e-8858-7bec92dbd6ca",
+      "viewer_id": "warmup_viewer_1",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "499720f0-623c-491e-8858-7bec92dbd6ca",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.953126308,
+    "completed_at": 160164.055999413,
+    "latency_ms": 9102.873104973696
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d17b8e1b-2da0-4eff-9e09-de16fc199381",
+      "viewer_id": "warmup_viewer_57",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d17b8e1b-2da0-4eff-9e09-de16fc199381",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.143439554,
+    "completed_at": 160164.057612248,
+    "latency_ms": 8914.172693999717
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "00b68d78-8786-479d-98b0-a3ed31f730c6",
+      "viewer_id": "warmup_viewer_54",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "00b68d78-8786-479d-98b0-a3ed31f730c6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.125500139,
+    "completed_at": 160164.059531203,
+    "latency_ms": 8934.031064010924
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d3be7c9b-aca9-488d-b7f3-d4a84559214a",
+      "viewer_id": "warmup_viewer_49",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d3be7c9b-aca9-488d-b7f3-d4a84559214a",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.107714317,
+    "completed_at": 160164.062136885,
+    "latency_ms": 8954.422568000155
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0b8439ca-0d6e-4990-95f0-37f9f7a046ed",
+      "viewer_id": "warmup_viewer_67",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0b8439ca-0d6e-4990-95f0-37f9f7a046ed",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.184465641,
+    "completed_at": 160164.064271469,
+    "latency_ms": 8879.805827978998
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9b85ca67-43da-4ee7-a1ce-dfb191062dc1",
+      "viewer_id": "warmup_viewer_65",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9b85ca67-43da-4ee7-a1ce-dfb191062dc1",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.174469188,
+    "completed_at": 160164.066664522,
+    "latency_ms": 8892.195333988639
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "97937d81-a208-4d48-b407-0a2396f7174f",
+      "viewer_id": "warmup_viewer_88",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "97937d81-a208-4d48-b407-0a2396f7174f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.300614012,
+    "completed_at": 160164.069799567,
+    "latency_ms": 8769.185554992873
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ba775c70-b066-4fc2-b67b-4efd56cc5783",
+      "viewer_id": "warmup_viewer_59",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ba775c70-b066-4fc2-b67b-4efd56cc5783",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.154403026,
+    "completed_at": 160164.071931907,
+    "latency_ms": 8917.528880992904
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "be7cc334-bd9c-49c6-9c7b-76ad8110bf88",
+      "viewer_id": "warmup_viewer_82",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "be7cc334-bd9c-49c6-9c7b-76ad8110bf88",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.273968505,
+    "completed_at": 160164.075264539,
+    "latency_ms": 8801.296033983817
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7c40ad4f-2c5c-48c1-a9fd-65ddeeb544ec",
+      "viewer_id": "warmup_viewer_81",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "7c40ad4f-2c5c-48c1-a9fd-65ddeeb544ec",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.269220295,
+    "completed_at": 160164.081989851,
+    "latency_ms": 8812.769555981504
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "736d0b25-8db5-41ab-9444-5181bcae637f",
+      "viewer_id": "warmup_viewer_62",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "736d0b25-8db5-41ab-9444-5181bcae637f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.165572916,
+    "completed_at": 160164.084613168,
+    "latency_ms": 8919.040251988918
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e237c299-9bb8-4301-a59e-2062e9500906",
+      "viewer_id": "warmup_viewer_79",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e237c299-9bb8-4301-a59e-2062e9500906",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.258853033,
+    "completed_at": 160164.098114382,
+    "latency_ms": 8839.261348999571
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "885517bc-15d7-4a51-8ac9-3147c55602da",
+      "viewer_id": "warmup_viewer_63",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "885517bc-15d7-4a51-8ac9-3147c55602da",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.16828858,
+    "completed_at": 160164.105625815,
+    "latency_ms": 8937.33723499463
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7592d918-71a1-42d6-ae58-968cf8835266",
+      "viewer_id": "warmup_viewer_83",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "7592d918-71a1-42d6-ae58-968cf8835266",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.275656914,
+    "completed_at": 160164.111742362,
+    "latency_ms": 8836.085448012454
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "80ce7265-f03a-44ff-b137-c8b3d561b2d3",
+      "viewer_id": "warmup_viewer_58",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "80ce7265-f03a-44ff-b137-c8b3d561b2d3",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.151502957,
+    "completed_at": 160164.115795523,
+    "latency_ms": 8964.29256600095
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "65bdb973-89d6-4591-9f1d-c951fa89bd17",
+      "viewer_id": "warmup_viewer_52",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "65bdb973-89d6-4591-9f1d-c951fa89bd17",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.122227396,
+    "completed_at": 160164.118925179,
+    "latency_ms": 8996.697783004493
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "eab2620a-0530-4b95-bd55-f09c5aff0a1f",
+      "viewer_id": "warmup_viewer_66",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "eab2620a-0530-4b95-bd55-f09c5aff0a1f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.179133035,
+    "completed_at": 160164.120747054,
+    "latency_ms": 8941.614018986002
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f278587c-a70d-4c8e-8293-2f7cad8c0f5c",
+      "viewer_id": "warmup_viewer_84",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f278587c-a70d-4c8e-8293-2f7cad8c0f5c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.287414291,
+    "completed_at": 160164.122873585,
+    "latency_ms": 8835.459294001339
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "85adfd4f-bcac-456b-a68a-72ebf4c0e23b",
+      "viewer_id": "warmup_viewer_56",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "85adfd4f-bcac-456b-a68a-72ebf4c0e23b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.14074529,
+    "completed_at": 160164.124872003,
+    "latency_ms": 8984.126713010482
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9e32dda6-75a9-4fea-b0eb-79cf6533e43f",
+      "viewer_id": "warmup_viewer_51",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9e32dda6-75a9-4fea-b0eb-79cf6533e43f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.120344345,
+    "completed_at": 160164.132569502,
+    "latency_ms": 9012.225156999193
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c4e17c25-d9c3-4673-91f6-0b6c0b10c99c",
+      "viewer_id": "warmup_viewer_64",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c4e17c25-d9c3-4673-91f6-0b6c0b10c99c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.170649848,
+    "completed_at": 160164.133708259,
+    "latency_ms": 8963.058410998201
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "91e733d4-0deb-4b3c-804b-6fe6f5b13e21",
+      "viewer_id": "warmup_viewer_85",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "91e733d4-0deb-4b3c-804b-6fe6f5b13e21",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.291155222,
+    "completed_at": 160164.13483548,
+    "latency_ms": 8843.680258025415
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d383a3df-9c90-43d5-b0d0-2c846fe10af4",
+      "viewer_id": "warmup_viewer_91",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d383a3df-9c90-43d5-b0d0-2c846fe10af4",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.308259262,
+    "completed_at": 160164.136243567,
+    "latency_ms": 8827.984304982238
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "91b18efb-e88e-4b36-b660-5cd10262f487",
+      "viewer_id": "warmup_viewer_50",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "91b18efb-e88e-4b36-b660-5cd10262f487",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.110046929,
+    "completed_at": 160164.137858409,
+    "latency_ms": 9027.811479987577
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8f1e0b9c-1e19-4635-9241-c39d4ecb7cb6",
+      "viewer_id": "warmup_viewer_53",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8f1e0b9c-1e19-4635-9241-c39d4ecb7cb6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.123812681,
+    "completed_at": 160164.139433992,
+    "latency_ms": 9015.621311002178
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a5b5a65b-a4b9-4b43-be21-1ed031540e84",
+      "viewer_id": "warmup_viewer_55",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "a5b5a65b-a4b9-4b43-be21-1ed031540e84",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.136029585,
+    "completed_at": 160164.140647476,
+    "latency_ms": 9004.617890983354
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "18fb35a7-4e37-4337-9f48-0890f77c797d",
+      "viewer_id": "warmup_viewer_60",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "18fb35a7-4e37-4337-9f48-0890f77c797d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.156994745,
+    "completed_at": 160164.141866888,
+    "latency_ms": 8984.872143017128
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "368dfde1-d905-4679-85c0-fd4f1eff3fa3",
+      "viewer_id": "warmup_viewer_61",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "368dfde1-d905-4679-85c0-fd4f1eff3fa3",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.161700088,
+    "completed_at": 160164.143182121,
+    "latency_ms": 8981.482033006614
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "059c5a59-87bf-46c8-a7d0-ce3bb1374bac",
+      "viewer_id": "warmup_viewer_86",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "059c5a59-87bf-46c8-a7d0-ce3bb1374bac",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.293101674,
+    "completed_at": 160164.144351273,
+    "latency_ms": 8851.249598985305
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "2d8b8baa-fec0-41c9-9cae-2066d5ee63df",
+      "viewer_id": "warmup_viewer_90",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "2d8b8baa-fec0-41c9-9cae-2066d5ee63df",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.306616231,
+    "completed_at": 160164.14540639,
+    "latency_ms": 8838.790158974007
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c9e2f00b-532d-43f6-a4e6-366746112d97",
+      "viewer_id": "warmup_viewer_68",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c9e2f00b-532d-43f6-a4e6-366746112d97",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.187518696,
+    "completed_at": 160164.146616804,
+    "latency_ms": 8959.098107996397
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c0c22c21-8c4c-4e5e-b111-4bae5815a568",
+      "viewer_id": "warmup_viewer_87",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c0c22c21-8c4c-4e5e-b111-4bae5815a568",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.296953451,
+    "completed_at": 160164.147668594,
+    "latency_ms": 8850.715142994886
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "02d9aca1-2da4-4d64-b23c-a745848ea3b2",
+      "viewer_id": "warmup_viewer_108",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "02d9aca1-2da4-4d64-b23c-a745848ea3b2",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.386168505,
+    "completed_at": 160164.292494543,
+    "latency_ms": 8906.326038006227
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "da9878ef-1a19-4a2d-a7e1-e362f78cfe43",
+      "viewer_id": "warmup_viewer_78",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "da9878ef-1a19-4a2d-a7e1-e362f78cfe43",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.240747841,
+    "completed_at": 160164.293893154,
+    "latency_ms": 9053.145313024288
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0ca551b9-7c11-4798-a667-f0d0f9b21942",
+      "viewer_id": "warmup_viewer_80",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0ca551b9-7c11-4798-a667-f0d0f9b21942",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.262159974,
+    "completed_at": 160164.295014331,
+    "latency_ms": 9032.854357006727
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7904a95d-a9b9-46ff-a755-ec4b8f021492",
+      "viewer_id": "warmup_viewer_104",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "7904a95d-a9b9-46ff-a755-ec4b8f021492",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.352013886,
+    "completed_at": 160164.296906529,
+    "latency_ms": 8944.892642990453
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4d82f3ac-9199-496a-9383-b37762df0471",
+      "viewer_id": "warmup_viewer_105",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4d82f3ac-9199-496a-9383-b37762df0471",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.355055067,
+    "completed_at": 160164.323778379,
+    "latency_ms": 8968.723312020302
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "29e9d109-e892-48dd-84ed-95667f029baf",
+      "viewer_id": "warmup_viewer_107",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "29e9d109-e892-48dd-84ed-95667f029baf",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.374059331,
+    "completed_at": 160164.325286998,
+    "latency_ms": 8951.227667013882
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a843dce2-236f-4464-b9d1-cbf5744f1a78",
+      "viewer_id": "warmup_viewer_110",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "a843dce2-236f-4464-b9d1-cbf5744f1a78",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.390877833,
+    "completed_at": 160164.326513597,
+    "latency_ms": 8935.635764006292
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4e1391c2-d96e-43e7-9dde-00dc0d5bd489",
+      "viewer_id": "warmup_viewer_5",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4e1391c2-d96e-43e7-9dde-00dc0d5bd489",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.981561828,
+    "completed_at": 160164.328133897,
+    "latency_ms": 9346.572069014655
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "516a95b2-ce05-4a14-821d-34adb322b762",
+      "viewer_id": "warmup_viewer_14",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "516a95b2-ce05-4a14-821d-34adb322b762",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.006553074,
+    "completed_at": 160164.329500398,
+    "latency_ms": 9322.947323991684
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "726771df-7d0e-408b-a98f-13cd03138e78",
+      "viewer_id": "warmup_viewer_69",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "726771df-7d0e-408b-a98f-13cd03138e78",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.190696733,
+    "completed_at": 160164.330656031,
+    "latency_ms": 9139.959297986934
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ee2e9c86-448c-4b39-a660-3348e70fdddb",
+      "viewer_id": "warmup_viewer_103",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ee2e9c86-448c-4b39-a660-3348e70fdddb",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.349072449,
+    "completed_at": 160164.332456744,
+    "latency_ms": 8983.384295017458
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "81e5f4e6-dd14-40b1-a82a-071396d4d1df",
+      "viewer_id": "warmup_viewer_106",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "81e5f4e6-dd14-40b1-a82a-071396d4d1df",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.357190383,
+    "completed_at": 160164.333639117,
+    "latency_ms": 8976.44873399986
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "caf2cb70-5fd9-4510-9eb0-725473981b6b",
+      "viewer_id": "warmup_viewer_109",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "caf2cb70-5fd9-4510-9eb0-725473981b6b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.389142657,
+    "completed_at": 160164.334909745,
+    "latency_ms": 8945.767088007415
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7a4a7e27-c94f-49c3-9a24-6b4f748fccd6",
+      "viewer_id": "warmup_viewer_111",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "7a4a7e27-c94f-49c3-9a24-6b4f748fccd6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.401772306,
+    "completed_at": 160164.33820422,
+    "latency_ms": 8936.43191398587
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f4393597-0e8f-45a1-aa5b-0dc11b047354",
+      "viewer_id": "warmup_viewer_112",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f4393597-0e8f-45a1-aa5b-0dc11b047354",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.405366306,
+    "completed_at": 160164.339311008,
+    "latency_ms": 8933.944702002918
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "07a29833-5d28-4041-abfc-f3eb3d9925a8",
+      "viewer_id": "warmup_viewer_113",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "07a29833-5d28-4041-abfc-f3eb3d9925a8",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.407729124,
+    "completed_at": 160164.351773946,
+    "latency_ms": 8944.04482198297
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4381ac4f-1589-4499-b863-4f27256afef5",
+      "viewer_id": "warmup_viewer_114",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4381ac4f-1589-4499-b863-4f27256afef5",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.410095845,
+    "completed_at": 160164.358254031,
+    "latency_ms": 8948.158185987268
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d31096f8-d949-49b0-8381-ed94610177db",
+      "viewer_id": "warmup_viewer_116",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d31096f8-d949-49b0-8381-ed94610177db",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.417072267,
+    "completed_at": 160164.359917681,
+    "latency_ms": 8942.845413985197
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4c338b7f-e9a5-4ab1-877b-7526d6ecdf59",
+      "viewer_id": "warmup_viewer_117",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4c338b7f-e9a5-4ab1-877b-7526d6ecdf59",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.418899297,
+    "completed_at": 160164.361428053,
+    "latency_ms": 8942.528756015236
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "72b43977-637d-4843-a032-f587264fb274",
+      "viewer_id": "warmup_viewer_119",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "72b43977-637d-4843-a032-f587264fb274",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.423015279,
+    "completed_at": 160164.363343096,
+    "latency_ms": 8940.327816992067
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "20024b79-e5d1-4e2f-bef5-b4c62d12090a",
+      "viewer_id": "warmup_viewer_121",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "20024b79-e5d1-4e2f-bef5-b4c62d12090a",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.426720883,
+    "completed_at": 160164.364967242,
+    "latency_ms": 8938.246359000914
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d8dc470a-ffc9-4b18-963f-94d55623f4ef",
+      "viewer_id": "warmup_viewer_123",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d8dc470a-ffc9-4b18-963f-94d55623f4ef",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.437072112,
+    "completed_at": 160164.369965722,
+    "latency_ms": 8932.893610006431
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c9c5e423-6d1a-444e-aec2-bac370435100",
+      "viewer_id": "warmup_viewer_124",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c9c5e423-6d1a-444e-aec2-bac370435100",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.439451604,
+    "completed_at": 160164.371812045,
+    "latency_ms": 8932.360440987395
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c06c634d-7c34-4526-afd8-0057a2f307ce",
+      "viewer_id": "warmup_viewer_15",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c06c634d-7c34-4526-afd8-0057a2f307ce",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.008769123,
+    "completed_at": 160164.373072711,
+    "latency_ms": 9364.303587994073
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5deb1700-2d48-436e-ab14-c7f271916af9",
+      "viewer_id": "warmup_viewer_118",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "5deb1700-2d48-436e-ab14-c7f271916af9",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.420875773,
+    "completed_at": 160164.376057958,
+    "latency_ms": 8955.182184989098
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5cccea36-5d39-46a9-b2b0-ff3f57c80a6d",
+      "viewer_id": "warmup_viewer_122",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "5cccea36-5d39-46a9-b2b0-ff3f57c80a6d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.434574633,
+    "completed_at": 160164.427622705,
+    "latency_ms": 8993.048072006786
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8d73dad3-07e0-4625-a285-56dbe4df06fd",
+      "viewer_id": "warmup_viewer_6",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8d73dad3-07e0-4625-a285-56dbe4df06fd",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.983936715,
+    "completed_at": 160164.428857752,
+    "latency_ms": 9444.921037007589
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "57082006-348b-4c5b-aa21-d56f591fc7df",
+      "viewer_id": "warmup_viewer_128",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "57082006-348b-4c5b-aa21-d56f591fc7df",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.452941641,
+    "completed_at": 160164.430074545,
+    "latency_ms": 8977.132903994061
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "560a37fd-ba83-4e3d-a9e8-6e5e497e1a48",
+      "viewer_id": "warmup_viewer_74",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "560a37fd-ba83-4e3d-a9e8-6e5e497e1a48",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.207021042,
+    "completed_at": 160164.431269793,
+    "latency_ms": 9224.248751008417
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0358bbd3-571f-41cc-90fe-4697cc09e49b",
+      "viewer_id": "warmup_viewer_73",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0358bbd3-571f-41cc-90fe-4697cc09e49b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.203177375,
+    "completed_at": 160164.432512922,
+    "latency_ms": 9229.3355470174
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a2bc3a4f-664f-4db5-8379-7613b66e0eae",
+      "viewer_id": "warmup_viewer_120",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "a2bc3a4f-664f-4db5-8379-7613b66e0eae",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.424535831,
+    "completed_at": 160164.434076901,
+    "latency_ms": 9009.541070001433
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6b916fa2-aa00-4db7-b217-71e191e5fe8a",
+      "viewer_id": "warmup_viewer_7",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "6b916fa2-aa00-4db7-b217-71e191e5fe8a",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.986340334,
+    "completed_at": 160164.435321647,
+    "latency_ms": 9448.981313005788
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0b8dae9b-f017-4aca-b0cf-f7bc756361dc",
+      "viewer_id": "warmup_viewer_136",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0b8dae9b-f017-4aca-b0cf-f7bc756361dc",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.522269077,
+    "completed_at": 160164.436465252,
+    "latency_ms": 8914.196174999233
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c3bf8ae2-a204-4605-92dc-414bbd63047a",
+      "viewer_id": "warmup_viewer_115",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c3bf8ae2-a204-4605-92dc-414bbd63047a",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.415337083,
+    "completed_at": 160164.439459663,
+    "latency_ms": 9024.122580012772
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "628289ff-7a99-4324-892f-5f277aefb719",
+      "viewer_id": "warmup_viewer_135",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "628289ff-7a99-4324-892f-5f277aefb719",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.520013487,
+    "completed_at": 160164.440524617,
+    "latency_ms": 8920.51113001071
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "2f97b3b6-1dc7-4b8f-a35b-348e7bd13237",
+      "viewer_id": "warmup_viewer_71",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "2f97b3b6-1dc7-4b8f-a35b-348e7bd13237",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.198425966,
+    "completed_at": 160164.441590717,
+    "latency_ms": 9243.164751009317
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "902325ae-ef94-4c99-be08-d7e38a633dcf",
+      "viewer_id": "warmup_viewer_127",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "902325ae-ef94-4c99-be08-d7e38a633dcf",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.45048136,
+    "completed_at": 160164.442653644,
+    "latency_ms": 8992.172283993568
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0b242020-c6f6-4510-bc65-7e089a751fe5",
+      "viewer_id": "warmup_viewer_129",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0b242020-c6f6-4510-bc65-7e089a751fe5",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.464615197,
+    "completed_at": 160164.443687309,
+    "latency_ms": 8979.072111978894
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e3dfee7c-9fc7-4acc-898c-a45d9e25435c",
+      "viewer_id": "warmup_viewer_70",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e3dfee7c-9fc7-4acc-898c-a45d9e25435c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.193715651,
+    "completed_at": 160164.44482117,
+    "latency_ms": 9251.105519011617
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "86966598-2cb4-4f92-977c-35e97e0354b0",
+      "viewer_id": "warmup_viewer_76",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "86966598-2cb4-4f92-977c-35e97e0354b0",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.215015188,
+    "completed_at": 160164.477280788,
+    "latency_ms": 9262.265600002138
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d4a68924-78a0-4e56-adf9-6963fcfd4679",
+      "viewer_id": "warmup_viewer_130",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d4a68924-78a0-4e56-adf9-6963fcfd4679",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.502483163,
+    "completed_at": 160164.47832325,
+    "latency_ms": 8975.840086990502
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f6b9f57a-e2b1-4776-ace3-c0320fb5a631",
+      "viewer_id": "warmup_viewer_3",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f6b9f57a-e2b1-4776-ace3-c0320fb5a631",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.977776883,
+    "completed_at": 160164.479477042,
+    "latency_ms": 9501.700159016764
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "262e590c-56ce-4c4e-a4ee-fe032af77931",
+      "viewer_id": "warmup_viewer_18",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "262e590c-56ce-4c4e-a4ee-fe032af77931",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.018953373,
+    "completed_at": 160164.480543195,
+    "latency_ms": 9461.589822021779
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ac493100-9d63-4acf-b077-7c65ff3dbc12",
+      "viewer_id": "warmup_viewer_19",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ac493100-9d63-4acf-b077-7c65ff3dbc12",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.020538096,
+    "completed_at": 160164.481908061,
+    "latency_ms": 9461.369964992628
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ce35ab63-7b8c-4a99-b623-f87c318720a3",
+      "viewer_id": "warmup_viewer_20",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ce35ab63-7b8c-4a99-b623-f87c318720a3",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.022263496,
+    "completed_at": 160164.482916877,
+    "latency_ms": 9460.653380985605
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6743d439-fc3c-4d51-854e-3a853496ca69",
+      "viewer_id": "warmup_viewer_22",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "6743d439-fc3c-4d51-854e-3a853496ca69",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.028219814,
+    "completed_at": 160164.485169597,
+    "latency_ms": 9456.949782994343
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d95d8ec7-cbf3-4711-a612-9f7e0cd2b886",
+      "viewer_id": "warmup_viewer_23",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d95d8ec7-cbf3-4711-a612-9f7e0cd2b886",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.029842842,
+    "completed_at": 160164.486785126,
+    "latency_ms": 9456.942284014076
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6a3bdbad-848a-4964-a7a2-3f6e4a4fdbff",
+      "viewer_id": "warmup_viewer_75",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "6a3bdbad-848a-4964-a7a2-3f6e4a4fdbff",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.212469922,
+    "completed_at": 160164.505503226,
+    "latency_ms": 9293.033304013079
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "af321602-046b-4f36-b54b-7940908f96d2",
+      "viewer_id": "warmup_viewer_126",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "af321602-046b-4f36-b54b-7940908f96d2",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.448032773,
+    "completed_at": 160164.507103559,
+    "latency_ms": 9059.070785995573
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "be490dd7-ab27-4a16-90fc-1d8c5fa6c873",
+      "viewer_id": "warmup_viewer_8",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "be490dd7-ab27-4a16-90fc-1d8c5fa6c873",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160154.988775849,
+    "completed_at": 160164.511231716,
+    "latency_ms": 9522.455867001554
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "2be2f4ce-8c15-4656-9b2e-d683ebe43934",
+      "viewer_id": "warmup_viewer_17",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "2be2f4ce-8c15-4656-9b2e-d683ebe43934",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.016583612,
+    "completed_at": 160164.513053937,
+    "latency_ms": 9496.470324986149
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "45719a4f-a06f-4bee-8c06-6816328135c5",
+      "viewer_id": "warmup_viewer_72",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "45719a4f-a06f-4bee-8c06-6816328135c5",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.200699015,
+    "completed_at": 160164.514162378,
+    "latency_ms": 9313.46336301067
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0019a042-7083-4cd2-bdbb-cb90f360e958",
+      "viewer_id": "warmup_viewer_77",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0019a042-7083-4cd2-bdbb-cb90f360e958",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.228109775,
+    "completed_at": 160164.51529352,
+    "latency_ms": 9287.183745007496
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d41c74a3-0208-4f7f-b949-fb8da7881067",
+      "viewer_id": "warmup_viewer_125",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d41c74a3-0208-4f7f-b949-fb8da7881067",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.441460554,
+    "completed_at": 160164.516415397,
+    "latency_ms": 9074.95484300307
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "582044ff-3731-4117-9775-dc6ebdbc0698",
+      "viewer_id": "warmup_viewer_138",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "582044ff-3731-4117-9775-dc6ebdbc0698",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.526124821,
+    "completed_at": 160164.517482553,
+    "latency_ms": 8991.357732011238
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f5f43e6e-c120-4013-86e2-95e19ffdea79",
+      "viewer_id": "warmup_viewer_142",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f5f43e6e-c120-4013-86e2-95e19ffdea79",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.542800112,
+    "completed_at": 160164.518555397,
+    "latency_ms": 8975.755285006016
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f60f4f16-eec6-466c-bf88-fc04735ca671",
+      "viewer_id": "warmup_viewer_143",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f60f4f16-eec6-466c-bf88-fc04735ca671",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.54508484,
+    "completed_at": 160164.519999104,
+    "latency_ms": 8974.914263992105
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "b1982eee-d674-4d5b-9c9c-da821f0e9bd7",
+      "viewer_id": "warmup_viewer_144",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "b1982eee-d674-4d5b-9c9c-da821f0e9bd7",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.547389175,
+    "completed_at": 160164.521188667,
+    "latency_ms": 8973.79949199967
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "95555ab7-2e52-4a00-88f1-c5501d0bf4f6",
+      "viewer_id": "warmup_viewer_145",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "95555ab7-2e52-4a00-88f1-c5501d0bf4f6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.549099303,
+    "completed_at": 160164.522308143,
+    "latency_ms": 8973.2088400051
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1bb2b089-fa5e-4f9b-b554-dd3678c54f99",
+      "viewer_id": "warmup_viewer_146",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "1bb2b089-fa5e-4f9b-b554-dd3678c54f99",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.557917053,
+    "completed_at": 160164.523420543,
+    "latency_ms": 8965.503490006085
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8e84cc68-45cf-4f20-9cd5-8845194690f9",
+      "viewer_id": "warmup_viewer_16",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8e84cc68-45cf-4f20-9cd5-8845194690f9",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.013913293,
+    "completed_at": 160164.534567322,
+    "latency_ms": 9520.654029009165
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "892138be-42b0-4292-b05a-f9d365519b47",
+      "viewer_id": "warmup_viewer_21",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "892138be-42b0-4292-b05a-f9d365519b47",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.024564048,
+    "completed_at": 160164.536831604,
+    "latency_ms": 9512.267555983271
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "98144f98-ee5e-4e16-8972-32510bdada3f",
+      "viewer_id": "warmup_viewer_24",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "98144f98-ee5e-4e16-8972-32510bdada3f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.032157929,
+    "completed_at": 160164.555689576,
+    "latency_ms": 9523.531646991614
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "84ea83f7-683d-4a63-ab4f-38d029f66c2b",
+      "viewer_id": "warmup_viewer_25",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "84ea83f7-683d-4a63-ab4f-38d029f66c2b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.035089521,
+    "completed_at": 160164.571526397,
+    "latency_ms": 9536.436875991058
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e86cfd5a-f571-45e7-b4f2-8c6ef66df0f6",
+      "viewer_id": "warmup_viewer_26",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e86cfd5a-f571-45e7-b4f2-8c6ef66df0f6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.036728654,
+    "completed_at": 160164.588819684,
+    "latency_ms": 9552.091029996518
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9926c1d5-10ed-465b-ab20-fa100202c9db",
+      "viewer_id": "warmup_viewer_39",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9926c1d5-10ed-465b-ab20-fa100202c9db",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.073026539,
+    "completed_at": 160164.602408386,
+    "latency_ms": 9529.381847009063
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "691299d0-f7d7-4f3d-9538-829f9db12091",
+      "viewer_id": "warmup_viewer_131",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "691299d0-f7d7-4f3d-9538-829f9db12091",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.512558618,
+    "completed_at": 160164.631597562,
+    "latency_ms": 9119.038943987107
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "205431d5-d5eb-469e-81a0-b7cc1f09da3c",
+      "viewer_id": "warmup_viewer_132",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "205431d5-d5eb-469e-81a0-b7cc1f09da3c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.515475588,
+    "completed_at": 160164.653709684,
+    "latency_ms": 9138.234095997177
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "cd0435c3-e8c4-4b35-be79-afb7d8edbf30",
+      "viewer_id": "warmup_viewer_133",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "cd0435c3-e8c4-4b35-be79-afb7d8edbf30",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 104,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160155.51707555,
+    "completed_at": 160164.67952377,
+    "latency_ms": 9162.448220013175
+  }
+]

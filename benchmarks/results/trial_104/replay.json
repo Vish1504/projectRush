@@ -1,0 +1,1822 @@
+[
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "810abea8-893a-46ba-b9d8-8291b701b9dd",
+      "viewer_id": "primary_viewer_120",
+      "region": "Bengaluru",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "810abea8-893a-46ba-b9d8-8291b701b9dd",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 1,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 2,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 3,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 4,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 10,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.095374127,
+    "completed_at": 160389.330673104,
+    "latency_ms": 235.29897700063884
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "509511fe-bfae-4613-b1b2-e3796637073f",
+      "viewer_id": "primary_viewer_708",
+      "region": "Pune",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "509511fe-bfae-4613-b1b2-e3796637073f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 6,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 26,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.088384982,
+    "completed_at": 160389.377952858,
+    "latency_ms": 289.5678759959992
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "8d76e23b-a371-4d1f-b894-1360ab67dbbf",
+      "viewer_id": "primary_viewer_205",
+      "region": "Bengaluru",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8d76e23b-a371-4d1f-b894-1360ab67dbbf",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 5,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 11,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 15,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 51,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 75,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.092693729,
+    "completed_at": 160389.378976521,
+    "latency_ms": 286.28279198892415
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "d261758b-ec9a-438b-8f9f-0e1d83ea22ad",
+      "viewer_id": "primary_viewer_808",
+      "region": "Pune",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d261758b-ec9a-438b-8f9f-0e1d83ea22ad",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 26,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 10,
+      "unfilled_duration_seconds": 20
+    },
+    "error": null,
+    "started_at": 160389.097670441,
+    "completed_at": 160389.379752599,
+    "latency_ms": 282.082157995319
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "2339dde2-2a67-44f1-94c3-af555f1f4855",
+      "viewer_id": "primary_viewer_363",
+      "region": "Bengaluru",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "2339dde2-2a67-44f1-94c3-af555f1f4855",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 8,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 31,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 89,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.09968417,
+    "completed_at": 160389.380438038,
+    "latency_ms": 280.7538679917343
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "44b21045-a439-47d0-a98c-cabd9ceb2abb",
+      "viewer_id": "primary_viewer_334",
+      "region": "Pune",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "44b21045-a439-47d0-a98c-cabd9ceb2abb",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 13,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 86,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.103407539,
+    "completed_at": 160389.381110498,
+    "latency_ms": 277.7029590215534
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "5258c28a-5aee-4357-affb-c7a9ac7de4ec",
+      "viewer_id": "primary_viewer_312",
+      "region": "Pune",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "5258c28a-5aee-4357-affb-c7a9ac7de4ec",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 13,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 86,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.106009494,
+    "completed_at": 160389.382002255,
+    "latency_ms": 275.99276101682335
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "2f221451-5797-4783-85cd-510aca4b920c",
+      "viewer_id": "primary_viewer_232",
+      "region": "Bengaluru",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "2f221451-5797-4783-85cd-510aca4b920c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 5,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 9,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 31,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 100,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.108002802,
+    "completed_at": 160389.38322245,
+    "latency_ms": 275.21964799962007
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "692916d7-bd37-446d-8d9b-915568f7ace6",
+      "viewer_id": "primary_viewer_803",
+      "region": "Pune",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "692916d7-bd37-446d-8d9b-915568f7ace6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 57,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 86,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.110248241,
+    "completed_at": 160389.3844439,
+    "latency_ms": 274.19565900345333
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "49a9b9cc-e224-4e85-b117-971d4d00fec7",
+      "viewer_id": "primary_viewer_197",
+      "region": "Hyderabad",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "49a9b9cc-e224-4e85-b117-971d4d00fec7",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 5,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 11,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 12,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 15,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 25,
+      "unfilled_duration_seconds": 5
+    },
+    "error": null,
+    "started_at": 160389.111863437,
+    "completed_at": 160389.385158661,
+    "latency_ms": 273.29522400395945
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "665cdeb7-4450-4353-b99f-df4de6ded922",
+      "viewer_id": "primary_viewer_742",
+      "region": "Pune",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "665cdeb7-4450-4353-b99f-df4de6ded922",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 9,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 54,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.113507231,
+    "completed_at": 160389.385880162,
+    "latency_ms": 272.3729310091585
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "35c5c9b9-65ab-4034-8814-3b5aed9126d2",
+      "viewer_id": "primary_viewer_807",
+      "region": "Delhi",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "35c5c9b9-65ab-4034-8814-3b5aed9126d2",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 19,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 84,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.117615623,
+    "completed_at": 160389.386577199,
+    "latency_ms": 268.9615760173183
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "9554a0a8-6873-4ebf-b1da-cbaff5c1247e",
+      "viewer_id": "primary_viewer_959",
+      "region": "Hyderabad",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9554a0a8-6873-4ebf-b1da-cbaff5c1247e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 20,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 87,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.119319812,
+    "completed_at": 160389.387294004,
+    "latency_ms": 267.97419201466255
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "c9d42b2d-e190-464a-88c0-ef1cec477ec4",
+      "viewer_id": "primary_viewer_619",
+      "region": "Hyderabad",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c9d42b2d-e190-464a-88c0-ef1cec477ec4",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 31,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 87,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 15,
+      "unfilled_duration_seconds": 15
+    },
+    "error": null,
+    "started_at": 160389.121349127,
+    "completed_at": 160389.387953681,
+    "latency_ms": 266.60455399542116
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "d55370c1-601b-44b4-94a7-6db1f1fd80a0",
+      "viewer_id": "primary_viewer_182",
+      "region": "Pune",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "d55370c1-601b-44b4-94a7-6db1f1fd80a0",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 5,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 7,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 11,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 12,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.122843528,
+    "completed_at": 160389.388633478,
+    "latency_ms": 265.789950004546
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "483d77f9-ecff-4e51-9652-789ff73ae051",
+      "viewer_id": "primary_viewer_661",
+      "region": "Bengaluru",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "483d77f9-ecff-4e51-9652-789ff73ae051",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 31,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 96,
+          "duration_seconds": 20,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 100,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.124338493,
+    "completed_at": 160389.389303687,
+    "latency_ms": 264.96519398642704
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "aad15acb-0662-4a0b-9bc4-8bff102a10f0",
+      "viewer_id": "primary_viewer_5",
+      "region": "Mumbai",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "aad15acb-0662-4a0b-9bc4-8bff102a10f0",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 12,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 45,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 10,
+      "unfilled_duration_seconds": 20
+    },
+    "error": null,
+    "started_at": 160389.126147849,
+    "completed_at": 160389.390057055,
+    "latency_ms": 263.9092059980612
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "43aaa8b2-ceb9-49dc-bdca-c4e450229e3c",
+      "viewer_id": "primary_viewer_188",
+      "region": "Delhi",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "43aaa8b2-ceb9-49dc-bdca-c4e450229e3c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 11,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 5,
+      "unfilled_duration_seconds": 25
+    },
+    "error": null,
+    "started_at": 160389.133830375,
+    "completed_at": 160389.391224736,
+    "latency_ms": 257.39436098956503
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "0285c7c2-db93-48bd-86d0-66010a9753ce",
+      "viewer_id": "primary_viewer_581",
+      "region": "Delhi",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0285c7c2-db93-48bd-86d0-66010a9753ce",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 42,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 15,
+      "unfilled_duration_seconds": 15
+    },
+    "error": null,
+    "started_at": 160389.146973627,
+    "completed_at": 160389.392355345,
+    "latency_ms": 245.38171797757968
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "72c8a90e-bb1f-45aa-9377-a3088eb53248",
+      "viewer_id": "primary_viewer_672",
+      "region": "Mumbai",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "72c8a90e-bb1f-45aa-9377-a3088eb53248",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 16,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 63,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 75,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.149177135,
+    "completed_at": 160389.394013242,
+    "latency_ms": 244.83610701281577
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "38d75518-fcf4-459f-84fa-7ec799cac40b",
+      "viewer_id": "primary_viewer_13",
+      "region": "Bengaluru",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "38d75518-fcf4-459f-84fa-7ec799cac40b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 3,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 10,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 77,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 20,
+      "unfilled_duration_seconds": 10
+    },
+    "error": null,
+    "started_at": 160389.128606062,
+    "completed_at": 160389.441444998,
+    "latency_ms": 312.83893599174917
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "aec192fc-ca19-4fd2-8533-d5e2afa8b59b",
+      "viewer_id": "primary_viewer_127",
+      "region": "Hyderabad",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "aec192fc-ca19-4fd2-8533-d5e2afa8b59b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 12,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 5,
+      "unfilled_duration_seconds": 25
+    },
+    "error": null,
+    "started_at": 160389.130566549,
+    "completed_at": 160389.44246651,
+    "latency_ms": 311.89996100147255
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "043a909f-c961-4353-8ee3-5901420dc96f",
+      "viewer_id": "primary_viewer_308",
+      "region": "Bengaluru",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "043a909f-c961-4353-8ee3-5901420dc96f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 28,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 35,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 79,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 100,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.140285379,
+    "completed_at": 160389.443464955,
+    "latency_ms": 303.17957600345835
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "101ee8c4-b225-417a-908a-279a19b2357d",
+      "viewer_id": "primary_viewer_322",
+      "region": "Mumbai",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "101ee8c4-b225-417a-908a-279a19b2357d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 16,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 65,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 75,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 99,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 25,
+      "unfilled_duration_seconds": 5
+    },
+    "error": null,
+    "started_at": 160389.143288379,
+    "completed_at": 160389.444487499,
+    "latency_ms": 301.1991199746262
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "228ce364-931f-4650-92ba-ed371321730e",
+      "viewer_id": "primary_viewer_123",
+      "region": "Pune",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "228ce364-931f-4650-92ba-ed371321730e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 12,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 45,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 10,
+      "unfilled_duration_seconds": 20
+    },
+    "error": null,
+    "started_at": 160389.151094436,
+    "completed_at": 160389.445603325,
+    "latency_ms": 294.5088889973704
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "21d6992a-6aec-4277-ab79-ddfac3a07002",
+      "viewer_id": "primary_viewer_633",
+      "region": "Pune",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "21d6992a-6aec-4277-ab79-ddfac3a07002",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 30,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 72,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 25,
+      "unfilled_duration_seconds": 5
+    },
+    "error": null,
+    "started_at": 160389.153475406,
+    "completed_at": 160389.446642271,
+    "latency_ms": 293.16686501260847
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "3571fcd5-d7d2-41be-bfdb-523336cd2b9f",
+      "viewer_id": "primary_viewer_29",
+      "region": "Mumbai",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "3571fcd5-d7d2-41be-bfdb-523336cd2b9f",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 65,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 5,
+      "unfilled_duration_seconds": 25
+    },
+    "error": null,
+    "started_at": 160389.155999215,
+    "completed_at": 160389.448478317,
+    "latency_ms": 292.4791020050179
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "3992ba38-ea1b-4a58-8fe7-b47154f36b57",
+      "viewer_id": "primary_viewer_718",
+      "region": "Bengaluru",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "3992ba38-ea1b-4a58-8fe7-b47154f36b57",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 41,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 69,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 20,
+      "unfilled_duration_seconds": 10
+    },
+    "error": null,
+    "started_at": 160389.159973398,
+    "completed_at": 160389.449530607,
+    "latency_ms": 289.55720900557935
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "00d4071f-dee9-4b16-b693-6280bf817eb2",
+      "viewer_id": "primary_viewer_766",
+      "region": "Pune",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "00d4071f-dee9-4b16-b693-6280bf817eb2",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 22,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 57,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.16216707,
+    "completed_at": 160389.450663399,
+    "latency_ms": 288.4963290125597
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "3c2c72ba-0748-4ab7-8722-618a8006565e",
+      "viewer_id": "primary_viewer_497",
+      "region": "Hyderabad",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "3c2c72ba-0748-4ab7-8722-618a8006565e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 13,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 94,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.163537108,
+    "completed_at": 160389.456832151,
+    "latency_ms": 293.29504299676046
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "5e1eff12-0fa9-4c80-955b-1b7505bff635",
+      "viewer_id": "primary_viewer_31",
+      "region": "Pune",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "5e1eff12-0fa9-4c80-955b-1b7505bff635",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 12,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 5,
+      "unfilled_duration_seconds": 25
+    },
+    "error": null,
+    "started_at": 160389.165503687,
+    "completed_at": 160389.457749462,
+    "latency_ms": 292.2457749955356
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "c7b7e8bc-fa4c-4271-96c5-3e8880d790f6",
+      "viewer_id": "primary_viewer_524",
+      "region": "Bengaluru",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "c7b7e8bc-fa4c-4271-96c5-3e8880d790f6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 51,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 70,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 81,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.169598963,
+    "completed_at": 160389.458537983,
+    "latency_ms": 288.939020014368
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "1469a8fc-12ac-4563-aabb-459f7b0a05a6",
+      "viewer_id": "primary_viewer_660",
+      "region": "Bengaluru",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "1469a8fc-12ac-4563-aabb-459f7b0a05a6",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 51,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 81,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 20,
+      "unfilled_duration_seconds": 10
+    },
+    "error": null,
+    "started_at": 160389.171993945,
+    "completed_at": 160389.45929192,
+    "latency_ms": 287.29797501000576
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "a3b585ef-24ac-4599-a4f1-a559d726c22d",
+      "viewer_id": "primary_viewer_366",
+      "region": "Delhi",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "a3b585ef-24ac-4599-a4f1-a559d726c22d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 25,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 42,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 58,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 64,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.173932129,
+    "completed_at": 160389.459958754,
+    "latency_ms": 286.02662502089515
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "92ff0061-1793-4c55-a6f4-5115dfcc5b62",
+      "viewer_id": "primary_viewer_875",
+      "region": "Bengaluru",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "92ff0061-1793-4c55-a6f4-5115dfcc5b62",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 35,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 79,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 15,
+      "unfilled_duration_seconds": 15
+    },
+    "error": null,
+    "started_at": 160389.17537901,
+    "completed_at": 160389.460684703,
+    "latency_ms": 285.3056929889135
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "3ad3e367-9dab-4eb7-9e77-a8af886db4cc",
+      "viewer_id": "primary_viewer_935",
+      "region": "Pune",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "3ad3e367-9dab-4eb7-9e77-a8af886db4cc",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 22,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 57,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.176754494,
+    "completed_at": 160389.461410815,
+    "latency_ms": 284.6563210187014
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "f4da1593-25cc-4c1a-a903-b6aeb05db5c8",
+      "viewer_id": "primary_viewer_103",
+      "region": "Delhi",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "f4da1593-25cc-4c1a-a903-b6aeb05db5c8",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 3,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 10,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 99,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 15,
+      "unfilled_duration_seconds": 15
+    },
+    "error": null,
+    "started_at": 160389.178309023,
+    "completed_at": 160389.462081625,
+    "latency_ms": 283.7726020079572
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "26f3702a-19a2-46a8-9fea-4791d7bfdca7",
+      "viewer_id": "primary_viewer_782",
+      "region": "Hyderabad",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "26f3702a-19a2-46a8-9fea-4791d7bfdca7",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 80,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 86,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.158450189,
+    "completed_at": 160389.480006624,
+    "latency_ms": 321.55643502483144
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "49b8ca74-0042-4c9a-bfb3-069395968302",
+      "viewer_id": "primary_viewer_826",
+      "region": "Mumbai",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "49b8ca74-0042-4c9a-bfb3-069395968302",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 71,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 74,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 25,
+      "unfilled_duration_seconds": 5
+    },
+    "error": null,
+    "started_at": 160389.179739163,
+    "completed_at": 160389.483128123,
+    "latency_ms": 303.38896001921967
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "e3283935-64e8-4563-b55b-dc6e39f14d11",
+      "viewer_id": "primary_viewer_460",
+      "region": "Pune",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "e3283935-64e8-4563-b55b-dc6e39f14d11",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 22,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 57,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.195782681,
+    "completed_at": 160389.484587679,
+    "latency_ms": 288.8049980101641
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "ee9fe72b-4e82-45f0-876a-698afe3b3512",
+      "viewer_id": "primary_viewer_872",
+      "region": "Pune",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ee9fe72b-4e82-45f0-876a-698afe3b3512",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 13,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 86,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.181000487,
+    "completed_at": 160389.488885721,
+    "latency_ms": 307.88523398223333
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "93960a64-ddf2-402b-be38-4196475d1f8b",
+      "viewer_id": "primary_viewer_191",
+      "region": "Hyderabad",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "93960a64-ddf2-402b-be38-4196475d1f8b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 11,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 31,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 10,
+      "unfilled_duration_seconds": 20
+    },
+    "error": null,
+    "started_at": 160389.198343192,
+    "completed_at": 160389.489926072,
+    "latency_ms": 291.5828800178133
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "369ba1f2-2cb4-4815-bcdf-c92b20c923bd",
+      "viewer_id": "primary_viewer_252",
+      "region": "Bengaluru",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "369ba1f2-2cb4-4815-bcdf-c92b20c923bd",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 44,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 51,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 94,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.182304735,
+    "completed_at": 160389.490995705,
+    "latency_ms": 308.6909700068645
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "cfb20005-882e-4311-9722-35d93dc45c39",
+      "viewer_id": "primary_viewer_423",
+      "region": "Hyderabad",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "cfb20005-882e-4311-9722-35d93dc45c39",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 13,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 94,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.185817996,
+    "completed_at": 160389.492927088,
+    "latency_ms": 307.10909198387526
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "5d003ffe-377d-4274-a765-19c291a9ab9e",
+      "viewer_id": "primary_viewer_305",
+      "region": "Hyderabad",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "5d003ffe-377d-4274-a765-19c291a9ab9e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 11,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 31,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 10,
+      "unfilled_duration_seconds": 20
+    },
+    "error": null,
+    "started_at": 160389.188352523,
+    "completed_at": 160389.494175872,
+    "latency_ms": 305.8233490155544
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "bf877b06-f982-449d-bc47-e39cc54ee07b",
+      "viewer_id": "primary_viewer_762",
+      "region": "Bengaluru",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "bf877b06-f982-449d-bc47-e39cc54ee07b",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 22,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 82,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.184032337,
+    "completed_at": 160389.495450313,
+    "latency_ms": 311.41797598684207
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "cb7fa9e8-9658-4d30-94b0-4c409d02891c",
+      "viewer_id": "primary_viewer_42",
+      "region": "Hyderabad",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "cb7fa9e8-9658-4d30-94b0-4c409d02891c",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 2,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 3,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 10,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 20,
+      "unfilled_duration_seconds": 10
+    },
+    "error": null,
+    "started_at": 160389.191241712,
+    "completed_at": 160389.496910119,
+    "latency_ms": 305.66840700339526
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "5de53530-8bc5-46cf-9aa5-3bcda737c09d",
+      "viewer_id": "primary_viewer_249",
+      "region": "Delhi",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "5de53530-8bc5-46cf-9aa5-3bcda737c09d",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 5,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 58,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 64,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 15,
+      "unfilled_duration_seconds": 15
+    },
+    "error": null,
+    "started_at": 160389.187106949,
+    "completed_at": 160389.498006545,
+    "latency_ms": 310.899596021045
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "8b242b36-c90e-47f8-bcc1-a022ac1747e0",
+      "viewer_id": "primary_viewer_83",
+      "region": "Mumbai",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "8b242b36-c90e-47f8-bcc1-a022ac1747e0",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 1,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 3,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 4,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 10,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 49,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 160389.189586672,
+    "completed_at": 160389.498987905,
+    "latency_ms": 309.4012330111582
+  },
+  {
+    "phase": "replay",
+    "request": {
+      "request_id": "4b50723d-28fd-4731-8e7e-b092a4a62cd7",
+      "viewer_id": "primary_viewer_187",
+      "region": "Hyderabad",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4b50723d-28fd-4731-8e7e-b092a4a62cd7",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 7,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 39,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 20,
+      "unfilled_duration_seconds": 10
+    },
+    "error": null,
+    "started_at": 160389.193613815,
+    "completed_at": 160389.499925179,
+    "latency_ms": 306.31136399460956
+  }
+]

@@ -4,9 +4,13 @@
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+import os
 
-
-DATABASE_URL = "postgresql+psycopg:///rush"
+# This makes database connections configurable
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "postgresql+psycopg:///rush",
+)
 
 # Engine is SQLAlchemy's gateway to PostgreSQL
 engine = create_engine(DATABASE_URL)

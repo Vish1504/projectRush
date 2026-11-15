@@ -291,18 +291,83 @@ class CampaignRepository:
          # Execute the query and return matching Campaign objects
         return list(self.db.scalars(statement).all())
     
+    
     def load_index(self, index, version):
-        active_campaigns = self.get_active_campaigns()
 
-        campaign_data_list = []
+        # Retrieve all active campaign IDs in one query.
+        active_ids = list(
+            self.db.scalars(
+                select(Campaign.id).where(
+                    Campaign.status == "ACTIVE"
+                )
+            ).all()
+        )
 
-        for campaign in active_campaigns:
-            # Get this campaign's targeting dictionary and add it to campaign_data_list
-            campaign_dict=self.get_campaign_targeting(campaign.id)
-            if campaign_dict is not None:
-                campaign_data_list.append(campaign_dict)
-        index.build_index(campaign_data_list, version=version)
-        
+        # Publish an empty index if there are no active campaigns.
+        if not active_ids:
+            index.build_index([], version=version)
+            return
+
+        # Prepare a targeting dictionary for each campaign.
+        # Empty targeting lists still mean unrestricted targeting.
+        campaigns = {
+            campaign_id: {
+                "id": campaign_id,
+                "regions": [],
+                "devices": [],
+                "subscription_tiers": [],
+            }
+            for campaign_id in active_ids
+        }
+
+        # Retrieve all region targeting records in one query.
+        region_rows = self.db.execute(
+            select(
+                CampaignRegion.campaign_id,
+                CampaignRegion.region,
+            ).where(
+                CampaignRegion.campaign_id.in_(active_ids)
+            )
+        ).all()
+
+        # Add each region to its corresponding campaign.
+        for campaign_id, region in region_rows:
+            campaigns[campaign_id]["regions"].append(region)
+
+        # Retrieve all device targeting records in one query.
+        device_rows = self.db.execute(
+            select(
+                CampaignDevice.campaign_id,
+                CampaignDevice.device,
+            ).where(
+                CampaignDevice.campaign_id.in_(active_ids)
+            )
+        ).all()
+
+        # Add each device to its corresponding campaign.
+        for campaign_id, device in device_rows:
+            campaigns[campaign_id]["devices"].append(device)
+
+        # Retrieve all subscription targeting records in one query.
+        subscription_rows = self.db.execute(
+            select(
+                CampaignSubscriptionTier.campaign_id,
+                CampaignSubscriptionTier.subscription_tier,
+            ).where(
+                CampaignSubscriptionTier.campaign_id.in_(active_ids)
+            )
+        ).all()
+
+        # Add each subscription tier to its corresponding campaign.
+        for campaign_id, tier in subscription_rows:
+            campaigns[campaign_id]["subscription_tiers"].append(tier)
+
+        # Build and publish the complete index with its version.
+        index.build_index(
+            list(campaigns.values()),
+            version=version,
+        )
+
     
     # To take the IDs, retrieve their corresponding Campaign objects from PostgreSQL, and filter out campaigns that are no longer ACTIVE as per the campgin time duration.
     def get_candidates_by_ids(

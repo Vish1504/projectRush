@@ -1,11 +1,16 @@
 # /Users/vish1504/projectRush/app/services/inverted_index.py
 
 #  Here we store and searche campaign IDs in memory
-
+from threading import Lock
 
 class InvertedIndex:
     def __init__(self):
-        # One published state contains both the version and index registers
+
+        # Prevent multiple requests from rebuilding
+        # the same worker's index simultaneously.
+        self.rebuild_lock = Lock()
+
+        # One published state contains both the version and index registers.
         self._state = {
             "version": 0,
             "snapshot": {

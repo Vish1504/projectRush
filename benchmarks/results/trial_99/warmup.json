@@ -1,0 +1,2794 @@
+[
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "b72e2b05-e726-477c-b261-fb7e5d61a474",
+      "viewer_id": "warmup_viewer_6",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "b72e2b05-e726-477c-b261-fb7e5d61a474",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.61496911,
+    "completed_at": 158189.579159481,
+    "latency_ms": 22964.19037101441
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9256b2b3-4e5e-402a-bd34-9c29532e6043",
+      "viewer_id": "warmup_viewer_12",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "9256b2b3-4e5e-402a-bd34-9c29532e6043",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.629883081,
+    "completed_at": 158189.588905857,
+    "latency_ms": 22959.02277599089
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "555596cb-f143-4ec2-96cc-e0ff0a329783",
+      "viewer_id": "warmup_viewer_9",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "555596cb-f143-4ec2-96cc-e0ff0a329783",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.622743106,
+    "completed_at": 158189.590692799,
+    "latency_ms": 22967.949693003902
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4c2bb0d0-d85a-48a2-9995-7e7d7f1b2ac3",
+      "viewer_id": "warmup_viewer_8",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "4c2bb0d0-d85a-48a2-9995-7e7d7f1b2ac3",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.619650808,
+    "completed_at": 158189.594373927,
+    "latency_ms": 22974.723118997645
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "50ec3376-6f39-4f44-897c-158ab8f5f0c5",
+      "viewer_id": "warmup_viewer_11",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "50ec3376-6f39-4f44-897c-158ab8f5f0c5",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.627618692,
+    "completed_at": 158189.595874058,
+    "latency_ms": 22968.25536599499
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0ab157fb-f01f-4c42-afbf-4327509a0648",
+      "viewer_id": "warmup_viewer_14",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "0ab157fb-f01f-4c42-afbf-4327509a0648",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.634428568,
+    "completed_at": 158189.59721935,
+    "latency_ms": 22962.79078198131
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ab66294c-407d-4617-9d24-733d11a91ef3",
+      "viewer_id": "warmup_viewer_5",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "ab66294c-407d-4617-9d24-733d11a91ef3",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 101,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.612503616,
+    "completed_at": 158189.601606566,
+    "latency_ms": 22989.102949999506
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "b8ed416e-54da-444e-a1fc-5c5768c8f323",
+      "viewer_id": "warmup_viewer_7",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "b8ed416e-54da-444e-a1fc-5c5768c8f323",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.617083352,
+    "completed_at": 158189.775955984,
+    "latency_ms": 23158.872631989652
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7e82cf4d-1ab7-4f11-b639-4c6847141e2e",
+      "viewer_id": "warmup_viewer_10",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "7e82cf4d-1ab7-4f11-b639-4c6847141e2e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.624943716,
+    "completed_at": 158189.777975742,
+    "latency_ms": 23153.03202602081
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "3fe0fb96-9576-4d0a-9aa0-06bc03c2b0a7",
+      "viewer_id": "warmup_viewer_13",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "3fe0fb96-9576-4d0a-9aa0-06bc03c2b0a7",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.631976567,
+    "completed_at": 158189.780176126,
+    "latency_ms": 23148.199558985652
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1fe9cd05-be2f-4fc6-9d64-414fccfde09e",
+      "viewer_id": "warmup_viewer_15",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 200,
+    "response": {
+      "request_id": "1fe9cd05-be2f-4fc6-9d64-414fccfde09e",
+      "status": "ALLOCATED",
+      "slots": [
+        {
+          "campaign_id": 102,
+          "duration_seconds": 15,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 103,
+          "duration_seconds": 5,
+          "source": "COMMERCIAL"
+        },
+        {
+          "campaign_id": 105,
+          "duration_seconds": 10,
+          "source": "COMMERCIAL"
+        }
+      ],
+      "filled_duration_seconds": 30,
+      "unfilled_duration_seconds": 0
+    },
+    "error": null,
+    "started_at": 158166.636369006,
+    "completed_at": 158189.854102225,
+    "latency_ms": 23217.733219004003
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e26d04e2-901a-401d-9426-49802bb0148f",
+      "viewer_id": "warmup_viewer_1",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.583209732,
+    "completed_at": 158198.096328074,
+    "latency_ms": 31513.11834200169
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "447e41e3-39be-411f-a7e8-a33883e4f21d",
+      "viewer_id": "warmup_viewer_2",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.604864591,
+    "completed_at": 158198.097168811,
+    "latency_ms": 31492.304219980724
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "fe3b70cb-e4a3-45f5-b6ca-d1cf625072fb",
+      "viewer_id": "warmup_viewer_3",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.607425169,
+    "completed_at": 158198.098367531,
+    "latency_ms": 31490.94236199744
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "329c76a8-dc3c-42fd-94dc-d6a6c51bf1d7",
+      "viewer_id": "warmup_viewer_4",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.610579115,
+    "completed_at": 158198.099078873,
+    "latency_ms": 31488.499758008402
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ad5ad328-9826-46e7-8b3f-6ea0a89d4e26",
+      "viewer_id": "warmup_viewer_16",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.638400651,
+    "completed_at": 158198.11753009,
+    "latency_ms": 31479.129439016106
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "47653b2c-03e1-48d6-9070-a20da23d6536",
+      "viewer_id": "warmup_viewer_17",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.64033811,
+    "completed_at": 158198.118060754,
+    "latency_ms": 31477.722643991
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "df1cb4de-2c27-4f2c-b9b5-af7051c6958c",
+      "viewer_id": "warmup_viewer_18",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.642316756,
+    "completed_at": 158198.118581426,
+    "latency_ms": 31476.264669996453
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "b89031d4-712c-4e9d-9429-07d153ddc6d6",
+      "viewer_id": "warmup_viewer_19",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.645311344,
+    "completed_at": 158198.119126396,
+    "latency_ms": 31473.815051984275
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9423e03f-c26f-4863-b818-14c979a69cfd",
+      "viewer_id": "warmup_viewer_20",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.647518242,
+    "completed_at": 158198.119648258,
+    "latency_ms": 31472.130015987204
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4b988ace-e3a7-4f2f-9ec2-4f5f69d1947c",
+      "viewer_id": "warmup_viewer_21",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.649703202,
+    "completed_at": 158198.120144328,
+    "latency_ms": 31470.441125973593
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "dd6ce312-bfda-4059-8df5-1a58807070d8",
+      "viewer_id": "warmup_viewer_22",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.651843508,
+    "completed_at": 158198.120639594,
+    "latency_ms": 31468.79608600284
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "eb8a3264-e933-4029-807f-a6b1099c6b95",
+      "viewer_id": "warmup_viewer_23",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.653989768,
+    "completed_at": 158198.121349112,
+    "latency_ms": 31467.35934400931
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "3e7ccce1-d876-41ad-bd70-611b181e9a7d",
+      "viewer_id": "warmup_viewer_24",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.656896474,
+    "completed_at": 158198.121992726,
+    "latency_ms": 31465.096251980867
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "bbc5722b-b81e-4967-9357-6135f2c3f4d7",
+      "viewer_id": "warmup_viewer_25",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.658804317,
+    "completed_at": 158198.122741221,
+    "latency_ms": 31463.936904008733
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "44fe97c4-c3f1-493a-b316-7f8b8c60caab",
+      "viewer_id": "warmup_viewer_26",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.660457492,
+    "completed_at": 158198.123245712,
+    "latency_ms": 31462.78822000022
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "bf15800f-1aec-4cee-bcad-9cc1e0027030",
+      "viewer_id": "warmup_viewer_27",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.662370682,
+    "completed_at": 158198.140746073,
+    "latency_ms": 31478.375391016016
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c14480dd-f294-491f-aaf9-e125a14376f4",
+      "viewer_id": "warmup_viewer_28",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.664301855,
+    "completed_at": 158198.142653103,
+    "latency_ms": 31478.351247991668
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "310a1683-197a-42dd-91c6-39554fc5a72d",
+      "viewer_id": "warmup_viewer_29",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.668009711,
+    "completed_at": 158198.143293948,
+    "latency_ms": 31475.284237007145
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6ca4858a-2ac8-4ffe-92b9-1a1b144a42b7",
+      "viewer_id": "warmup_viewer_30",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.670561836,
+    "completed_at": 158198.143872629,
+    "latency_ms": 31473.31079299329
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "56a185d9-e7bd-47d1-a2e9-6f2e44c8712d",
+      "viewer_id": "warmup_viewer_31",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.67263189,
+    "completed_at": 158198.144392034,
+    "latency_ms": 31471.760144020664
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9a56fb1c-5d95-4f57-be72-cfb44512b45a",
+      "viewer_id": "warmup_viewer_32",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.675142264,
+    "completed_at": 158198.144917611,
+    "latency_ms": 31469.77534701
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8601168e-5f56-428c-83f2-351cc6e3e290",
+      "viewer_id": "warmup_viewer_33",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.677202894,
+    "completed_at": 158198.145491462,
+    "latency_ms": 31468.288567994023
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5abd379a-1d36-44ee-9288-8b9346d55cf1",
+      "viewer_id": "warmup_viewer_34",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.679192717,
+    "completed_at": 158198.146104921,
+    "latency_ms": 31466.91220399225
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c6ac2140-d4fb-420f-9581-23dece26a16a",
+      "viewer_id": "warmup_viewer_35",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.681064249,
+    "completed_at": 158198.146580199,
+    "latency_ms": 31465.515950025292
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "165334e9-dad4-4c85-b6ad-c5b6ce15c961",
+      "viewer_id": "warmup_viewer_36",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.68293182,
+    "completed_at": 158198.147097687,
+    "latency_ms": 31464.165867015254
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "39b78e99-522b-41a5-96a9-6ae358f8cb08",
+      "viewer_id": "warmup_viewer_37",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.685661434,
+    "completed_at": 158198.147825557,
+    "latency_ms": 31462.164123018738
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e0889ca3-9fe7-4fae-92b8-df605ab5ec56",
+      "viewer_id": "warmup_viewer_38",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.687621724,
+    "completed_at": 158198.148378941,
+    "latency_ms": 31460.757216991624
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "65e96e24-73d0-4032-a341-821e0017de31",
+      "viewer_id": "warmup_viewer_40",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.694089176,
+    "completed_at": 158198.148924872,
+    "latency_ms": 31454.835696000373
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e434b387-31e2-44fd-8857-cdd8d353dffa",
+      "viewer_id": "warmup_viewer_41",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.696786745,
+    "completed_at": 158198.149422351,
+    "latency_ms": 31452.63560602325
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ee3be485-0424-49dc-bfe5-339e80f61e26",
+      "viewer_id": "warmup_viewer_42",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.698907108,
+    "completed_at": 158198.174705938,
+    "latency_ms": 31475.798830011627
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "632c1afe-e538-47c4-bbe4-42c4b2081685",
+      "viewer_id": "warmup_viewer_43",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.701817323,
+    "completed_at": 158198.17550729,
+    "latency_ms": 31473.689967009705
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "bb104be8-18c6-434f-9bcd-73eff6727f7a",
+      "viewer_id": "warmup_viewer_44",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.70413719,
+    "completed_at": 158198.17681779,
+    "latency_ms": 31472.680599981686
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e8f028b0-f4f3-4949-983a-d1b9ce386669",
+      "viewer_id": "warmup_viewer_45",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.706198474,
+    "completed_at": 158198.177520645,
+    "latency_ms": 31471.322170982603
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f31d7c80-ecec-4618-af2e-e5d49ae6d8af",
+      "viewer_id": "warmup_viewer_46",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.708152583,
+    "completed_at": 158198.178775177,
+    "latency_ms": 31470.62259397353
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c26547bd-b704-49bb-aa0c-f14fcb842783",
+      "viewer_id": "warmup_viewer_47",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.71065764,
+    "completed_at": 158198.179618764,
+    "latency_ms": 31468.961123988265
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6e62308f-9327-4464-a1f1-69efb422b296",
+      "viewer_id": "warmup_viewer_48",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.713375683,
+    "completed_at": 158198.285251962,
+    "latency_ms": 31571.876278991112
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5d18caf0-16a8-42f3-bbae-a08b56617bda",
+      "viewer_id": "warmup_viewer_39",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.690428599,
+    "completed_at": 158198.286016181,
+    "latency_ms": 31595.587582007283
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5b360988-0ea1-45f3-8b8e-7ebc950d1e5d",
+      "viewer_id": "warmup_viewer_49",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.715576836,
+    "completed_at": 158198.286858423,
+    "latency_ms": 31571.281587006524
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "3e9723dc-6719-4e3d-ab14-1ab47eb637ef",
+      "viewer_id": "warmup_viewer_50",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.719170531,
+    "completed_at": 158198.288257086,
+    "latency_ms": 31569.0865550132
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f0f9b7a0-4a22-4821-839d-e48b5961a4b2",
+      "viewer_id": "warmup_viewer_51",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.721392972,
+    "completed_at": 158198.288882267,
+    "latency_ms": 31567.489295004634
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "74a957a6-1270-4d6d-899b-02ae98653c0e",
+      "viewer_id": "warmup_viewer_52",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.723633022,
+    "completed_at": 158198.289484367,
+    "latency_ms": 31565.851345018018
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d004e836-5d70-4cc4-ae16-8c0bde1e2b28",
+      "viewer_id": "warmup_viewer_53",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.725671835,
+    "completed_at": 158198.290123806,
+    "latency_ms": 31564.451970974915
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d1a85183-f8b3-4923-918b-ba98566b21c8",
+      "viewer_id": "warmup_viewer_54",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.728146324,
+    "completed_at": 158198.291099137,
+    "latency_ms": 31562.9528129939
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ea001dec-dbdd-4a9e-badb-7f60977427c7",
+      "viewer_id": "warmup_viewer_55",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.731884022,
+    "completed_at": 158198.292138741,
+    "latency_ms": 31560.254718991928
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "cdb32787-5856-48c8-a68e-6a27f4b6ca25",
+      "viewer_id": "warmup_viewer_56",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.73416496,
+    "completed_at": 158198.292854039,
+    "latency_ms": 31558.68907898548
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "902fca37-5fd3-40f4-addd-79a22b936b11",
+      "viewer_id": "warmup_viewer_57",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.737654358,
+    "completed_at": 158198.29354372,
+    "latency_ms": 31555.889362003654
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "cb0fc53f-0cba-4008-a92d-23bff831b818",
+      "viewer_id": "warmup_viewer_58",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.73976229,
+    "completed_at": 158198.298335832,
+    "latency_ms": 31558.573541988153
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0acda95c-8bc5-4f82-9cf7-8e68a55ea7bb",
+      "viewer_id": "warmup_viewer_59",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.742195355,
+    "completed_at": 158198.298988872,
+    "latency_ms": 31556.79351699655
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "debb5065-c5df-4d6b-a23d-64fe93d67253",
+      "viewer_id": "warmup_viewer_60",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.744845744,
+    "completed_at": 158198.300299832,
+    "latency_ms": 31555.454087996623
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9a0bd602-6cc7-4c70-bf5c-5086366e02d2",
+      "viewer_id": "warmup_viewer_61",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.747090432,
+    "completed_at": 158198.303059346,
+    "latency_ms": 31555.96891400637
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6feefb70-e003-4917-af00-a0f4230ca1be",
+      "viewer_id": "warmup_viewer_62",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.74917215,
+    "completed_at": 158198.303941853,
+    "latency_ms": 31554.76970298332
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "cad1c2c9-c97a-400a-9e98-4489c28bb9d9",
+      "viewer_id": "warmup_viewer_63",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.752092951,
+    "completed_at": 158198.304582338,
+    "latency_ms": 31552.489386987872
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "26a42d7d-70bd-4e9c-a2e3-63447bca2dd1",
+      "viewer_id": "warmup_viewer_64",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.754472165,
+    "completed_at": 158198.305172969,
+    "latency_ms": 31550.700804014923
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1c005b22-4754-4b17-8119-3c2455313e0d",
+      "viewer_id": "warmup_viewer_65",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.756624218,
+    "completed_at": 158198.30568538,
+    "latency_ms": 31549.061162018916
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "bef1f1b2-ff2c-4cb7-b274-ab7975612447",
+      "viewer_id": "warmup_viewer_66",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.762799563,
+    "completed_at": 158198.306463295,
+    "latency_ms": 31543.66373200901
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "089f750e-b378-42a7-a629-e5257bfe3dde",
+      "viewer_id": "warmup_viewer_67",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.765559581,
+    "completed_at": 158198.307860573,
+    "latency_ms": 31542.30099200504
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4b865d65-5173-422f-b81f-f5e504f50227",
+      "viewer_id": "warmup_viewer_68",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.779544446,
+    "completed_at": 158198.308459439,
+    "latency_ms": 31528.914992988575
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a1c95616-160a-4b7e-a236-c694402f11b8",
+      "viewer_id": "warmup_viewer_69",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.781581692,
+    "completed_at": 158198.309057074,
+    "latency_ms": 31527.475381997647
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d8770005-6e47-4be3-aca4-e76a72b575ef",
+      "viewer_id": "warmup_viewer_70",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.784271557,
+    "completed_at": 158198.314907228,
+    "latency_ms": 31530.635670991614
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0223d142-2c6a-4573-bfb3-312b77f89fde",
+      "viewer_id": "warmup_viewer_71",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.786643981,
+    "completed_at": 158198.31652442,
+    "latency_ms": 31529.880438989494
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e9544bc8-1377-421c-a1f8-511220ea20a6",
+      "viewer_id": "warmup_viewer_72",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.78809915,
+    "completed_at": 158198.317337895,
+    "latency_ms": 31529.238744988106
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c63545b7-3ab5-42dc-808f-b97bd8c2d7a4",
+      "viewer_id": "warmup_viewer_73",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.789485753,
+    "completed_at": 158198.317829398,
+    "latency_ms": 31528.343645011773
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4c7989bc-5975-4c2d-921d-2d10c53878f9",
+      "viewer_id": "warmup_viewer_74",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.791764758,
+    "completed_at": 158198.318419265,
+    "latency_ms": 31526.654507004423
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7ec246b9-065c-46c4-85dc-4a054b4402b4",
+      "viewer_id": "warmup_viewer_75",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.793971532,
+    "completed_at": 158198.3189225,
+    "latency_ms": 31524.95096801431
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "13ea13b9-2fd7-4aee-9e67-fbf4020cfd0b",
+      "viewer_id": "warmup_viewer_76",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.796025443,
+    "completed_at": 158198.319363181,
+    "latency_ms": 31523.337738006376
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "29adc6f6-83d9-45aa-92bb-37a45c23a13c",
+      "viewer_id": "warmup_viewer_77",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.798144909,
+    "completed_at": 158198.319797563,
+    "latency_ms": 31521.652653987985
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "cba1ad29-84fd-457b-b6b2-d608fb27071c",
+      "viewer_id": "warmup_viewer_78",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.800258847,
+    "completed_at": 158198.32965877,
+    "latency_ms": 31529.399922990706
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a17c77d4-fd41-476a-84ec-a362703b6542",
+      "viewer_id": "warmup_viewer_79",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.804420099,
+    "completed_at": 158198.330169966,
+    "latency_ms": 31525.749866996193
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4418e263-ddb3-4a5f-b967-7ab510cd4e07",
+      "viewer_id": "warmup_viewer_80",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.80717434,
+    "completed_at": 158198.330798392,
+    "latency_ms": 31523.62405200256
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "554f815b-bb75-49a9-9dc2-a9e62b6c8913",
+      "viewer_id": "warmup_viewer_81",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.810448493,
+    "completed_at": 158198.331460379,
+    "latency_ms": 31521.011886012275
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0f403f89-75ed-412a-b23d-156eacb494c6",
+      "viewer_id": "warmup_viewer_82",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.812005208,
+    "completed_at": 158198.331993059,
+    "latency_ms": 31519.987851002952
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1aee04d0-612e-4d25-890f-a4e569c8cd59",
+      "viewer_id": "warmup_viewer_83",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.813580494,
+    "completed_at": 158198.332477754,
+    "latency_ms": 31518.897260015365
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c34d7c69-3bf7-4169-9425-dcd5277285ec",
+      "viewer_id": "warmup_viewer_84",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.815302115,
+    "completed_at": 158198.332970014,
+    "latency_ms": 31517.66789899557
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9c67d520-44db-4fa3-b974-2e9e0f64aabf",
+      "viewer_id": "warmup_viewer_85",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.817338135,
+    "completed_at": 158198.333489896,
+    "latency_ms": 31516.151760995854
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7faa4488-a714-428a-96af-6f5fce39eadd",
+      "viewer_id": "warmup_viewer_86",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.81907609,
+    "completed_at": 158198.333911708,
+    "latency_ms": 31514.83561799978
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "740eb380-af62-4993-ae13-2c0786e917fb",
+      "viewer_id": "warmup_viewer_87",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.820652323,
+    "completed_at": 158198.33443892,
+    "latency_ms": 31513.786597002763
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "249b0416-5229-4dae-8ca9-fbde5188b7c7",
+      "viewer_id": "warmup_viewer_88",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.822201932,
+    "completed_at": 158198.33488675,
+    "latency_ms": 31512.684818007983
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "354cc9e2-b6ef-430b-b82d-3890cef9d987",
+      "viewer_id": "warmup_viewer_89",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.823847265,
+    "completed_at": 158198.33548959,
+    "latency_ms": 31511.64232500014
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a880f96d-2bf2-4a30-834d-0677e1571db2",
+      "viewer_id": "warmup_viewer_90",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.825698425,
+    "completed_at": 158198.336327832,
+    "latency_ms": 31510.629406984663
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f4b802ea-fafe-4812-a76b-f63513f5d8a4",
+      "viewer_id": "warmup_viewer_91",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.827246374,
+    "completed_at": 158198.336901553,
+    "latency_ms": 31509.655178990215
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0e132e5f-2c63-4e04-88b6-8d27fe11c093",
+      "viewer_id": "warmup_viewer_92",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.828777844,
+    "completed_at": 158198.339824635,
+    "latency_ms": 31511.04679101263
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "81faa7d6-c1a6-42bf-a1e0-02a8dec36338",
+      "viewer_id": "warmup_viewer_93",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.831548617,
+    "completed_at": 158198.340409263,
+    "latency_ms": 31508.860646019457
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e1bf1b4f-4a2b-4de3-bfe8-572df8c1c076",
+      "viewer_id": "warmup_viewer_94",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.833515055,
+    "completed_at": 158198.341870881,
+    "latency_ms": 31508.35582599393
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1e279153-50d5-48e1-96c9-7f084fb8d637",
+      "viewer_id": "warmup_viewer_95",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.835162726,
+    "completed_at": 158198.34339099,
+    "latency_ms": 31508.22826399235
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "3293c2c0-637e-4f1c-9184-bb56f1e06a99",
+      "viewer_id": "warmup_viewer_96",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.837046111,
+    "completed_at": 158198.343986295,
+    "latency_ms": 31506.940183986444
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9277172a-9f16-4171-b9db-68b9f3cc30ad",
+      "viewer_id": "warmup_viewer_97",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.838617415,
+    "completed_at": 158198.34464102,
+    "latency_ms": 31506.023605004884
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "bc4ebb48-355a-48ec-8faa-02d995b51c78",
+      "viewer_id": "warmup_viewer_98",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.840407268,
+    "completed_at": 158198.345190403,
+    "latency_ms": 31504.783134994796
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c5fe5bcd-71f9-49dd-80e6-953e75f3e57e",
+      "viewer_id": "warmup_viewer_99",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.842507695,
+    "completed_at": 158198.345829648,
+    "latency_ms": 31503.321953001432
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e9b81ccc-792a-488d-b8e7-d2b5e28c4d0c",
+      "viewer_id": "warmup_viewer_100",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.844635952,
+    "completed_at": 158198.346285791,
+    "latency_ms": 31501.64983898867
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "4dc0ca4a-3735-425f-a3e5-96af1ddbf48c",
+      "viewer_id": "warmup_viewer_101",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.846657449,
+    "completed_at": 158198.346718088,
+    "latency_ms": 31500.06063899491
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "8a3a96cb-7b8a-4428-84e0-b25c5e6af967",
+      "viewer_id": "warmup_viewer_102",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.849411149,
+    "completed_at": 158198.34734876,
+    "latency_ms": 31497.93761098408
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "718a6ea1-088b-49dd-913f-3504e3d1912a",
+      "viewer_id": "warmup_viewer_103",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.851478557,
+    "completed_at": 158198.353396661,
+    "latency_ms": 31501.918104011565
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "39a3128f-3258-48d5-bd8f-4b2455b87d57",
+      "viewer_id": "warmup_viewer_104",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.854923997,
+    "completed_at": 158198.353914414,
+    "latency_ms": 31498.99041702156
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c97ba0d3-c157-45ed-bacd-d24c9ebd1a6a",
+      "viewer_id": "warmup_viewer_105",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.866500654,
+    "completed_at": 158198.354600434,
+    "latency_ms": 31488.0997799919
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "dadd0aa7-98ba-4b6d-b47f-3e919cc780d6",
+      "viewer_id": "warmup_viewer_106",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.868904969,
+    "completed_at": 158198.355221879,
+    "latency_ms": 31486.316910013556
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "064c272f-27d8-49c0-a73f-d756c29c30dd",
+      "viewer_id": "warmup_viewer_107",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.872622053,
+    "completed_at": 158198.355751357,
+    "latency_ms": 31483.129304018803
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "1faa8f0c-1929-490b-96d1-6b84f696d405",
+      "viewer_id": "warmup_viewer_108",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.874675073,
+    "completed_at": 158198.356231844,
+    "latency_ms": 31481.556771002943
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f266764e-abf7-41c7-82eb-b78de8e9c272",
+      "viewer_id": "warmup_viewer_109",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.877073333,
+    "completed_at": 158198.356659765,
+    "latency_ms": 31479.58643201855
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "906ab1e1-0704-4b22-ab96-e55e7cb4693d",
+      "viewer_id": "warmup_viewer_110",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.878751811,
+    "completed_at": 158198.357227145,
+    "latency_ms": 31478.47533400636
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "34f1363c-e78b-4d20-8b4d-37cb2a1f64f9",
+      "viewer_id": "warmup_viewer_111",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.880771718,
+    "completed_at": 158198.357666523,
+    "latency_ms": 31476.89480500412
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "31b9c851-90ee-4258-9dad-eb31f5d603c8",
+      "viewer_id": "warmup_viewer_112",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.883287305,
+    "completed_at": 158198.358742294,
+    "latency_ms": 31475.454988976708
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f82f93b5-0e08-4ded-8352-8bea9965273d",
+      "viewer_id": "warmup_viewer_113",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.88544129,
+    "completed_at": 158198.359287662,
+    "latency_ms": 31473.84637198411
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "7abd20f0-3c1e-430b-9a01-30660204811f",
+      "viewer_id": "warmup_viewer_114",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.888871858,
+    "completed_at": 158198.363695906,
+    "latency_ms": 31474.824047996663
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0b82a963-e194-45ea-93d5-4498af37cdb4",
+      "viewer_id": "warmup_viewer_115",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.891791084,
+    "completed_at": 158198.364508278,
+    "latency_ms": 31472.717194003053
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ab9c8751-0b11-47d7-827e-a12a63a526fd",
+      "viewer_id": "warmup_viewer_116",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.893960865,
+    "completed_at": 158198.365133325,
+    "latency_ms": 31471.172459976515
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9ec6d772-1ee5-4379-8ec6-0a52a30d5f17",
+      "viewer_id": "warmup_viewer_117",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.897202101,
+    "completed_at": 158198.365910669,
+    "latency_ms": 31468.70856799069
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "293f603e-10b8-4702-898f-e1fdfb2a3897",
+      "viewer_id": "warmup_viewer_118",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.928772458,
+    "completed_at": 158198.367466881,
+    "latency_ms": 31438.694423006382
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "40a3c423-efe8-40cf-be61-ff3b260b8f66",
+      "viewer_id": "warmup_viewer_119",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158166.994889069,
+    "completed_at": 158198.368042099,
+    "latency_ms": 31373.15302999923
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "47231a22-6e7b-4d0e-b4d4-282074969f52",
+      "viewer_id": "warmup_viewer_120",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.292930635,
+    "completed_at": 158198.368544208,
+    "latency_ms": 31075.613572989823
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5eeb3066-2e69-4ebb-ad42-c49d06d00270",
+      "viewer_id": "warmup_viewer_121",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.309339785,
+    "completed_at": 158198.369061795,
+    "latency_ms": 31059.72201001714
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6d242a16-ab6d-4c40-bbab-3c4f88c48324",
+      "viewer_id": "warmup_viewer_122",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.31409157,
+    "completed_at": 158198.369548633,
+    "latency_ms": 31055.457062990172
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "a77ded02-468e-485f-985c-1fa76e0cdcb8",
+      "viewer_id": "warmup_viewer_123",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.318156157,
+    "completed_at": 158198.370159239,
+    "latency_ms": 31052.003082004376
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "9bac385e-5743-40ee-ac88-4b076dfe55ee",
+      "viewer_id": "warmup_viewer_124",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.32060464,
+    "completed_at": 158198.377380228,
+    "latency_ms": 31056.77558798925
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "58a21fa9-ba60-4bf0-9f70-2629551de651",
+      "viewer_id": "warmup_viewer_125",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.323159432,
+    "completed_at": 158198.377891373,
+    "latency_ms": 31054.731940996135
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "27ccf8f5-dca0-4d87-91b9-f1b26d6dbd20",
+      "viewer_id": "warmup_viewer_126",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.326974652,
+    "completed_at": 158198.378415405,
+    "latency_ms": 31051.44075298449
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "d43d1bf1-5f0c-42ca-81c1-25bdb2ec6b63",
+      "viewer_id": "warmup_viewer_127",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.331281477,
+    "completed_at": 158198.378988616,
+    "latency_ms": 31047.707138990518
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "0f1e6c2d-5284-47ab-8d5c-146e88767198",
+      "viewer_id": "warmup_viewer_128",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.337773394,
+    "completed_at": 158198.380271245,
+    "latency_ms": 31042.497850983636
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "cac7d4c5-1313-4837-bb87-257cfd06f7f5",
+      "viewer_id": "warmup_viewer_129",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.341198564,
+    "completed_at": 158198.380846386,
+    "latency_ms": 31039.64782197727
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "070b395a-f83d-4991-9198-6df3c6f7f0b3",
+      "viewer_id": "warmup_viewer_130",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.343730245,
+    "completed_at": 158198.381382295,
+    "latency_ms": 31037.65204999945
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "162e4490-5f10-4431-9436-131d4e2a5be9",
+      "viewer_id": "warmup_viewer_131",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.347455281,
+    "completed_at": 158198.381904658,
+    "latency_ms": 31034.449376980774
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "f83684a9-f7c7-46dd-879c-29c7e477c5fa",
+      "viewer_id": "warmup_viewer_132",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.350006251,
+    "completed_at": 158198.38248693,
+    "latency_ms": 31032.480678986758
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "e45f19e9-e374-4b54-a94c-1226cf742f0f",
+      "viewer_id": "warmup_viewer_133",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.352427816,
+    "completed_at": 158198.38294601,
+    "latency_ms": 31030.51819402026
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "04cffce4-582c-4519-85f2-e60466e3a4f8",
+      "viewer_id": "warmup_viewer_134",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.354836873,
+    "completed_at": 158198.38366971,
+    "latency_ms": 31028.832836978836
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c29a8c69-2915-43c3-a22f-8a22ca76e07b",
+      "viewer_id": "warmup_viewer_135",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.358567688,
+    "completed_at": 158198.384173594,
+    "latency_ms": 31025.605906004785
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "3488c400-caf9-47dd-a135-69a0777e1d57",
+      "viewer_id": "warmup_viewer_136",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.360645555,
+    "completed_at": 158198.388816523,
+    "latency_ms": 31028.17096799845
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "6e9fdb92-32fa-40a9-a667-4f4ec8a1473f",
+      "viewer_id": "warmup_viewer_137",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.363576643,
+    "completed_at": 158198.389748823,
+    "latency_ms": 31026.172180019785
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "740c004a-0ea1-4906-bdd8-9a7e6dbd14a9",
+      "viewer_id": "warmup_viewer_138",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.365750085,
+    "completed_at": 158198.390444504,
+    "latency_ms": 31024.694419000298
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "eb8bdf04-142a-4562-8f07-19b2f624e911",
+      "viewer_id": "warmup_viewer_139",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.367342066,
+    "completed_at": 158198.39102768,
+    "latency_ms": 31023.68561399635
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c430139b-9bb1-4be8-9eec-5b1d32d0c274",
+      "viewer_id": "warmup_viewer_140",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.369394406,
+    "completed_at": 158198.391657588,
+    "latency_ms": 31022.26318200701
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "89c14bbc-9797-49eb-a229-e3261b8afc4a",
+      "viewer_id": "warmup_viewer_141",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "PREMIUM",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.371442926,
+    "completed_at": 158198.392086681,
+    "latency_ms": 31020.643755007768
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "510f15ff-e5c4-4966-b684-12dab006d23b",
+      "viewer_id": "warmup_viewer_142",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.373414128,
+    "completed_at": 158198.392508901,
+    "latency_ms": 31019.094772986136
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "ace6feae-e136-445a-af65-0c852b082945",
+      "viewer_id": "warmup_viewer_143",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.376259757,
+    "completed_at": 158198.392928841,
+    "latency_ms": 31016.66908399784
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "c4249247-fd99-46cd-9ae7-1caf4d8f9675",
+      "viewer_id": "warmup_viewer_144",
+      "region": "BENCHMARK_WARMUP",
+      "device": "MOBILE",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.379801051,
+    "completed_at": 158198.393387606,
+    "latency_ms": 31013.586554996436
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "de7e53e3-d6f6-4c6e-b655-331a05db85eb",
+      "viewer_id": "warmup_viewer_145",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.38204712,
+    "completed_at": 158198.394497299,
+    "latency_ms": 31012.450179026928
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "2baf4646-9b7b-480e-b429-bf400406ef9f",
+      "viewer_id": "warmup_viewer_146",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.384608241,
+    "completed_at": 158198.394974696,
+    "latency_ms": 31010.366455011535
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "60b1c301-2f1e-494e-a2d6-e0558a14b426",
+      "viewer_id": "warmup_viewer_147",
+      "region": "BENCHMARK_WARMUP",
+      "device": "TV",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.388516891,
+    "completed_at": 158198.395487462,
+    "latency_ms": 31006.970571004786
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "5e16cea4-a4b2-4d76-82c2-f17d601f03da",
+      "viewer_id": "warmup_viewer_148",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.392470885,
+    "completed_at": 158198.39590657,
+    "latency_ms": 31003.435684979195
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "136f7d49-9787-488f-bb8b-c99119d7585a",
+      "viewer_id": "warmup_viewer_149",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.394747375,
+    "completed_at": 158198.533027887,
+    "latency_ms": 31138.28051200835
+  },
+  {
+    "phase": "warmup",
+    "request": {
+      "request_id": "89150b2c-c568-47f6-9069-9f7cbf5b7699",
+      "viewer_id": "warmup_viewer_150",
+      "region": "BENCHMARK_WARMUP",
+      "device": "DESKTOP",
+      "subscription_tier": "FREE",
+      "break_duration_seconds": 30
+    },
+    "status_code": 0,
+    "response": null,
+    "error": "",
+    "started_at": 158167.396907972,
+    "completed_at": 158198.533530444,
+    "latency_ms": 31136.622471996816
+  }
+]

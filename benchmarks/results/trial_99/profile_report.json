@@ -1,0 +1,227 @@
+{
+  "warmup": {
+    "unmatched_or_failed": 139,
+    "stages": {
+      "idempotency_lookup": {
+        "count": 11,
+        "mean_ms": 57.667,
+        "p50_ms": 54.492,
+        "p95_ms": 82.577,
+        "p99_ms": 82.577
+      },
+      "index_sync": {
+        "count": 11,
+        "mean_ms": 20632.691,
+        "p50_ms": 20845.934,
+        "p95_ms": 21304.117,
+        "p99_ms": 21304.117
+      },
+      "bitmap_lookup": {
+        "count": 11,
+        "mean_ms": 0.036,
+        "p50_ms": 0.031,
+        "p95_ms": 0.074,
+        "p99_ms": 0.074
+      },
+      "candidate_retrieval": {
+        "count": 11,
+        "mean_ms": 16.269,
+        "p50_ms": 10.64,
+        "p95_ms": 67.112,
+        "p99_ms": 67.112
+      },
+      "connection_release": {
+        "count": 11,
+        "mean_ms": 14.341,
+        "p50_ms": 12.24,
+        "p95_ms": 26.071,
+        "p99_ms": 26.071
+      },
+      "pacing_counter_read": {
+        "count": 11,
+        "mean_ms": 1.129,
+        "p50_ms": 0.763,
+        "p95_ms": 2.58,
+        "p99_ms": 2.58
+      },
+      "pacing_calculation": {
+        "count": 11,
+        "mean_ms": 0.112,
+        "p50_ms": 0.11,
+        "p95_ms": 0.144,
+        "p99_ms": 0.144
+      },
+      "pod_optimization": {
+        "count": 11,
+        "mean_ms": 0.246,
+        "p50_ms": 0.236,
+        "p95_ms": 0.292,
+        "p99_ms": 0.292
+      },
+      "capacity_reservation": {
+        "count": 11,
+        "mean_ms": 454.382,
+        "p50_ms": 110.406,
+        "p95_ms": 1704.819,
+        "p99_ms": 1704.819
+      },
+      "allocation_commit": {
+        "count": 11,
+        "mean_ms": 8.858,
+        "p50_ms": 6.975,
+        "p95_ms": 25.378,
+        "p99_ms": 25.378
+      },
+      "total_service": {
+        "count": 11,
+        "mean_ms": 21186.192,
+        "p50_ms": 21114.019,
+        "p95_ms": 21378.456,
+        "p99_ms": 21378.456
+      },
+      "client_latency": {
+        "count": 11,
+        "mean_ms": 23042.17,
+        "p50_ms": 22974.723,
+        "p95_ms": 23217.733,
+        "p99_ms": 23217.733
+      },
+      "outside_service_estimate": {
+        "count": 11,
+        "mean_ms": 1855.978,
+        "p50_ms": 1859.047,
+        "p95_ms": 1867.936,
+        "p99_ms": 1867.936
+      }
+    }
+  },
+  "primary": {
+    "unmatched_or_failed": 0,
+    "stages": {
+      "idempotency_lookup": {
+        "count": 1000,
+        "mean_ms": 8.174,
+        "p50_ms": 3.902,
+        "p95_ms": 26.39,
+        "p99_ms": 49.494
+      },
+      "index_sync": {
+        "count": 1000,
+        "mean_ms": 7.577,
+        "p50_ms": 3.896,
+        "p95_ms": 28.972,
+        "p99_ms": 48.541
+      },
+      "bitmap_lookup": {
+        "count": 1000,
+        "mean_ms": 0.049,
+        "p50_ms": 0.042,
+        "p95_ms": 0.076,
+        "p99_ms": 0.206
+      },
+      "candidate_retrieval": {
+        "count": 1000,
+        "mean_ms": 686.898,
+        "p50_ms": 629.147,
+        "p95_ms": 1455.095,
+        "p99_ms": 1729.01
+      },
+      "connection_release": {
+        "count": 1000,
+        "mean_ms": 103.494,
+        "p50_ms": 52.369,
+        "p95_ms": 365.366,
+        "p99_ms": 544.23
+      },
+      "pacing_counter_read": {
+        "count": 1000,
+        "mean_ms": 11.01,
+        "p50_ms": 4.359,
+        "p95_ms": 40.868,
+        "p99_ms": 65.468
+      },
+      "pacing_calculation": {
+        "count": 1000,
+        "mean_ms": 0.398,
+        "p50_ms": 0.363,
+        "p95_ms": 0.574,
+        "p99_ms": 1.143
+      },
+      "pod_optimization": {
+        "count": 1000,
+        "mean_ms": 17.386,
+        "p50_ms": 12.131,
+        "p95_ms": 40.267,
+        "p99_ms": 74.356
+      },
+      "capacity_reservation": {
+        "count": 1000,
+        "mean_ms": 1066.262,
+        "p50_ms": 928.326,
+        "p95_ms": 2890.426,
+        "p99_ms": 3896.363
+      },
+      "allocation_commit": {
+        "count": 946,
+        "mean_ms": 16.403,
+        "p50_ms": 7.492,
+        "p95_ms": 62.047,
+        "p99_ms": 106.072
+      },
+      "total_service": {
+        "count": 1000,
+        "mean_ms": 1917.481,
+        "p50_ms": 1750.177,
+        "p95_ms": 3692.986,
+        "p99_ms": 4925.398
+      },
+      "client_latency": {
+        "count": 1000,
+        "mean_ms": 13726.211,
+        "p50_ms": 14254.613,
+        "p95_ms": 16648.357,
+        "p99_ms": 16876.444
+      },
+      "outside_service_estimate": {
+        "count": 1000,
+        "mean_ms": 11808.73,
+        "p50_ms": 12337.556,
+        "p95_ms": 15570.529,
+        "p99_ms": 16111.243
+      }
+    }
+  },
+  "replay": {
+    "unmatched_or_failed": 0,
+    "stages": {
+      "idempotency_lookup": {
+        "count": 50,
+        "mean_ms": 9.362,
+        "p50_ms": 7.567,
+        "p95_ms": 21.343,
+        "p99_ms": 28.046
+      },
+      "total_service": {
+        "count": 50,
+        "mean_ms": 9.542,
+        "p50_ms": 7.808,
+        "p95_ms": 21.505,
+        "p99_ms": 28.18
+      },
+      "client_latency": {
+        "count": 50,
+        "mean_ms": 341.203,
+        "p50_ms": 343.456,
+        "p95_ms": 366.267,
+        "p99_ms": 370.32
+      },
+      "outside_service_estimate": {
+        "count": 50,
+        "mean_ms": 331.66,
+        "p50_ms": 331.755,
+        "p95_ms": 363.534,
+        "p99_ms": 367.847
+      }
+    }
+  }
+}

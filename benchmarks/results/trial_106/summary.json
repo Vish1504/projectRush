@@ -1,0 +1,32 @@
+[
+  {
+    "phase": "warmup",
+    "requests": 150,
+    "successful": 150,
+    "failed": 0,
+    "duration_seconds": 3.9131697640114,
+    "requests_per_second": 38.33209624062786,
+    "peak_client_in_flight": 150,
+    "dispatch_window_ms": 584.2377709923312
+  },
+  {
+    "phase": "primary",
+    "requests": 1000,
+    "successful": 1000,
+    "failed": 0,
+    "duration_seconds": 23.694122690998483,
+    "requests_per_second": 42.204559039440824,
+    "peak_client_in_flight": 1000,
+    "dispatch_window_ms": 1960.3686240152456
+  },
+  {
+    "phase": "replay",
+    "requests": 50,
+    "successful": 50,
+    "failed": 0,
+    "duration_seconds": 0.4042842630005907,
+    "requests_per_second": 123.67535562453229,
+    "peak_client_in_flight": 50,
+    "dispatch_window_ms": 126.53715300257318
+  }
+]

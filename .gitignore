@@ -7,3 +7,9 @@ docs/
 practice/
 READ_ME.md
 Old_README.md
+# Python cache files
+__pycache__/
+*.pyc
+
+# Raw benchmark logs
+benchmarks/results/**/*.log

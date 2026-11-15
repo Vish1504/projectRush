@@ -1,0 +1,2311 @@
+[
+  {
+    "name": "HOT_001",
+    "capacity": 178,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "TELECOM",
+    "id": 1,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_002",
+    "capacity": 212,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 2,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_003",
+    "capacity": 289,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 5,
+    "competitive_group": "BANKING",
+    "id": 3,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_004",
+    "capacity": 158,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": "SPORTSWEAR",
+    "id": 4,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_005",
+    "capacity": 209,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": "BANKING",
+    "id": 5,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_006",
+    "capacity": 289,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 20,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 6,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_007",
+    "capacity": 300,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 15,
+    "competitive_group": "SPORTSWEAR",
+    "id": 7,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_008",
+    "capacity": 258,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 15,
+    "competitive_group": "AUTOMOBILE",
+    "id": 8,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_009",
+    "capacity": 205,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 15,
+    "competitive_group": "SPORTSWEAR",
+    "id": 9,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_010",
+    "capacity": 247,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "AUTOMOBILE",
+    "id": 10,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_011",
+    "capacity": 217,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 5,
+    "competitive_group": "TELECOM",
+    "id": 11,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_012",
+    "capacity": 287,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 12,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_013",
+    "capacity": 291,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "TELECOM",
+    "id": 13,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_014",
+    "capacity": 242,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "TELECOM",
+    "id": 14,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "HOT_015",
+    "capacity": 161,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi",
+      "Bengaluru",
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 15,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_001",
+    "capacity": 487,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 16,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_002",
+    "capacity": 157,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 20,
+    "competitive_group": "AUTOMOBILE",
+    "id": 17,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_003",
+    "capacity": 162,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 15,
+    "competitive_group": "SPORTSWEAR",
+    "id": 18,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_004",
+    "capacity": 340,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Hyderabad"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 15,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 19,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_005",
+    "capacity": 431,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune",
+      "Hyderabad"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 20,
+    "competitive_group": "SPORTSWEAR",
+    "id": 20,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_006",
+    "capacity": 490,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 21,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_007",
+    "capacity": 355,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune",
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 15,
+    "competitive_group": null,
+    "id": 22,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_008",
+    "capacity": 107,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": null,
+    "id": 23,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_009",
+    "capacity": 480,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 20,
+    "competitive_group": "SPORTSWEAR",
+    "id": 24,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_010",
+    "capacity": 235,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Mumbai"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 5,
+    "competitive_group": "TELECOM",
+    "id": 25,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_011",
+    "capacity": 467,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 26,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_012",
+    "capacity": 496,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Pune"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 20,
+    "competitive_group": "SPORTSWEAR",
+    "id": 27,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_013",
+    "capacity": 165,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "SPORTSWEAR",
+    "id": 28,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_014",
+    "capacity": 412,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": "BANKING",
+    "id": 29,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_015",
+    "capacity": 192,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Pune"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "SPORTSWEAR",
+    "id": 30,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_016",
+    "capacity": 387,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Hyderabad"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 31,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_017",
+    "capacity": 459,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": "ELECTRONICS",
+    "id": 32,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_018",
+    "capacity": 192,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Mumbai"
+    ],
+    "devices": [
+      "DESKTOP",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": "SPORTSWEAR",
+    "id": 33,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_019",
+    "capacity": 135,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "ELECTRONICS",
+    "id": 34,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_020",
+    "capacity": 249,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 35,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_021",
+    "capacity": 79,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 10,
+    "competitive_group": "SPORTSWEAR",
+    "id": 36,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_022",
+    "capacity": 91,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 20,
+    "competitive_group": "SPORTSWEAR",
+    "id": 37,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_023",
+    "capacity": 176,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 15,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 38,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_024",
+    "capacity": 172,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Delhi"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 39,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_025",
+    "capacity": 338,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 40,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_026",
+    "capacity": 500,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": "TELECOM",
+    "id": 41,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_027",
+    "capacity": 203,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "AUTOMOBILE",
+    "id": 42,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_028",
+    "capacity": 157,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 20,
+    "competitive_group": null,
+    "id": 43,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_029",
+    "capacity": 72,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 10,
+    "competitive_group": "TELECOM",
+    "id": 44,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_030",
+    "capacity": 332,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune",
+      "Mumbai"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": null,
+    "id": 45,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_031",
+    "capacity": 348,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 15,
+    "competitive_group": null,
+    "id": 46,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_032",
+    "capacity": 233,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 47,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_033",
+    "capacity": 459,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 20,
+    "competitive_group": null,
+    "id": 48,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_034",
+    "capacity": 186,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 49,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_035",
+    "capacity": 229,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Pune"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 20,
+    "competitive_group": "AUTOMOBILE",
+    "id": 50,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_036",
+    "capacity": 492,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "SPORTSWEAR",
+    "id": 51,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_037",
+    "capacity": 141,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Pune"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 52,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_038",
+    "capacity": 147,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Hyderabad"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 15,
+    "competitive_group": "ELECTRONICS",
+    "id": 53,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_039",
+    "capacity": 390,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune",
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": "TELECOM",
+    "id": 54,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_040",
+    "capacity": 217,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Delhi"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 10,
+    "competitive_group": "BANKING",
+    "id": 55,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_041",
+    "capacity": 204,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune",
+      "Mumbai"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": "ELECTRONICS",
+    "id": 56,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_042",
+    "capacity": 276,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune"
+    ],
+    "devices": [
+      "DESKTOP",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "BANKING",
+    "id": 57,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_043",
+    "capacity": 221,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": "SPORTSWEAR",
+    "id": 58,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_044",
+    "capacity": 293,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "DESKTOP",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 20,
+    "competitive_group": "ELECTRONICS",
+    "id": 59,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_045",
+    "capacity": 125,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": "BANKING",
+    "id": 60,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_046",
+    "capacity": 484,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 20,
+    "competitive_group": "BANKING",
+    "id": 61,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_047",
+    "capacity": 268,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Hyderabad"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 20,
+    "competitive_group": "TELECOM",
+    "id": 62,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_048",
+    "capacity": 190,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 15,
+    "competitive_group": "BANKING",
+    "id": 63,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_049",
+    "capacity": 120,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 64,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_050",
+    "capacity": 219,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Mumbai"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": null,
+    "id": 65,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_051",
+    "capacity": 244,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 20,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 66,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_052",
+    "capacity": 273,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Hyderabad"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 20,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 67,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_053",
+    "capacity": 323,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 68,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_054",
+    "capacity": 143,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": "AUTOMOBILE",
+    "id": 69,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_055",
+    "capacity": 192,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Mumbai"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": "TELECOM",
+    "id": 70,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_056",
+    "capacity": 449,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 71,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_057",
+    "capacity": 292,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 72,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_058",
+    "capacity": 360,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 20,
+    "competitive_group": "ELECTRONICS",
+    "id": 73,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_059",
+    "capacity": 88,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai"
+    ],
+    "devices": [
+      "DESKTOP",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": "BANKING",
+    "id": 74,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_060",
+    "capacity": 388,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 75,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_061",
+    "capacity": 375,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi",
+      "Hyderabad"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 20,
+    "competitive_group": "ELECTRONICS",
+    "id": 76,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_062",
+    "capacity": 472,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Delhi"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 77,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_063",
+    "capacity": 341,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Mumbai"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 78,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_064",
+    "capacity": 224,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Pune",
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 5,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 79,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_065",
+    "capacity": 300,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 80,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_066",
+    "capacity": 404,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": "AUTOMOBILE",
+    "id": 81,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_067",
+    "capacity": 188,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "SPORTSWEAR",
+    "id": 82,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_068",
+    "capacity": 440,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "TELECOM",
+    "id": 83,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_069",
+    "capacity": 439,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": "SPORTSWEAR",
+    "id": 84,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_070",
+    "capacity": 114,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Pune"
+    ],
+    "devices": [
+      "DESKTOP",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 5,
+    "competitive_group": null,
+    "id": 85,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_071",
+    "capacity": 343,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Pune"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 15,
+    "competitive_group": null,
+    "id": 86,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_072",
+    "capacity": 108,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 87,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_073",
+    "capacity": 205,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 88,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_074",
+    "capacity": 244,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad",
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": "TELECOM",
+    "id": 89,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_075",
+    "capacity": 185,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 10,
+    "competitive_group": "SPORTSWEAR",
+    "id": 90,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_076",
+    "capacity": 280,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Mumbai"
+    ],
+    "devices": [
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 20,
+    "competitive_group": "SPORTSWEAR",
+    "id": 91,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_077",
+    "capacity": 185,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Hyderabad"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": "AUTOMOBILE",
+    "id": 92,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_078",
+    "capacity": 86,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "ELECTRONICS",
+    "id": 93,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_079",
+    "capacity": 408,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Hyderabad"
+    ],
+    "devices": [
+      "MOBILE",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 15,
+    "competitive_group": "BANKING",
+    "id": 94,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_080",
+    "capacity": 63,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 5,
+    "competitive_group": null,
+    "id": 95,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_081",
+    "capacity": 290,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru",
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 4,
+    "duration_seconds": 20,
+    "competitive_group": "AUTOMOBILE",
+    "id": 96,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_082",
+    "capacity": 220,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi"
+    ],
+    "devices": [
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 20,
+    "competitive_group": null,
+    "id": 97,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_083",
+    "capacity": 68,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Bengaluru"
+    ],
+    "devices": [
+      "TV",
+      "MOBILE"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": "TELECOM",
+    "id": 98,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_084",
+    "capacity": 286,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Mumbai",
+      "Delhi"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 3,
+    "duration_seconds": 5,
+    "competitive_group": "FOOD_DELIVERY",
+    "id": 99,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "TAIL_085",
+    "capacity": 331,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "Bengaluru"
+    ],
+    "devices": [
+      "DESKTOP",
+      "TV"
+    ],
+    "subscription_tiers": [
+      "FREE"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": "TELECOM",
+    "id": 100,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "WARMUP_001",
+    "capacity": 500,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "BENCHMARK_WARMUP"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 2,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 101,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "WARMUP_002",
+    "capacity": 500,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "BENCHMARK_WARMUP"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 15,
+    "competitive_group": null,
+    "id": 102,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "WARMUP_003",
+    "capacity": 500,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "BENCHMARK_WARMUP"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 5,
+    "duration_seconds": 5,
+    "competitive_group": null,
+    "id": 103,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "WARMUP_004",
+    "capacity": 500,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "BENCHMARK_WARMUP"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 20,
+    "competitive_group": null,
+    "id": 104,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "WARMUP_005",
+    "capacity": 500,
+    "start_time": "2026-11-15T06:36:15.031113+00:00",
+    "end_time": "2026-11-15T13:36:15.031113+00:00",
+    "regions": [
+      "BENCHMARK_WARMUP"
+    ],
+    "devices": [
+      "MOBILE",
+      "TV",
+      "DESKTOP"
+    ],
+    "subscription_tiers": [
+      "FREE",
+      "PREMIUM"
+    ],
+    "frequency_cap_per_hour": 1,
+    "duration_seconds": 10,
+    "competitive_group": null,
+    "id": 105,
+    "status": "ACTIVE"
+  }
+]
